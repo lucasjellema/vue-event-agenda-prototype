@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import ListData from './components/ListData.vue'
+import EventsList from './components/EventsList.vue'
 </script>
 
 <template>
-  <ListData/>
+  <EventsList/>
 </template>
 

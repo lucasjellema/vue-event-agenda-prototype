@@ -1,0 +1,41 @@
+datum,titel,omschrijving,sprekers,tijd,locatie,hybride,contactpersoon,registratie,tags,bedrijf,sessieserie,doelgroep,voorbereiding,scope,taal
+25-07-23,Architectuur Gilde Sessie II,"Ecosysteemjournaal
+
+ – berichten vanuit het Conclusion ecosysteem – pilots, PoCs, nieuwe projecten, vragen/uitdagingen/resultaten, leerpunten – om het ecosysteem beter te leren kennen en de ontwikkelingen te kunnen volgen 
+
+ 
+
+Het Bedrijf 
+
+– korte introductie van een bedrijf in het ecosysteem: waar houdt het zich mee bezig? Welke soort dienstverlening, bij welke klanten, met welke tools en technologie? (eventueel gevolgd door een uitgebreidere praktijkcasus vanuit dit bedrijf) (dit onderdeel vanwege de vraag hierom tijdens onze kickoff sessie)
+
+ 
+
+Dit keer wordt  myBrand geïntroduceerd door Marcel Antons
+
+ 
+
+Praktijk-casus
+
+Presentatie van een architectuuruitdaging uit de actuele praktijk - van myBrand - Marcel Antons
+
+ 
+
+Het Begrip
+
+ – uitleg van een architectuurconcept of generieke technologie – we hanteren allerlei termen en jargon zonder er stil bij te staan of iedereen hetzelfde of zelfs enig idee heeft van wat ze betekenen. In de gilde-sessies bespreken we zo'n soort ""begrip"" om te komen tot gedeeld ""begrip"". We nodigen iedere keer een collega uit om haar/zijn favoriete begrip te introduceren.  In Teams bouwen we aan een glossary van al deze begrippen.  
+
+ 
+
+Dit keer: 
+
+Non Functional requirements
+
+ 
+
+Architectuur Kata - Hands-On Architectuur Oefening
+
+In kleine groepen aan de slag met een (fictieve?) architectuuruitdaging – samen oefenen met analyseren en brainstormen over een aanpak / oplossingsrichting. Daarna plenair richtingen en resultaten vergelijken.  ","Marcel Antons,Lucas Jellema",17.00-20.30,Conclusion myBrand Maarssen,FALSE,Lucas Jellema - lucas.jellema@conclusion.nl,via https://architectuur-gilde-juli-2023.conclusionevents.nl/,"architectuur,mybrand,non functional requirements,kata",Conclusion,Architectuur Gilde,IT architecten en collega's met interesse in architectuur,,ecosysteem,nl
+18-07-23,Nieuwste ontwikkelingen op het vlak van Stable Diffusion,"Op dinsdag 18 juli van 18u tot 19u geef ik een presentatie en workshop bij AMIS in Nieuwegein over de nieuwste ontwikkelingen op het vlak van Stable Diffusion, een open source generatief model gericht op het maken en bewerken van afbeeldingen. De presentatie/workshop kan ook online via Teams gevolgd worden. Ik zal de link nog delen. Naast een korte algemene intro zal ik ControlNet en SDXL demonstreren waarna mensen ook zelf aan de gang kunnen hiermee. Het is vooral gericht op recente ontwikkelingen en laten zien wat er nu mogelijk is.",Maarten Smeets,18.00-19.00,Conclusion Nieuwegein,TRUE,Maarten Smeets - maarten.smeets@amis.nl,mail naar Maarten,"stable diffusion,generative ai,image generation,controlnet,sdxl,handson",AMIS,,,,ecosysteem,nl
+13-07-23,First8 Academy over Artifical Intelligence,"een maandelijks kennisevent deze keer in het kader van AI. Ted (""Ted Talk""), Michiel, Annemieke en Suman presenteerden over Turing Test, Machine Learning, Deep Learning, Midjourney, ChatGPT, Ethics en Regulations (EU AI Act), ""Pale Male data"" (en bias), AI en impact op banen en GitHub CoPilot voor pAIr programming.","Ted Vinke,Suman,Michiel,Annemieke",17.00-19.00,Conclusion First8 Nijmegen,FALSE,Linda Elbersen,mail naar Linda,"ai,chatgpt,ethiek,midjourney,image generation,machine learning,github copilot,deep learning",First8,First8 Academy,,,ecosysteem,nl
+29-06-23,Kennissessie Klok en Klepel van het Klimaat ,Wil je weten hoe CO2 de aarde warmer maakt? En wat voor consequenties dat heeft? Wat we kunnen doen om klimaatverandering af te remmen en om ons voor te bereiden op de veranderingen die onvermijdelijk zijn? Deze bijzondere kennissessie legt uit hoe het nu eigenlijk echt zit. ,Michiel Schaeffer,17.00-20.30,Conclusion Utrecht,FALSE,Lucas Jellema - lucas.jellema@conclusion.nl,Aanmelden https://klimaat-kennis-29juni.conclusionevents.nl/,"klimaat,adaptatie,mitigatie,co2,zon,sustainable",Conclusion,Klimaat Café,,,publiek,nl
