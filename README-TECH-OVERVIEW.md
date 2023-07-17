@@ -28,6 +28,33 @@ import dsv from '@rollup/plugin-dsv'
 see: https://mkay11.medium.com/how-to-deploy-your-vite-vue-3-application-in-github-pages-2023-2b842f50576a 
 
 
+### add in package.json
+
+```
+  "homepage": "https://lucasjellema.github.io/vue-event-agenda-prototype/",
+```
+
+and:
+```
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist",
+```
+
+That is all it takes!
+
+Open site at homepage URL:
+
+https://lucasjellema.github.io/vue-event-agenda-prototype/
+
+or find link at GitHub Repo, Settings, Pages:
+
+https://github.com/lucasjellema/vue-event-agenda-prototype/settings/pages
+
+### to publish the application:
+
+`npm run deploy``
+
+
 
 ## Vite TS Build configuration
 
