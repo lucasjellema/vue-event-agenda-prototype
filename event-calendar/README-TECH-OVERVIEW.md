@@ -25,8 +25,12 @@ import dsv from '@rollup/plugin-dsv'
 
 ## To publish as GitHub Pages
 
-see: https://mkay11.medium.com/how-to-deploy-your-vite-vue-3-application-in-github-pages-2023-2b842f50576a 
+see: https://mkay11.medium.com/how-to-deploy-your-vite-vue-3-application-in-github-pages-2023-2b842f50576a
+or:
 
+first comment on https://dev.to/shashannkbawa/deploying-vite-app-to-github-pages-3ane
+
+npm install gh-pages --save-dev
 
 
 ## Vite TS Build configuration
