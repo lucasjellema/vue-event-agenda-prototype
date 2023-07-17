@@ -7,7 +7,7 @@ import dsv from '@rollup/plugin-dsv'
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  base: "/vue-event-agenda-prototype/event-calendar/", // to publish on GitHub Pages
+  base: "/vue-event-agenda-prototype/", // to publish on GitHub Pages
   plugins: [
     vue(),
     vueJsx(),
