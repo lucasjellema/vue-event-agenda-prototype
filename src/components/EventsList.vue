@@ -2,7 +2,7 @@
   <div>
     <h1>Conclusion Knowledge Events</h1>
     <DataTable :value="events" tableStyle="min-width: 50rem" v-model:expandedRows="expandedRows" 
-    @rowExpand="onRowExpand" @rowCollapse="onRowCollapse" 
+    @rowExpand="onRowExpand" @rowCollapse="onRowCollapse" dataKey="datum"
     >
     <template #header>
         <div class="flex flex-wrap align-items-center justify-content-between gap-2">
@@ -23,15 +23,18 @@
     <Column field="bedrijf" header="Bedrijf" sortable></Column>
      <template #expansion="slotProps">
         <div class="p-3">
-            <h5>Beschrijving {{ slotProps.data.omschrijving }}</h5>
+            <h5>{{ slotProps.data.omschrijving }}</h5>
             
         </div>
     </template>
 </DataTable>
-  <Button label="Check" icon="pi pi-check" />
+  <Button label="Expand All" icon="pi pi-check" @click="expandAll" />
+  <Button label="Collapse All" icon="pi pi-check" @click="collapseAll" />
+    <!--
     <p  v-for="(event,index) in events" :key="index">
       <EventSummary :event="event" />
     </p>
+    -->
   </div>
 </template>
 
@@ -48,6 +51,12 @@ import { storeToRefs } from 'pinia'
 export default {  
   name : "EventsList",
   components: { EventSummary},
+   data() {
+    return {
+
+      expandedRows: [],
+    };
+  },
    methods: {
     onRowExpand() {
       console.log("expanded");
@@ -57,6 +66,16 @@ export default {
       console.log("collapsed");
       console.log(this.expandedRows)
     },
+    expandAll() {
+      console.log("expand all");
+      this.expandedRows = this.events.filter(event=> event.datum);
+      console.log(this.expandedRows)
+        },
+    collapseAll() {
+      console.log("collapse all");
+      this.expandedRows = [];
+      console.log(this.expandedRows)
+        },
    },
    
 
@@ -67,9 +86,7 @@ export default {
     const { eventData } = storeToRefs(useCounterStore())
     return {
       events: eventData
-      ,expandedRows: [],
-  
-      };
+    };
   },
 };
 </script>
