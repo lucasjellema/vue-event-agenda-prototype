@@ -9,6 +9,8 @@ import "primeicons/primeicons.css";
 import Button from 'primevue/button';
 import DataTable from 'primevue/datatable';
 import Column from 'primevue/column';
+import InputSwitch from 'primevue/inputswitch';
+import InputText from 'primevue/inputtext';
 
 import App from './App.vue'
 import router from './router'
@@ -21,6 +23,8 @@ app.use(PrimeVue);
 app.component('Button', Button);
 app.component('DataTable', DataTable);
 app.component('Column', Column);
+app.component('InputSwitch', InputSwitch);
+app.component('InputText', InputText);
 
 
 app.use(pinia).mount('#app');
