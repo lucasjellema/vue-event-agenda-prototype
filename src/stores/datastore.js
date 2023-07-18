@@ -27,6 +27,16 @@ export const useCounterStore = defineStore('data', {
     async parseCSVData() {
       this.loading = true;
       this.csvData = csvRecords
+      // post process eventRecords
+      for(const rec of eventRecords) {
+        // rec.datum has format: dd-mm-yy
+        let dateParts = rec.datum.split("-")
+        try {
+        rec.eventDate = new Date("20"+dateParts[2], dateParts[1]-1, dateParts[0]);
+        } catch(e) {
+          rec.eventDate = null
+        }
+      }
       this.eventData = eventRecords
       try {
         // Papa.parse(CSV_DATA, {

@@ -14,9 +14,9 @@
       
     <Column field="titel" header="Titel" sortable >
     </Column>
-    <Column field="datum" header="Datum">
+    <Column field="eventDate" header="Datum" sortable>
             <template #body="slotProps">
-            <i>{{ slotProps.data.datum }}</i>
+            <i>{{ slotProps.data.eventDate }}</i>
         </template>
         </Column>
     <Column field="locatie" header="Locatie" sortable></Column>
