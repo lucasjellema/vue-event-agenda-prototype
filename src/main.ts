@@ -11,6 +11,7 @@ import DataTable from 'primevue/datatable';
 import Column from 'primevue/column';
 import InputSwitch from 'primevue/inputswitch';
 import InputText from 'primevue/inputtext';
+import Dialog from 'primevue/dialog';
 
 import App from './App.vue'
 import router from './router'
@@ -25,6 +26,7 @@ app.component('DataTable', DataTable);
 app.component('Column', Column);
 app.component('InputSwitch', InputSwitch);
 app.component('InputText', InputText);
+app.component('Dialog', Dialog);
 
 
 app.use(pinia).mount('#app');
