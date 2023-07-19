@@ -28,7 +28,9 @@ export const useCounterStore = defineStore('data', {
       this.loading = true;
       this.csvData = csvRecords
       // post process eventRecords
+      let i = 0
       for(const rec of eventRecords) {
+        rec.id = i++
         // rec.datum has format: dd-mm-yy
         let dateParts = rec.datum.split("-")
         try {
