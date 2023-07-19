@@ -2,11 +2,18 @@
   <div>
     <h1>Conclusion Knowledge Events</h1>
     <DataTable :value="events" tableStyle="min-width: 50rem" v-model:expandedRows="expandedRows" 
-    @rowExpand="onRowExpand" @rowCollapse="onRowCollapse" dataKey="datum"
+    @rowExpand="onRowExpand" @rowCollapse="onRowCollapse" dataKey="id"
+    class="p-datatable-lg"
     sortField="eventDate" :sortOrder="-1" 
      v-model:filters="filters"  :globalFilterFields="['titel', 'omschrijving', 'sprekers']"
      filterDisplay="row"
-    >
+   >
+   <!-- temporarily removed from DataTable
+      row selection     
+      v-model:selection="selectedEvent" selectionMode="single" @rowSelect="onRowSelect"
+    -->
+
+
     <template #header>
         <div class="flex flex-wrap align-items-center justify-content-between gap-2">
             <span class="text-xl text-900 font-bold">Conclusion Knowledge Events</span>
@@ -25,7 +32,7 @@
     </Column>
     <Column field="eventDate" header="Datum" sortable>
             <template #body="slotProps">
-            <i>{{ slotProps.data.eventDate }}</i>
+            <i>{{ formatDate(slotProps.data.eventDate) }}</i>
         </template>
 
         </Column>
@@ -35,6 +42,12 @@
       </template>
     </Column>
     <Column field="bedrijf" header="Bedrijf" sortable></Column>
+<Column header="Details">
+<template #body="slotProps">
+<Button label="Details" icon="pi" severity="success" class="mr-2" @click="openDetails(slotProps.data)" />
+</template>
+</Column>
+
      <template #expansion="slotProps">
         <div class="p-3">
             <h5>{{ slotProps.data.omschrijving }}</h5>
@@ -44,11 +57,28 @@
 </DataTable>
   <Button label="Expand All" icon="pi pi-check" @click="expandAll" />
   <Button label="Collapse All" icon="pi pi-check" @click="collapseAll" />
-    <!--
-    <p  v-for="(event,index) in events" :key="index">
-      <EventSummary :event="event" />
-    </p>
-    -->
+   <Dialog v-model:visible="detailsModalVisible" maximizable modal v-model:header="selectedEvent.titel" :style="{ width: '50vw' }">
+    
+    <div>
+     <div class="field">{{selectedEvent.titel}}</div>      
+     <div class="field"><i>Sprekers: {{selectedEvent.sprekers}}</i></div>      
+     <div class="field"><i>Datum/Tijd: {{formatDate(selectedEvent.eventDate)}}  {{selectedEvent.tijd}}</i></div>      
+     <div class="field"><p>{{selectedEvent.omschrijving}}</p></div>
+     <div class="field"><p><b>tags:</b> {{selectedEvent.tags}}</p></div>
+     <div class="field">doelgroep: {{selectedEvent.doelgroep}}</div>
+     <hr />
+      <h3>Logistiek </h3>
+     <div class="field">toegankelijk voor: {{selectedEvent.scope}}</div>
+     <div class="field"><p><b>locatie:</b> {{selectedEvent.locatie}}</p></div>
+     <div class="field"><p><b>hybride:</b> {{selectedEvent.hybride}}</p></div>
+     <div class="field"><p><b>registratie:</b> {{selectedEvent.registratie}}</p></div>
+     <div class="field">contactpersoon: {{selectedEvent.contactpersoon}}</div>
+     <div class="field">voorbereiding/meenemen: {{selectedEvent.voorbereiding}}</div>
+
+      </div>
+    </Dialog>
+
+ 
   </div>
 </template>
 
@@ -69,7 +99,8 @@ export default {
   components: { EventSummary},
    data() {
     return {
-
+      detailsModalVisible: false,
+      selectedEvent : {},
       expandedRows: [],
       filters: {
         titel: { value: null, matchMode: FilterMatchMode.CONTAINS },
@@ -96,7 +127,18 @@ export default {
       console.log(this.futureEventsOnlyChecked)
      // const today = new Date() 
      // this.events = this.allEvents.filter(event=> this.futureEventsOnlyChecked? event.eventDate<today : true );
-     }   
+     }   ,
+     onRowSelect(e) {
+      console.log(`select event ${this.selectedEvent}`)
+     },
+     openDetails(event) {
+      this.selectedEvent= {...event};
+      this.detailsModalVisible = true
+     },
+     formatDate(theDate) {
+      var options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+      return theDate.toLocaleDateString("nl-NL", options); 
+     }
    },
    
 
