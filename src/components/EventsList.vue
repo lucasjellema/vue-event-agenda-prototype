@@ -1,7 +1,7 @@
 <template>
   <div>
-    <h1>Conclusion Knowledge Events</h1>
-    <DataTable :value="events" tableStyle="min-width: 50rem" v-model:expandedRows="expandedRows" 
+    
+    <DataTable :value="eligibleEvents" tableStyle="min-width: 50rem" v-model:expandedRows="expandedRows" 
     @rowExpand="onRowExpand" @rowCollapse="onRowCollapse" dataKey="id"
     class="p-datatable-lg"
     sortField="eventDate" :sortOrder="-1" 
@@ -17,9 +17,8 @@
     <template #header>
         <div class="flex flex-wrap align-items-center justify-content-between gap-2">
             <span class="text-xl text-900 font-bold">Conclusion Knowledge Events</span>
-            <Button icon="pi " rounded raised />
             <div>Only future events?</div>
-            <InputSwitch v-model="futureEventsOnlyChecked" @change="toggleIncludeFutureEventsOnly" />
+            <InputSwitch v-model="futureEventsOnlyChecked" />
              <InputText v-model="filters['global'].value" placeholder="Keyword Search" />
         </div>
     </template>
@@ -42,11 +41,21 @@
       </template>
     </Column>
     <Column field="bedrijf" header="Bedrijf" sortable></Column>
-<Column header="Details">
-<template #body="slotProps">
-<Button label="Details" icon="pi" severity="success" class="mr-2" @click="openDetails(slotProps.data)" />
-</template>
-</Column>
+    <Column header="Tags">
+       <template #body="slotProps">
+<!--       <template v-for="tag in slotProps.data.tagList">
+          <Tag :value="tag"></Tag>
+        </template>
+    -->
+         <p>{{slotProps.data.tags}}</p>
+         
+       </template>
+    </Column>
+    <Column header="Details">
+       <template #body="slotProps">
+         <Button label="Details" icon="pi" severity="success" class="mr-2" @click="openDetails(slotProps.data)" />
+       </template>
+    </Column>
 
      <template #expansion="slotProps">
         <div class="p-3">
@@ -64,7 +73,11 @@
      <div class="field"><i>Sprekers: {{selectedEvent.sprekers}}</i></div>      
      <div class="field"><i>Datum/Tijd: {{formatDate(selectedEvent.eventDate)}}  {{selectedEvent.tijd}}</i></div>      
      <div class="field"><p>{{selectedEvent.omschrijving}}</p></div>
-     <div class="field"><p><b>tags:</b> {{selectedEvent.tags}}</p></div>
+     <div class="field"><p>
+        <template v-for="tag in selectedEvent.tagList">
+          <Tag :value="tag" rounded></Tag>
+        </template>
+       </p></div>
      <div class="field">doelgroep: {{selectedEvent.doelgroep}}</div>
      <hr />
       <h3>Logistiek </h3>
@@ -93,6 +106,7 @@ import { FilterMatchMode, FilterOperator } from "primevue/api";
 import { storeToRefs } from 'pinia'
 
 
+const today = new Date() 
 
 export default {  
   name : "EventsList",
@@ -107,9 +121,18 @@ export default {
         global: { value: null, matchMode: FilterMatchMode.CONTAINS },
         locatie: { value: null, matchMode: FilterMatchMode.CONTAINS },
       },
-      futureEventsOnlyChecked: true,
+      futureEventsOnlyChecked: false,
     };
   },
+  computed: {
+    // a computed getter to return the set of events that the datatable can display - given global filters
+    // currently only a filter for future events/all Events
+    // possibly also: a toggle for public events/ecosysteem events 
+    eligibleEvents() {
+      return this.allEvents.filter( (event) => this.futureEventsOnlyChecked? event.eventDate > today : true)
+    }
+  },
+  //computed: { eligibleEvents : ()=> {return this.allEvents}},
    methods: {
     onRowExpand() {
     },
@@ -121,13 +144,6 @@ export default {
     collapseAll() {
       this.expandedRows = [];
     },
-     toggleIncludeFutureEventsOnly(e) {
-      console.log("toggle")
-      
-      console.log(this.futureEventsOnlyChecked)
-     // const today = new Date() 
-     // this.events = this.allEvents.filter(event=> this.futureEventsOnlyChecked? event.eventDate<today : true );
-     }   ,
      onRowSelect(e) {
       console.log(`select event ${this.selectedEvent}`)
      },
