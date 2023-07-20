@@ -31,6 +31,7 @@ export const useCounterStore = defineStore('data', {
       let i = 0
       for(const rec of eventRecords) {
         rec.id = i++
+        rec.tagList = rec.tags.split(",")
         // rec.datum has format: dd-mm-yy
         let dateParts = rec.datum.split("-")
         try {
