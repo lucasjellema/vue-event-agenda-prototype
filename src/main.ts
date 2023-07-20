@@ -12,6 +12,7 @@ import Column from 'primevue/column';
 import InputSwitch from 'primevue/inputswitch';
 import InputText from 'primevue/inputtext';
 import Dialog from 'primevue/dialog';
+import Tag from 'primevue/tag';
 
 import App from './App.vue'
 import router from './router'
@@ -27,6 +28,7 @@ app.component('Column', Column);
 app.component('InputSwitch', InputSwitch);
 app.component('InputText', InputText);
 app.component('Dialog', Dialog);
+app.component('Tag', Tag);
 
 
 app.use(pinia).mount('#app');
