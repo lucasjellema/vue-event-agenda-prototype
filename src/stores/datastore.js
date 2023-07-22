@@ -12,6 +12,19 @@ import eventRecords  from '@/assets/knowledge-events.csv';
 //import { CSV, CSV_DATA } from './staticData.js';
 
 
+const  replaceUrlsWithLinks = (text) => {
+  // Regular expression to match URLs starting with http:// or https://
+  const urlRegex = /(https?:\/\/\S+)/gi;
+
+  // Replace URLs with anchor tags
+  const replacedText = text.replace(urlRegex, (url) => {
+    return `<a href="${url}" target="_blank">${url}</a>`;
+  });
+
+  return replacedText;
+}
+
+
 export const useCounterStore = defineStore('data', {
   state: () => ({
     count: 0,
@@ -33,6 +46,10 @@ export const useCounterStore = defineStore('data', {
         } catch(e) {
           rec.eventDate = null
         }
+
+        // if rec.registratie contains a link (https:// or http://) then replace the link with its HTML counterpart: <a href="link" target="_new">link<</a>
+        const processedText = replaceUrlsWithLinks(rec.registratie);
+        rec.registratie = processedText
       }
       this.eventData = eventRecords
       try {
