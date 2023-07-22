@@ -132,7 +132,6 @@ export default {
       return this.allEvents.filter( (event) => this.futureEventsOnlyChecked? event.eventDate > today : true)
     }
   },
-  //computed: { eligibleEvents : ()=> {return this.allEvents}},
    methods: {
     onRowExpand() {
     },
