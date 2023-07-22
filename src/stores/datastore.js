@@ -1,32 +1,26 @@
 import { defineStore } from 'pinia';
-import Papa from 'papaparse';
+//import Papa from 'papaparse';
 
-// load CSV data from the file data.csv in the assets directory; turn the data into a JSON object array; the names of the object properties are derived from the column headers (first row in CSV file) 
-import csvRecords  from '@/assets/data.csv';
-console.log(csvRecords) 
+// load CSV data from the file in the assets directory; turn the data into a JSON object array; the names of the object properties are derived from the column headers (first row in CSV file) 
 import eventRecords  from '@/assets/knowledge-events.csv';
-console.log(eventRecords) 
 
 // the contents of the CSV file can also be loaded as a string that could then be parsed using papaparse - in case the action performed by the direct import is not adequate
-import csvString from '@/assets/data.csv?raw'
-console.log(csvString)
+// import csvString from '@/assets/data.csv?raw'
 
-// alternatively, CSV data can be defined as const in a Java Script module
-import { CSV, CSV_DATA } from './staticData.js';
-console.log(`CSV ${CSV}`);
+// alternatively, CSV data can be defined as string const in a Java Script module
+// this allows for more finegrained parsing in case of special delimiters or charactersets 
+//import { CSV, CSV_DATA } from './staticData.js';
 
 
 export const useCounterStore = defineStore('data', {
   state: () => ({
     count: 0,
-    csvData: [],
     eventData: [],
     loading: false,
   }),
   actions: {
     async parseCSVData() {
       this.loading = true;
-      this.csvData = csvRecords
       // post process eventRecords
       let i = 0
       for(const rec of eventRecords) {
@@ -53,13 +47,6 @@ export const useCounterStore = defineStore('data', {
         this.loading = false;
       }
     },
-    increment() {
-      this.parseCSVData();
-      this.count++;
-    },
-    decrement() {
-      this.count--;
-    },
     sortEvents(sortKey, sortOrder) {
       this.eventData.sort((a, b) => {
         if (sortOrder === 'asc') {
@@ -67,8 +54,7 @@ export const useCounterStore = defineStore('data', {
         } else {
           return b[sortKey] > a[sortKey]?-1:1;
         }
-      });
-      console.log(this.eventData)
+      });      
     }
   },
 });
