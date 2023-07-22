@@ -39,7 +39,7 @@
      <div class="field">toegankelijk voor: {{selectedEvent.scope}}</div>
      <div class="field"><p><b>locatie:</b> {{selectedEvent.locatie}}</p></div>
      <div class="field"><p><b>hybride:</b> {{selectedEvent.hybride}}</p></div>
-     <div class="field"><p><b>registratie:</b> {{selectedEvent.registratie}}</p></div>
+     <div class="field"><p><b>registratie:</b> <span v-html="selectedEvent.registratie"></span></p></div>
      <div class="field">contactpersoon: {{selectedEvent.contactpersoon}}</div>
      <div class="field">voorbereiding/meenemen: {{selectedEvent.voorbereiding}}</div>
 
