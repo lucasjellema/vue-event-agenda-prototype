@@ -96,3 +96,9 @@ app.component('Column', Column);
 
 DataTable: https://primevue.org/datatable/
 
+## Calendar Component (Outlook style): vue-cal
+
+see https://antoniandre.github.io/vue-cal
+
+npm i vue-cal
+
