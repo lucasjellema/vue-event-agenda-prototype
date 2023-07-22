@@ -1,8 +1,17 @@
 <script setup lang="ts">
-import EventsList from './components/EventsList.vue'
+//import RouterView from 
+
 </script>
 
 <template>
-  <EventsList/>
+  <div id="body">
+    <header>
+      <nav>
+        <RouterLink to="/">Home</RouterLink>
+        <RouterLink to="/about">About</RouterLink>
+      </nav>
+    </header>
+    <RouterView />
+  </div>
 </template>
 

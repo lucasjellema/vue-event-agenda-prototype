@@ -2,6 +2,7 @@ import './assets/main.css'
 
 import { createApp } from 'vue'
 import { createPinia } from 'pinia'
+import router from './router'
 import PrimeVue from 'primevue/config'; // https://primevue.org/configuration/
 import "primeflex/primeflex.css";
 import "primevue/resources/themes/lara-light-blue/theme.css";
@@ -15,11 +16,13 @@ import Dialog from 'primevue/dialog';
 import Tag from 'primevue/tag';
 
 import App from './App.vue'
-import router from './router'
+
 
 import { useCounterStore } from './stores/datastore'; 
 
 const app = createApp(App); 
+app.use(router)
+
 const pinia = createPinia(); 
 app.use(PrimeVue);
 app.component('Button', Button);
