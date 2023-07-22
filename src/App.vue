@@ -8,7 +8,7 @@
     <header>
       <nav>
         <RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/about">About</RouterLink>
+        <RouterLink to="/calendar">Calendar</RouterLink>
       </nav>
     </header>
     <RouterView />
