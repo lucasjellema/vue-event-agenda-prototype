@@ -7,7 +7,7 @@
   <div id="body">
     <header>
       <nav>
-        <RouterLink to="/">Home</RouterLink>
+        <RouterLink to="/">Lijst</RouterLink>
         <RouterLink to="/calendar">Calendar</RouterLink>
       </nav>
     </header>
@@ -15,3 +15,10 @@
   </div>
 </template>
 
+<style>
+nav li:hover,
+.router-link-exact-active {
+  font-weight: 700;
+  margin:20px;
+}
+</style>
