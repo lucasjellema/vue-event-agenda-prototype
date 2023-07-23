@@ -59,7 +59,7 @@
 
      <template #expansion="slotProps">
         <div class="p-3">
-            <h5>{{ slotProps.data.omschrijving }}</h5>
+            <h5 v-html="slotProps.data.omschrijving"></h5>
             
         </div>
     </template>

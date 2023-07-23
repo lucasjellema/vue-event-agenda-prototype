@@ -18,9 +18,18 @@ const  replaceUrlsWithLinks = (text) => {
 
   // Replace URLs with anchor tags
   const replacedText = text.replace(urlRegex, (url) => {
-    console.log(`${url} wordt <a href="${url}" target="_blank">${url}</a>` )
-    return `<a href="${url}" target="_blank">${url}</a>`;
+    return `<a href="${url}" target="_blank">link</a>`;
   });
+
+  return replacedText;
+}
+
+const replaceNewlinesWithBrTags = (text) => {
+  // Regular expression to match newline characters (both Unix and Windows style)
+  const newlineRegex = /(\r\n|\r|\n)/g;
+
+  // Replace newlines with <br /> tags
+  const replacedText = text.replace(newlineRegex, "<br />");
 
   return replacedText;
 }
@@ -48,10 +57,13 @@ export const useCounterStore = defineStore('data', {
         } catch(e) {
           rec.eventDate = null
         }
+        rec.omschrijving = replaceNewlinesWithBrTags( replaceUrlsWithLinks(rec.omschrijving))
 
         // if rec.registratie contains a link (https:// or http://) then replace the link with its HTML counterpart: <a href="link" target="_new">link<</a>
-        const processedText = replaceUrlsWithLinks(rec.registratie);
-        rec.registratie = processedText
+        rec.registratie = replaceUrlsWithLinks(rec.registratie)
+        // if rec.materialen contains a link (https:// or http://) then replace the link with its HTML counterpart: <a href="link" target="_new">link<</a>
+        rec.materialen = replaceNewlinesWithBrTags( replaceUrlsWithLinks(rec.materialen))
+
       }
       this.eventData = eventRecords
       this.initialized= true

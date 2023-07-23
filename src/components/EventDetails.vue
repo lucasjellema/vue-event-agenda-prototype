@@ -4,7 +4,7 @@
      <div class="field">{{event.titel}}</div>      
      <div class="field"><i>Sprekers: {{event.sprekers}}</i></div>      
      <div class="field"><i>Datum/Tijd: {{event.starttijd}}  {{event.eindtijd}}</i></div>      
-     <div class="field"><p>{{event.omschrijving}}</p></div>
+     <div class="field"><p><span v-html="event.omschrijving"></span></p></div>
      <div class="field"><p>
         <template v-for="tag in event.tagList">
           <Tag :value="tag" rounded></Tag>
@@ -19,6 +19,7 @@
      <div class="field"><p><b>registratie:</b> <span v-html="event.registratie"></span></p></div>
      <div class="field">contactpersoon: {{event.contactpersoon}}</div>
      <div class="field">voorbereiding/meenemen: {{event.voorbereiding}}</div>
+     <div class="field"><p><b>materialen:</b> <span v-html="event.materialen"></span></p></div>
 
       </div>
 </template>
