@@ -5,7 +5,7 @@
     @rowExpand="onRowExpand" @rowCollapse="onRowCollapse" dataKey="id"
     class="p-datatable-lg"
     sortField="eventDate" :sortOrder="-1" 
-     v-model:filters="filters"  :globalFilterFields="['titel', 'omschrijving', 'sprekers']"
+     v-model:filters="filters"  :globalFilterFields="['titel', 'omschrijving', 'tags','sprekers']"
      filterDisplay="row"
    >
    <!-- temporarily removed from DataTable
