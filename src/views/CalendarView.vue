@@ -11,12 +11,10 @@
     events-on-month-view="short"
     today-button
     :on-event-click="onEventClick"
+    active-view="month"  :disable-views="['years']" locale="nl" 
      >
       <template #event="{ event, view }">
-        <div class="vuecal__event-title" v-html="event.title" />
-        <small class="vuecal__event-time">
-          <strong>Event start:</strong> <span>{{ event.start.format("H:mm") }}</span><br/>
-        </small>
+        <div class="vuecal__event-title" v-html="event.title.concat( ' (',event.start.format('H:mm'),')' )" />
       </template>
     </vue-cal>
    </div>
