@@ -40,6 +40,11 @@
          <InputText type="text" v-model="filterModel.value" @input="filterCallback()" class="p-column-filter" />
       </template>
     </Column>
+    <Column field="scope" header="Toegang" sortable>
+      <template #filter="{ filterModel, filterCallback }">
+         <InputText type="text" v-model="filterModel.value" @input="filterCallback()" class="p-column-filter" />
+      </template>
+    </Column>
     <Column field="bedrijf" header="Bedrijf" sortable></Column>
     <Column header="Tags">
        <template #body="slotProps">
@@ -100,6 +105,7 @@ export default {
         titel: { value: null, matchMode: FilterMatchMode.CONTAINS },
         global: { value: null, matchMode: FilterMatchMode.CONTAINS },
         locatie: { value: null, matchMode: FilterMatchMode.CONTAINS },
+        scope: { value: null, matchMode: FilterMatchMode.CONTAINS },
       },
       futureEventsOnlyChecked: false,
     };
