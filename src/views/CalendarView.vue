@@ -19,32 +19,11 @@
         </small>
       </template>
     </vue-cal>
-  </div>
+   </div>
 
-<Dialog v-model:visible="detailsModalVisible" maximizable modal v-model:header="selectedEvent.titel" :style="{ width: '50vw' }">
-    
-    <div>
-     <div class="field">{{selectedEvent.titel}}</div>      
-     <div class="field"><i>Sprekers: {{selectedEvent.sprekers}}</i></div>      
-     <div class="field"><i>Datum/Tijd: {{selectedEvent.starttijd}}  {{selectedEvent.eindtijd}}</i></div>      
-     <div class="field"><p>{{selectedEvent.omschrijving}}</p></div>
-     <div class="field"><p>
-        <template v-for="tag in selectedEvent.tagList">
-          <Tag :value="tag" rounded></Tag>
-        </template>
-       </p></div>
-     <div class="field">doelgroep: {{selectedEvent.doelgroep}}</div>
-     <hr />
-      <h3>Logistiek </h3>
-     <div class="field">toegankelijk voor: {{selectedEvent.scope}}</div>
-     <div class="field"><p><b>locatie:</b> {{selectedEvent.locatie}}</p></div>
-     <div class="field"><p><b>hybride:</b> {{selectedEvent.hybride}}</p></div>
-     <div class="field"><p><b>registratie:</b> <span v-html="selectedEvent.registratie"></span></p></div>
-     <div class="field">contactpersoon: {{selectedEvent.contactpersoon}}</div>
-     <div class="field">voorbereiding/meenemen: {{selectedEvent.voorbereiding}}</div>
-
-      </div>
-    </Dialog>
+   <Dialog v-model:visible="detailsModalVisible" maximizable modal v-model:header="selectedEvent.titel" :style="{ width: '50vw' }">
+     <EventDetails :event="selectedEvent"></EventDetails>    
+   </Dialog>
 
   </div>
   
@@ -57,6 +36,8 @@ import VueCal from 'vue-cal'
 import 'vue-cal/dist/vuecal.css'
 import { useCounterStore } from '../stores/datastore';
 import { storeToRefs } from 'pinia'
+import EventDetails from "../components/EventDetails.vue";
+
 
 const getMinutesFromTimeString = (timeString) => {
   let uur = 60 * parseInt(timeString.slice(0,2));
@@ -66,7 +47,7 @@ const getMinutesFromTimeString = (timeString) => {
 }
 
 export default {
-  components: { VueCal },
+  components: { VueCal, EventDetails },
   data()  { return {detailsModalVisible: false,
       selectedEvent : {},}
   },

@@ -67,28 +67,7 @@
   <Button label="Expand All" icon="pi pi-check" @click="expandAll" />
   <Button label="Collapse All" icon="pi pi-check" @click="collapseAll" />
    <Dialog v-model:visible="detailsModalVisible" maximizable modal v-model:header="selectedEvent.titel" :style="{ width: '50vw' }">
-    
-    <div>
-     <div class="field">{{selectedEvent.titel}}</div>      
-     <div class="field"><i>Sprekers: {{selectedEvent.sprekers}}</i></div>      
-     <div class="field"><i>Datum/Tijd: {{formatDate(selectedEvent.eventDate)}}  {{selectedEvent.tijd}}</i></div>      
-     <div class="field"><p>{{selectedEvent.omschrijving}}</p></div>
-     <div class="field"><p>
-        <template v-for="tag in selectedEvent.tagList">
-          <Tag :value="tag" rounded></Tag>
-        </template>
-       </p></div>
-     <div class="field">doelgroep: {{selectedEvent.doelgroep}}</div>
-     <hr />
-      <h3>Logistiek </h3>
-     <div class="field">toegankelijk voor: {{selectedEvent.scope}}</div>
-     <div class="field"><p><b>locatie:</b> {{selectedEvent.locatie}}</p></div>
-     <div class="field"><p><b>hybride:</b> {{selectedEvent.hybride}}</p></div>
-     <div class="field"><p><b>registratie:</b> {{selectedEvent.registratie}}</p></div>
-     <div class="field">contactpersoon: {{selectedEvent.contactpersoon}}</div>
-     <div class="field">voorbereiding/meenemen: {{selectedEvent.voorbereiding}}</div>
-
-      </div>
+      <EventDetails :event="selectedEvent"></EventDetails>  
     </Dialog>
 
  
@@ -98,6 +77,7 @@
 <script>
 import { useCounterStore } from '../stores/datastore';
 import EventSummary from "./EventSummary.vue";
+import EventDetails from "./EventDetails.vue";
 import DataTable from 'primevue/datatable';
 import Column from 'primevue/column';
 import InputText from 'primevue/inputtext';
@@ -110,7 +90,7 @@ const today = new Date()
 
 export default {  
   name : "EventsList",
-  components: { EventSummary},
+  components: { EventSummary, EventDetails},
    data() {
     return {
       detailsModalVisible: false,
