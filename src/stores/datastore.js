@@ -18,6 +18,7 @@ const  replaceUrlsWithLinks = (text) => {
 
   // Replace URLs with anchor tags
   const replacedText = text.replace(urlRegex, (url) => {
+    console.log(`${url} wordt <a href="${url}" target="_blank">${url}</a>` )
     return `<a href="${url}" target="_blank">${url}</a>`;
   });
 
@@ -29,11 +30,12 @@ export const useCounterStore = defineStore('data', {
   state: () => ({
     count: 0,
     eventData: [],
-    loading: false,
+    initialized: false,
   }),
   actions: {
     async parseCSVData() {
-      this.loading = true;
+      if (!this.initialized) {
+      
       // post process eventRecords
       let i = 0
       for(const rec of eventRecords) {
@@ -52,6 +54,8 @@ export const useCounterStore = defineStore('data', {
         rec.registratie = processedText
       }
       this.eventData = eventRecords
+      this.initialized= true
+    }
       try {
         // Papa.parse(CSV_DATA, {
         //   complete: (results) => {
