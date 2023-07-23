@@ -183,3 +183,25 @@ Developer platforms don’t live in a vacuum. They are built by engineers for ot
 
 Impact
 Discover the impact and business value platform engineering initiatives deliver. Hear C-level perspectives on how their platform impacted key metrics and practitioners on how they secured buy-in from relevant stakeholders.","platform,kubernetes,observability,iac,automation,paas,developer platform,open source,idp,cloud,ops,devops,istio,terraform,kafka",dozens of speakers - see https://platformcon.com/speakers,Iedereen (publiek toegankelijk),georganiseerd door Humanitec; join Slack: https://platformengin-b0m7058.slack.com/join/shared_invite/zt-1yld6qda9-8EkoEgs2kaE6AZQMTM9vdQ#/shared-invite/email,Online (digitaal),,https://platformcon.com/talks,via https://platformcon.com/register NB: gratis!,Humanitec,PlatformCon,platform engineers,,Engels,On demand sessies terugkijken via https://platformcon.com/talks,09:00,17:00
+KubeCon Europe '23 or: How I Learned to Stop Worrying and Love Multi-Tenancy,24-04-23,17:30-20:30,"Van 18 tot 21 april 2023, verzamelen 7000 Kubernetes liefhebbers zich in Amsterdam voor KubeCon Europe. Namens Conclusion Xforce zijn Jitse Klomp en Sven Kooiman hierbij aanwezig om de nieuwste ontwikkelingen te zien en ervaringen uit te wisselen. Tijdens het eerste deel van deze meetup zullen ze een aantal van de belangrijkste/interessantste/leukste/opvallendste highlights delen.
+
+Het tweede deel van de sessie staat in het teken van een van de grote twistpunten rondom Kubernetes in de enterprise: Single Tenant vs. Multi-Tenant. De CNCF heeft een volledige dag toegewijd aan deze discussie waarin verschillende bedrijven (CERN, Ericsson, Red Hat en VMware) laten zien hoe multitenancy WEL kan. Naar aanleiding van deze overvolle dag gaan Sven en Jitse in op de discussie, de technische ontwikkelingen die het mogelijk maken en laten zien in welke omstandigheden het wel/niet de juiste oplossing is.
+
+Dus wil jij weten wat de trends van 2023 worden van Kubernetes en eindelijk een punt zetten achter de multi-tenancy discussie? Dan is deze sessie voor jou!
+
+Agenda: 17:30 uur ontvangst met een hapje/drankje, om 18:00 uur buffet en aansluitend de kennissessie tot ongeveer 20:30 uur
+
+","Linux,Open Source,Cloud Computing,DevOps,Kubernetes","Jitse Klomp,Sven Kooiman",Iedereen (publiek toegankelijk),"Jitse Klomp,Sven Kooiman",Fysiek,Conclusion Nieuwegein,,via MeetUp: https://www.meetup.com/xforce-kennissessies/events/292573330/,Xforce,Xforce Kennissessies ,,,Nederlands,"Hieronder kunnen jullie de slides vinden met verdere achtergrond informatie. Tot de volgende keer!
+
+https://gitlab.com/conclusionxforce/kennissessies/-/blob/5e3b8e0e59f0dc3363ebea15813647c4761423dc/Kubecon%20'23%20Recap/Meetup_24th_of_April_-_Kubecon__23_Recap.pdf
+Alle talks van KubeCon zijn vanaf nu terug te kijken op https://www.youtube.com/@cncf
+
+Aanraders:
+The Day We Delete(d) Production (CERN)
+https://www.youtube.com/watch?v=TEg3Ne5uPYc
+
+Enabling Real-Time Media in Kubernetes
+https://www.youtube.com/watch?v=1_cxXzhY4Xg
+
+Building a Sustainable, Carbon-Aware Cloud: Scale Workloads and Reduce Emissions
+https://www.youtube.com/watch?v=s7K7QkhWnFU",17:30,20:30
