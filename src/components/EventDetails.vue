@@ -3,7 +3,7 @@
     <div>
      <div class="field">{{event.titel}}</div>      
      <div class="field"><i>Sprekers: {{event.sprekers}}</i></div>      
-     <div class="field"><i>Datum/Tijd: {{event.starttijd}}  {{event.eindtijd}}</i></div>      
+     <div class="field"><i>Datum/Tijd: {{event.starttijd}} - {{event.eindtijd}} uur</i></div>      
      <div class="field"><p><span v-html="event.omschrijving"></span></p></div>
      <div class="field"><p>
         <template v-for="tag in event.tagList">
