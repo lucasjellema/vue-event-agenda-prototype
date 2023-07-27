@@ -16,6 +16,8 @@
       <template #event="{ event, view }">
       <div class="vuecal__event-title">
         <p  v-html="event.title.concat( ' (',event.start.format('H:mm'),')' )" />
+           
+       <img v-if="event.originalEvent.logo!=''" :src="'src/assets/company-icons/'.concat(event.originalEvent.logo, '.jpg')" height="30"  />
         <ConclusionIcon v-if="event.originalEvent.scope.indexOf('ecosysteem')>-1"/>
         <IconGlobe v-else/>
         </div>

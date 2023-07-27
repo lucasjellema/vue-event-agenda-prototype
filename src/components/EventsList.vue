@@ -5,7 +5,7 @@
     @rowExpand="onRowExpand" @rowCollapse="onRowCollapse" dataKey="id"
     class="p-datatable-lg"
     sortField="eventDate" :sortOrder="-1" 
-     v-model:filters="filters"  :globalFilterFields="['titel', 'omschrijving', 'tags','sprekers']"
+     v-model:filters="filters"  :globalFilterFields="['titel',  'bedrijf', 'omschrijving', 'tags','sprekers']"
      filterDisplay="row"
    >
    <!-- temporarily removed from DataTable
@@ -45,7 +45,15 @@
          <InputText type="text" v-model="filterModel.value" @input="filterCallback()" class="p-column-filter" />
       </template>
     </Column>
-    <Column field="bedrijf" header="Bedrijf" sortable></Column>
+    <Column field="bedrijf" header="Bedrijf" sortable>
+       <template #body="slotProps">
+
+           <img v-if="slotProps.data.logo!=''" :src="'src/assets/company-icons/'.concat(slotProps.data.logo, '.jpg')" height="30"  />
+           <p v-else>{{slotProps.data.bedrijf}}</p>
+         
+       </template>
+
+    </Column>
     <Column header="Tags">
        <template #body="slotProps">
 <!--       <template v-for="tag in slotProps.data.tagList">

@@ -1,7 +1,11 @@
 <template>
    
     <div>
-     <div class="field">{{event.titel}}</div>      
+     <!-- <div class="field">{{event.titel}}</div>       -->
+     <div class="field"><p>
+       <img v-if="event.logo!=''" :src="'src/assets/company-icons/'.concat(event.logo, '.jpg')" height="100" />
+     </p>
+     </div>
      <div class="field"><i>Sprekers: {{event.sprekers}}</i></div>      
      <div class="field"><i>Datum/Tijd: {{event.starttijd}} - {{event.eindtijd}} uur</i></div>      
      <div class="field"><p><span v-html="event.omschrijving"></span></p></div>
@@ -13,6 +17,7 @@
      <div class="field">doelgroep: {{event.doelgroep}}</div>
      <hr />
       <h3>Logistiek </h3>
+      
      <div class="field"><p>
        toegankelijk voor: {{event.scope}} 
        <ConclusionIcon v-if="event.scope=='ecosysteem'"/>
