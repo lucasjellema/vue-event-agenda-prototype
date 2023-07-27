@@ -13,7 +13,13 @@
      <div class="field">doelgroep: {{event.doelgroep}}</div>
      <hr />
       <h3>Logistiek </h3>
-     <div class="field">toegankelijk voor: {{event.scope}}</div>
+     <div class="field"><p>
+       toegankelijk voor: {{event.scope}} 
+       <ConclusionIcon v-if="event.scope=='ecosysteem'"/>
+       <IconGlobe v-else/>
+
+     </p>
+     </div>
      <div class="field"><p><b>locatie:</b> {{event.locatie}}</p></div>
      <div class="field"><p><b>hybride:</b> {{event.hybride}}</p></div>
      <div class="field"><p><b>registratie:</b> <span v-html="event.registratie"></span></p></div>
@@ -25,8 +31,14 @@
 </template>
 
 <script>
+import ConclusionIcon from "./ConclusionIcon.vue";
+import IconGlobe from  "./icons/Globe.vue";
+
+
 export default {
       name: "EventDetails",
-      props: ['event']
-};
+      props: ['event'],
+      components: {ConclusionIcon, IconGlobe},
+
+     };
 </script>

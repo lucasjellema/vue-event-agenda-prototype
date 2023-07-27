@@ -14,7 +14,11 @@
     active-view="month"  :disable-views="['years']" locale="nl" 
      >
       <template #event="{ event, view }">
-        <div class="vuecal__event-title" v-html="event.title.concat( ' (',event.start.format('H:mm'),')' )" />
+      <div class="vuecal__event-title">
+        <p  v-html="event.title.concat( ' (',event.start.format('H:mm'),')' )" />
+        <ConclusionIcon v-if="event.originalEvent.scope.indexOf('ecosysteem')>-1"/>
+        <IconGlobe v-else/>
+        </div>
       </template>
     </vue-cal>
    </div>
@@ -35,6 +39,10 @@ import 'vue-cal/dist/vuecal.css'
 import { useCounterStore } from '../stores/datastore';
 import { storeToRefs } from 'pinia'
 import EventDetails from "../components/EventDetails.vue";
+import ConclusionIcon from "../components/ConclusionIcon.vue";
+import IconGlobe from  "../components/icons/Globe.vue";
+
+
 
 
 const getMinutesFromTimeString = (timeString) => {
@@ -45,7 +53,7 @@ const getMinutesFromTimeString = (timeString) => {
 }
 
 export default {
-  components: { VueCal, EventDetails },
+  components: { VueCal, EventDetails , ConclusionIcon, IconGlobe},
   data()  { return {detailsModalVisible: false,
       selectedEvent : {},}
   },
