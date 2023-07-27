@@ -2,7 +2,7 @@ import { defineStore } from 'pinia';
 //import Papa from 'papaparse';
 
 // load CSV data from the file in the assets directory; turn the data into a JSON object array; the names of the object properties are derived from the column headers (first row in CSV file) 
-import eventRecords  from '@/assets/knowledge-events.csv';
+import eventRecords from '@/assets/knowledge-events.csv';
 
 // the contents of the CSV file can also be loaded as a string that could then be parsed using papaparse - in case the action performed by the direct import is not adequate
 // import csvString from '@/assets/data.csv?raw'
@@ -12,7 +12,7 @@ import eventRecords  from '@/assets/knowledge-events.csv';
 //import { CSV, CSV_DATA } from './staticData.js';
 
 
-const  replaceUrlsWithLinks = (text) => {
+const replaceUrlsWithLinks = (text) => {
   // Regular expression to match URLs starting with http:// or https://
   const urlRegex = /(https?:\/\/\S+)/gi;
 
@@ -44,31 +44,31 @@ export const useCounterStore = defineStore('data', {
   actions: {
     async parseCSVData() {
       if (!this.initialized) {
-      
-      // post process eventRecords
-      let i = 0
-      for(const rec of eventRecords) {
-        rec.id = i++
-        rec.tags = rec.tags.toLowerCase()
-        rec.tagList = rec.tags.split(",")
-        // rec.datum has format: dd-mm-yy
-        let dateParts = rec.datum.split("-")
-        try {
-        rec.eventDate = new Date("20"+dateParts[2], dateParts[1]-1, dateParts[0]);
-        } catch(e) {
-          rec.eventDate = null
+
+        // post process eventRecords
+        let i = 0
+        for (const rec of eventRecords) {
+          rec.id = i++
+          rec.tags = rec.tags.toLowerCase()
+          rec.tagList = rec.tags.split(",")
+          // rec.datum has format: dd-mm-yy
+          let dateParts = rec.datum.split("-")
+          try {
+            rec.eventDate = new Date("20" + dateParts[2], dateParts[1] - 1, dateParts[0]);
+          } catch (e) {
+            rec.eventDate = null
+          }
+          rec.omschrijving = replaceNewlinesWithBrTags(replaceUrlsWithLinks(rec.omschrijving))
+
+          // if rec.registratie contains a link (https:// or http://) then replace the link with its HTML counterpart: <a href="link" target="_new">link<</a>
+          rec.registratie = replaceUrlsWithLinks(rec.registratie)
+          // if rec.materialen contains a link (https:// or http://) then replace the link with its HTML counterpart: <a href="link" target="_new">link<</a>
+          rec.materialen = replaceNewlinesWithBrTags(replaceUrlsWithLinks(rec.materialen))
+
         }
-        rec.omschrijving = replaceNewlinesWithBrTags( replaceUrlsWithLinks(rec.omschrijving))
-
-        // if rec.registratie contains a link (https:// or http://) then replace the link with its HTML counterpart: <a href="link" target="_new">link<</a>
-        rec.registratie = replaceUrlsWithLinks(rec.registratie)
-        // if rec.materialen contains a link (https:// or http://) then replace the link with its HTML counterpart: <a href="link" target="_new">link<</a>
-        rec.materialen = replaceNewlinesWithBrTags( replaceUrlsWithLinks(rec.materialen))
-
+        this.eventData = eventRecords
+        this.initialized = true
       }
-      this.eventData = eventRecords
-      this.initialized= true
-    }
       try {
         // Papa.parse(CSV_DATA, {
         //   complete: (results) => {
@@ -84,11 +84,11 @@ export const useCounterStore = defineStore('data', {
     sortEvents(sortKey, sortOrder) {
       this.eventData.sort((a, b) => {
         if (sortOrder === 'asc') {
-          return a[sortKey] < b[sortKey]?1:-1;
+          return a[sortKey] < b[sortKey] ? 1 : -1;
         } else {
-          return b[sortKey] > a[sortKey]?-1:1;
+          return b[sortKey] > a[sortKey] ? -1 : 1;
         }
-      });      
+      });
     }
   },
 });
