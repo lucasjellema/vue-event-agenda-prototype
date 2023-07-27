@@ -18,19 +18,19 @@
         </template>
       </p>
     </div>
-    <div class="field">doelgroep: {{ event.doelgroep }}</div>
+    <div class="field" v-if="event.doelgroep !='' && event.doelgroep.length > 0">doelgroep: {{ event.doelgroep }}</div>
     <hr />
     <h3>Logistiek </h3>
 
     <div class="field">
       <p>
         toegankelijk voor: {{ event.scope }}
-        <ConclusionIcon v-if="event.scope == 'ecosysteem'" />
+        <ConclusionIcon v-if="event.scope.indexOf('ecosysteem') > -1 " />
         <IconGlobe v-else />
 
       </p>
     </div>
-    <div class="field">
+    <div class="field" v-if="event.locatie !='' && event.locatie.length > 0">
       <p><b>locatie:</b> {{ event.locatie }}</p>
     </div>
     <div class="field">
@@ -40,8 +40,8 @@
       <p><b>registratie:</b> <span v-html="event.registratie"></span></p>
     </div>
     <div class="field">contactpersoon: {{ event.contactpersoon }}</div>
-    <div class="field">voorbereiding/meenemen: {{ event.voorbereiding }}</div>
-    <div class="field">
+    <div class="field" v-if="event.voorbereiding !='' && event.voorbereiding.length() > 0">voorbereiding/meenemen: {{ event.voorbereiding }}</div>
+    <div class="field" v-if="event.materialen !='' && event.materialen.length() > 0">
       <p><b>materialen:</b> <span v-html="event.materialen"></span></p>
     </div>
 
@@ -60,3 +60,5 @@ export default {
 
 };
 </script>
+
+
