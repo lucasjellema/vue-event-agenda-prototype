@@ -35,7 +35,35 @@ Non Functional requirements
 
 Architectuur Kata - Hands-On Architectuur Oefening
 
-In kleine groepen aan de slag met een (fictieve?) architectuuruitdaging – samen oefenen met analyseren en brainstormen over een aanpak / oplossingsrichting. Daarna plenair richtingen en resultaten vergelijken.  ","architectuur,mybrand,non functional requirements,kata","Marcel Antons,Lucas Jellema",ecosysteem,Lucas Jellema - lucas.jellema@conclusion.nl,FALSE,Conclusion myBrand Maarssen,,via https://architectuur-gilde-juli-2023.conclusionevents.nl/,Conclusion,Architectuur Gilde,IT architecten en collega's met interesse in architectuur,,nl,,17:00,20:30
+In kleine groepen aan de slag met een (fictieve?) architectuuruitdaging – samen oefenen met analyseren en brainstormen over een aanpak / oplossingsrichting. Daarna plenair richtingen en resultaten vergelijken.  ","architectuur,mybrand,non functional requirements,kata","Marcel Antons,Lucas Jellema",ecosysteem,Lucas Jellema - lucas.jellema@conclusion.nl,FALSE,Conclusion myBrand Maarssen,,via https://architectuur-gilde-juli-2023.conclusionevents.nl/,Conclusion,Architectuur Gilde,IT architecten en collega's met interesse in architectuur,,nl,"Opnames: 
+
+20230725-sessie2-deel1-journaal-mybrand-intro-nscase.mp4 https://conclusionfutureit.sharepoint.com/:v:/r/sites/CS-Conclusion-ArchitectuurGilde/Gedeelde%20documenten/General/Opnames_en_Presentaties/20230725-sessie2-deel1-journaal-mybrand-intro-nscase.mp4?csf=1&web=1&e=e3bB0F (sessie start rond 7.30 minuten) 
+
+20230725-sessie2-deel2-kata-intro.mp4 https://conclusionfutureit.sharepoint.com/:v:/r/sites/CS-Conclusion-ArchitectuurGilde/Gedeelde%20documenten/General/Opnames_en_Presentaties/20230725-sessie2-deel2-kata-intro.mp4?csf=1&web=1&e=rvT7pa - De toelichting op de Architectuur Kata 
+
+ 
+
+Presentaties: 
+
+Ecosysteem Journaal Juli 2023 20230725-ecosysteemjournaal-juli-2023.pptx https://conclusionfutureit.sharepoint.com/:p:/r/sites/CS-Conclusion-ArchitectuurGilde/Gedeelde%20documenten/General/Opnames_en_Presentaties/20230725-ecosysteemjournaal-juli-2023.pptx?d=w1572df6c82594dd5bd974c4979dc3d63&csf=1&web=1&e=UtYWto 
+
+Praktijkcasus myBrand – NS – high available Order to Cash keten - 20230725 Architectuur Gilde - Architectuur-casus NS HA-HP.pdf https://eur03.safelinks.protection.outlook.com/ap/b-59584e83/?url=https%3A%2F%2Fconclusionfutureit.sharepoint.com%2F%3Ab%3A%2Fr%2Fsites%2FCS-Conclusion-ArchitectuurGilde%2FGedeelde%2520documenten%2FGeneral%2FOpnames_en_Presentaties%2F20230725%2520Architectuur%2520Gilde%2520-%2520Architectuur-casus%2520%2520NS%2520HA-HP.pdf%3Fcsf%3D1%26web%3D1%26e%3D78lVZW&data=05%7C01%7CLucas.Jellema%40conclusion.nl%7C76f11d49470d44ae08e208db8dc2cce2%7C21429da9e4ad45f99a6fcd126a64274b%7C0%7C0%7C638259641049149144%7CUnknown%7CTWFpbGZsb3d8eyJWIjoiMC4wLjAwMDAiLCJQIjoiV2luMzIiLCJBTiI6Ik1haWwiLCJXVCI6Mn0%3D%7C3000%7C%7C%7C&sdata=G8r2w2W8f7ZhOZX8uEWNA7znbwOBNCE1SZA7iCoKpXE%3D&reserved=0  NB: dit slidedeck is vertrouwelijk – niet aan externe partijen geven 
+
+ 
+
+Architectuur Kata 20230725-architectuur-gilde-kata-parkeer-app-juli2023.pptx https://conclusionfutureit.sharepoint.com/:p:/r/sites/CS-Conclusion-ArchitectuurGilde/Gedeelde%20documenten/General/Opnames_en_Presentaties/20230725-architectuur-gilde-kata-parkeer-app-juli2023.pptx?d=w2d01a3ac38564670aa48b03c296eec99&csf=1&web=1&e=eOxgez
+
+Voorbeeld uitwerking Kata (drawio document) 20230725-ArchitectuurGilde-juli2023-kata-parkeerapp.drawio https://conclusionfutureit.sharepoint.com/:u:/r/sites/CS-Conclusion-ArchitectuurGilde/Gedeelde%20documenten/General/Opnames_en_Presentaties/20230725-ArchitectuurGilde-juli2023-kata-parkeerapp.drawio?csf=1&web=1&e=dJcyWc
+
+ 
+
+Niet aan toe gekomen: Het Begrip – Non Functional Requirements 20230725-architectuurgilde-hetbegrip-nfr-juli2023.pptm https://conclusionfutureit.sharepoint.com/:p:/r/sites/CS-Conclusion-ArchitectuurGilde/Gedeelde%20documenten/General/Opnames_en_Presentaties/20230725-architectuurgilde-hetbegrip-nfr-juli2023.pptm?d=wb5587c1093f749d2be78ab8ff48a3afb&csf=1&web=1&e=axtb9G
+
+ 
+
+Foto's:  
+
+Sfeerimpressies:  20230725-sessie2-fotos- https://conclusionfutureit.sharepoint.com/:f:/r/sites/CS-Conclusion-ArchitectuurGilde/Gedeelde%20documenten/General/Opnames_en_Presentaties/20230725-sessie2-fotos-?csf=1&web=1&e=QpcK8P ",17:00,20:30
 Nieuwste ontwikkelingen op het vlak van Stable Diffusion,18-07-23,18.00-19.00,"Op dinsdag 18 juli van 18u tot 19u geef ik een presentatie en workshop bij AMIS in Nieuwegein over de nieuwste ontwikkelingen op het vlak van Stable Diffusion, een open source generatief model gericht op het maken en bewerken van afbeeldingen. De presentatie/workshop kan ook online via Teams gevolgd worden. Ik zal de link nog delen. Naast een korte algemene intro zal ik ControlNet en SDXL demonstreren waarna mensen ook zelf aan de gang kunnen hiermee. Het is vooral gericht op recente ontwikkelingen en laten zien wat er nu mogelijk is.","stable diffusion,generative ai,image generation,controlnet,sdxl,handson",Maarten Smeets,ecosysteem,Maarten Smeets - maarten.smeets@amis.nl,TRUE,Conclusion Nieuwegein,,mail naar Maarten,AMIS,,,,nl,opname: https://conclusionfutureit-my.sharepoint.com/:v:/g/personal/maarten_smeets_amis_nl/EdHRSxO1SrpNoBS7L6a4WF8BWdCvGtBPyIHb-t1bFuCmAw,18:00,19:00
 First8 Academy over Artifical Intelligence,13-07-23,17.00-19.00,"een maandelijks kennisevent deze keer in het kader van AI. Ted (""Ted Talk""), Michiel, Annemieke en Suman presenteerden over Turing Test, Machine Learning, Deep Learning, Midjourney, ChatGPT, Ethics en Regulations (EU AI Act), ""Pale Male data"" (en bias), AI en impact op banen en GitHub CoPilot voor pAIr programming.","ai,chatgpt,ethiek,midjourney,image generation,machine learning,github copilot,deep learning","Ted Vinke,Suman,Michiel,Annemieke",ecosysteem,Linda Elbersen,FALSE,Conclusion First8 Nijmegen,,mail naar Linda,First8,First8 Academy,,,nl,,17:00,19:00
 Kennissessie Klok en Klepel van het Klimaat ,29-06-23,17.00-20.30,Wil je weten hoe CO2 de aarde warmer maakt? En wat voor consequenties dat heeft? Wat we kunnen doen om klimaatverandering af te remmen en om ons voor te bereiden op de veranderingen die onvermijdelijk zijn? Deze bijzondere kennissessie legt uit hoe het nu eigenlijk echt zit. ,"klimaat,adaptatie,mitigatie,co2,zon,sustainable",Michiel Schaeffer,publiek,Lucas Jellema - lucas.jellema@conclusion.nl,FALSE,Conclusion Utrecht,,Aanmelden https://klimaat-kennis-29juni.conclusionevents.nl/,Conclusion,Klimaat Café,,,nl,,17:00,20:30
@@ -151,7 +179,7 @@ Microsoft Inspire 2023,18-07-23,17.30-23.00,"185 sessions
 Unlock all the event has to offer, including keynotes and discussions led by Microsoft senior leaders on generative AI and other trending topics, dedicated time to connect with experts and your community, and solutions to help you take your business to the next level.
 
 ","microsoft,inspire,ai,copilot,azure,cloud,dynamics365,office365","Satya Nadella,Judson Althoff,Bill Borden,Nicole Dezen & many dozens more",Iedereen (publiek toegankelijk),georganiseerd door Microsoft,Online (digitaal),,https://inspire.microsoft.com/en-US/home,aanmelden via event website https://register.inspire.microsoft.com/,Microsoft,Microsoft Inspire,,,Engels,Ondemand sessions op: https://inspire.microsoft.com/en-US/home,17:30,23:00
-Kijkje in de KWD keuken,28-06-23,16:00: 2000,"Projectmanagement onderwerpen voor potentiele projectmanagers en andere projectprofessionals
+Kijkje in de KWD keuken,28-06-23,0.689814815,"Projectmanagement onderwerpen voor potentiele projectmanagers en andere projectprofessionals
 Eens per kwartaal. 
 Nieuwe datums zal ik melden","Kijkje je de keuken, projectmanagement, agilemanagement, stakeholdermanagement, projectpolitiek",KWD ervaringsdeskundingen,Iedereen (publiek toegankelijk),Remmelt van der Wal,Fysiek,Edisonbaan 15,https://www.kwdrm.nl/onze-kennis/kijkje-in-de-keuken-van-kwd/,https://www.kwdrm.nl/onze-kennis/kijkje-in-de-keuken-van-kwd/,KWD Resultaatmanagement,Kijkje in de keuken,Projectmanagement professionals ,,Nederlands,,16:00,20:00
 Splunk for Devops Engineers: All You Need to Know,25-05-23,17.30-20.30,"Ben jij een DevOps Engineer, Linux Engineer, Platform Engineer of weet je überhaupt niet wat je met al je logging en metrics aan moet? Dan is deze sessie voor jou! Coen Meerbeek, Splunk Nerd en Observability Guru, neemt je mee in de basis Splunk Componenten zoals Heavy Forwarders, Universal Forwarders en HEC. Ook legt hij uit hoe je Data in Splunk onboard en daadwerkelijk gebruikt met Splunk Search. Als kers op de taart, ga je nog aan de slag met een korte lab die je thuis verder af kan maken.
@@ -205,3 +233,9 @@ https://www.youtube.com/watch?v=1_cxXzhY4Xg
 
 Building a Sustainable, Carbon-Aware Cloud: Scale Workloads and Reduce Emissions
 https://www.youtube.com/watch?v=s7K7QkhWnFU",17:30,20:30
+Techorama 2024 - Deep Knowledge IT Conference,06-05-24,"hele dag, 6,7 en 8 mei 2024","nog geen agenda bekend
+https://techorama.be/","ai,iot,software engineering,cloud,data,platform,security,devops,web,frontend",nog niet bekend,Iedereen (publiek toegankelijk),https://techorama.be/ - Contact us via board@techorama.be for all questions or follow us on Twitter via @techoramabe.,Fysiek,"Kinepolis, Antwerpen",,https://techorama.be/,,Techorama Belgium,,,Engels,,08:00,18:00
+Get-Together Thursdays | Techorama 2023,27-07-23,16:30-18:00,"This session given by Gil, Zoë, Nele and Kurt will highlight their experience during the Techorama Belgium 2023, one of the biggest IT conferences that offers a platform for learning, networking, and staying updated with the latest trends in the IT industry.
+
+Welcome afterwards for some drinks and bites!
+","ai,iot,software engineering,cloud,data,platform,security,devops,web,frontend","Gil Vertommen, Zoë Viola, Nele Lieben and Kurt Schraepen ",Collega's uit het ecosysteem,cynthia.noben@mediaan.com,Hybride (digitaal en fysiek),Mediaan Heerlen,https://eur03.safelinks.protection.outlook.com/ap/t-59584e83/?url=https%3A%2F%2Fteams.microsoft.com%2Fl%2Fmeetup-join%2F19%253ameeting_OTliYmQ0YjItZjgzOS00ZThlLTkwNzktMGNkMDQyY2I3ZGZi%2540thread.v2%2F0%3Fcontext%3D%257b%2522Tid%2522%253a%25221f6b76fa-8329-4164-9501-06e9eb8697fb%2522%252c%2522Oid%2522%253a%25227315d6fc-2ad1-43de-812a-265bfc331c98%2522%257d&data=05%7C01%7Clucas.jellema%40conclusion.nl%7C471d5d0fcff7438fd4ef08db8db74ae8%7C21429da9e4ad45f99a6fcd126a64274b%7C0%7C0%7C638259590613560523%7CUnknown%7CTWFpbGZsb3d8eyJWIjoiMC4wLjAwMDAiLCJQIjoiV2luMzIiLCJBTiI6Ik1haWwiLCJXVCI6Mn0%3D%7C3000%7C%7C%7C&sdata=piQ%2BjrIEpKnfzYu1WY%2BmSpmS89mVZZq2oZUwknwR61w%3D&reserved=0,Mail naar Cynthia (cynthia.noben@mediaan.com),Mediaan,Get-Together Thursdays (by Mediaan),,,Engels,,16:30,18:00
