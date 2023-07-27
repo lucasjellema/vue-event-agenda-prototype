@@ -8,7 +8,7 @@ import ConclusionLogo from './components/ConclusionLogo.vue'
     <header>
       <ConclusionLogo />
       <nav>
-        <RouterLink to="/">Lijst</RouterLink>
+        <RouterLink to="/List">Lijst</RouterLink>
         <RouterLink to="/calendar">Calendar</RouterLink>
       </nav>
     </header>
