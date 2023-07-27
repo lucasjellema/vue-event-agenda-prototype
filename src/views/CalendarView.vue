@@ -5,12 +5,12 @@
 
       <vue-cal class="vuecal--blue-theme" style="height: 850px; width:1500px" :time-from="7 * 60" hide-weekends
         :events="calendarEvents" events-count-on-year-view events-on-month-view="short" today-button
-        :on-event-click="onEventClick" active-view="month" :disable-views="['years']" locale="nl" >
+        :on-event-click="onEventClick" active-view="month" :disable-views="['years']" locale="nl">
         <template #event="{ event, view }">
           <div class="vuecal__event-title">
             <p v-html="event.title.concat(' (', event.start.format('H:mm'), ')')" />
 
-            <img v-if="event.originalEvent.logo != ''"
+            <img v-if="event.originalEvent.logo != ''" class="aloof"
               :src="'src/assets/company-icons/'.concat(event.originalEvent.logo, '.jpg')" height="30" />
             <ConclusionIcon v-if="event.originalEvent.scope.indexOf('ecosysteem') > -1" />
             <IconGlobe v-else />
@@ -98,5 +98,9 @@ export default {
     display: flex;
     align-items: center;
   }
+}
+
+.aloof {
+  padding-right: 10px;
 }
 </style>
