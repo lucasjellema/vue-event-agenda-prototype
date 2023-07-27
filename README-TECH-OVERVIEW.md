@@ -102,3 +102,7 @@ see https://antoniandre.github.io/vue-cal
 
 npm i vue-cal
 
+
+## Linting and Formatting
+
+https://vueschool.io/articles/vuejs-tutorials/eslint-and-prettier-with-vite-and-vue-js-3/
