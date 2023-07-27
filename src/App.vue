@@ -1,17 +1,19 @@
 <script setup lang="ts">
-//import RouterView from 
+import ConclusionLogo from './components/ConclusionLogo.vue' 
 
 </script>
 
 <template>
   <div id="body">
     <header>
+      <ConclusionLogo />
       <nav>
         <RouterLink to="/">Lijst</RouterLink>
         <RouterLink to="/calendar">Calendar</RouterLink>
       </nav>
     </header>
     <RouterView />
+    <ConclusionLogo />
   </div>
 </template>
 
