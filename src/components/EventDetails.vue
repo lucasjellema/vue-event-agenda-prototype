@@ -40,8 +40,8 @@
       <p><b>registratie:</b> <span v-html="event.registratie"></span></p>
     </div>
     <div class="field">contactpersoon: {{ event.contactpersoon }}</div>
-    <div class="field" v-if="event.voorbereiding !='' && event.voorbereiding.length() > 0">voorbereiding/meenemen: {{ event.voorbereiding }}</div>
-    <div class="field" v-if="event.materialen !='' && event.materialen.length() > 0">
+    <div class="field" v-if="event.voorbereiding !='' && event.voorbereiding.length > 0">voorbereiding/meenemen: {{ event.voorbereiding }}</div>
+    <div class="field" v-if="event.materialen !='' && event.materialen.length > 0">
       <p><b>materialen:</b> <span v-html="event.materialen"></span></p>
     </div>
 
