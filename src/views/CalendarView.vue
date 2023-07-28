@@ -11,7 +11,7 @@
             <p v-html="event.title.concat(' (', event.start.format('H:mm'), ')')" />
 
             <img v-if="event.originalEvent.logo != ''" class="aloof"
-              :src="'src/assets/company-icons/'.concat(event.originalEvent.logo, '.jpg')" height="30" />
+              :src="getLogoUrl(event.originalEvent.logo)" height="30" />
             <ConclusionIcon v-if="event.originalEvent.scope.indexOf('ecosysteem') > -1" />
             <IconGlobe v-else />
           </div>
@@ -39,7 +39,7 @@ import ConclusionIcon from "../components/ConclusionIcon.vue";
 import IconGlobe from "../components/icons/Globe.vue";
 
 
-
+//const getLogoUrl = (company)=> new URL(`./assets/company-icnos/${company}.jpg`, import.meta.url).href;
 
 const getMinutesFromTimeString = (timeString) => {
   let uur = 60 * parseInt(timeString.slice(0, 2));
@@ -87,6 +87,8 @@ export default {
       // Prevent navigating to narrower view (default vue-cal behavior).
       e.stopPropagation()
     },
+    getLogoUrl(company)  {      
+      return new URL(`../assets/company-icons/${company}.jpg`, import.meta.url).href}
   }
 }
 </script>
