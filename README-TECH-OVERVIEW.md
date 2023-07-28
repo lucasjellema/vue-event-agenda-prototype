@@ -106,3 +106,9 @@ npm i vue-cal
 ## Linting and Formatting
 
 https://vueschool.io/articles/vuejs-tutorials/eslint-and-prettier-with-vite-and-vue-js-3/
+
+## Internationalization i18n
+
+https://vue-i18n.intlify.dev/guide/introduction.html
+
+good intro: https://blog.logrocket.com/advanced-localization-techniques-vue-js/ 

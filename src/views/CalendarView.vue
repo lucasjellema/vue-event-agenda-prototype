@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1>Calendar Overview of Knowledge Events</h1>
+    <h1>{{ $t('message.calendar_title') }}</h1>
     <div class="about">
 
       <vue-cal class="vuecal--blue-theme" style="height: 850px; width:1500px" :time-from="7 * 60" hide-weekends
