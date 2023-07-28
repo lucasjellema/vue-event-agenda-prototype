@@ -1,13 +1,12 @@
 <template>
   <div>
-    <!-- <div class="field">{{event.titel}}</div>       -->
     <div class="field">
       <p>
         <img v-if="event.logo != ''" :src="'src/assets/company-icons/'.concat(event.logo, '.jpg')" height="100" />
       </p>
     </div>
-    <div class="field"><i>Sprekers: {{ event.sprekers }}</i></div>
-    <div class="field"><i>Datum/Tijd: {{ event.starttijd }} - {{ event.eindtijd }} uur</i></div>
+    <div class="field"><i>{{ $t('eventDetails.speakers') }}: {{ event.sprekers }}</i></div>
+    <div class="field"><i>{{ $t('eventDetails.dateTime') }}: {{ event.starttijd }} - {{ event.eindtijd }} uur</i></div>
     <div class="field">
       <p><span v-html="event.omschrijving"></span></p>
     </div>
@@ -18,31 +17,33 @@
         </template>
       </p>
     </div>
-    <div class="field" v-if="event.doelgroep !='' && event.doelgroep.length > 0">doelgroep: {{ event.doelgroep }}</div>
+    <div class="field" v-if="event.doelgroep != '' && event.doelgroep.length > 0">{{ $t('eventDetails.targetAudience') }}: {{
+      event.doelgroep }}</div>
     <hr />
-    <h3>Logistiek </h3>
+    <h3>{{ $t('eventDetails.logistics') }} </h3>
 
     <div class="field">
       <p>
-        toegankelijk voor: {{ event.scope }}
-        <ConclusionIcon v-if="event.scope.indexOf('ecosysteem') > -1 " />
+        {{ $t('eventDetails.accessibleTo') }}: {{ event.scope }}
+        <ConclusionIcon v-if="event.scope.indexOf('ecosysteem') > -1" />
         <IconGlobe v-else />
 
       </p>
     </div>
-    <div class="field" v-if="event.locatie !='' && event.locatie.length > 0">
-      <p><b>locatie:</b> {{ event.locatie }}</p>
+    <div class="field" v-if="event.locatie != '' && event.locatie.length > 0">
+      <p><b>{{ $t('eventDetails.location') }}:</b> {{ event.locatie }}</p>
     </div>
     <div class="field">
-      <p><b>hybride:</b> {{ event.hybride }}</p>
+      <p><b>{{ $t('eventDetails.hybrid') }}:</b> {{ event.hybride }}</p>
     </div>
     <div class="field">
-      <p><b>registratie:</b> <span v-html="event.registratie"></span></p>
+      <p><b>{{ $t('eventDetails.registration') }}:</b> <span v-html="event.registratie"></span></p>
     </div>
-    <div class="field">contactpersoon: {{ event.contactpersoon }}</div>
-    <div class="field" v-if="event.voorbereiding !='' && event.voorbereiding.length > 0">voorbereiding/meenemen: {{ event.voorbereiding }}</div>
-    <div class="field" v-if="event.materialen !='' && event.materialen.length > 0">
-      <p><b>materialen:</b> <span v-html="event.materialen"></span></p>
+    <div class="field">{{ $t('eventDetails.contact') }}: {{ event.contactpersoon }}</div>
+    <div class="field" v-if="event.voorbereiding != '' && event.voorbereiding.length > 0">
+      {{ $t('eventDetails.preparation') }}: {{ event.voorbereiding }}</div>
+    <div class="field" v-if="event.materialen != '' && event.materialen.length > 0">
+      <p><b>{{ $t('eventDetails.resources') }}:</b> <span v-html="event.materialen"></span></p>
     </div>
 
   </div>

@@ -5,9 +5,30 @@ common:
 button:
   toggle-language: Toggle Language
 header:
-  title: '@:common.app @:common.name'
+  title: "@:common.app @:common.name"
 calendar:
   title: Calendar Overview of Knowledge Events
 router:
   eventCalendar: Calendar
   eventList: List of Events
+eventDetails:
+  logistics: Logistics
+  accessibleTo: Open to
+  location: Location
+  hybrid: Hybrid (On Site & Digital)
+  registration: Registration
+  contact: Contact
+  resources: Resources
+  speakers: Speakers
+  dateTime: Date/Time
+  targetAudience: Target Audience
+eventList:
+  title: Title
+  date: Date
+  location: Location
+  access:  Access
+  company: Company
+  tags: Tags 
+  futureEventsToggle: Only Future Events?
+  collapseAll: Collapse All
+  expandAll: Expand All

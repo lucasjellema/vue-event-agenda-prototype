@@ -3,4 +3,24 @@ calendar:
 router:
   eventCalendar: Kalender
   eventList: Lijst met Events
-
+eventDetails:
+  logistics: Logistiek
+  accessibleTo: Toegankelijk voor 
+  location: Locatie
+  hybrid: Hybride (Fysiek & Digitaal)
+  registration: Registratie
+  contact: Contactpersoon
+  resources: Resources
+  speakers: Sprekers
+  dateTime: Datum/Tijd
+  targetAudience: Doelgroep
+eventList:
+  title: Titel
+  date: Datum
+  location: Locatie
+  access:  Toegang
+  company: Bedrijf
+  tags: Tags 
+  futureEventsToggle: Alleen toekomstige events?
+  collapseAll: Alles inklappen
+  expandAll: Alles uitklappen 
