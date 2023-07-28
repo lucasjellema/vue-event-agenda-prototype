@@ -8,16 +8,13 @@ import ConclusionLogo from './components/ConclusionLogo.vue'
     <header>
       <ConclusionLogo />
       <nav>
-        <RouterLink to="/calendar">Calendar</RouterLink>
+        <RouterLink to="/calendar">{{$t('router.eventCalendar')}}</RouterLink>
         |
-        <RouterLink to="/List">Lijst</RouterLink>
-      </nav>
-      <div class="locale-changer">
+        <RouterLink to="/List">{{$t('router.eventList')}}</RouterLink>
         <select v-model="$i18n.locale">
           <option v-for="locale in $i18n.availableLocales" :key="`locale-${locale}`" :value="locale">{{ locale }}</option>
         </select>
-      </div>
-
+      </nav>
     </header>
     <RouterView />
     <ConclusionLogo />
@@ -29,5 +26,8 @@ nav li:hover,
 .router-link-exact-active {
   font-weight: 700;
   margin: 20px;
+}
+nav select {
+  margin: 50px;
 }
 </style>

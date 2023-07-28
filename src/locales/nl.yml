@@ -1,10 +1,6 @@
-common:
-  home: Home
-  app: App
-  name: Name
-button:
-  toggle-language: Toggle Language
-header:
-  title: "@:common.app @:common.name"
 calendar:
-  title: Kalender van Kennis Events YML
+  title: Kalender van Kennis Events
+router:
+  eventCalendar: Kalender
+  eventList: Lijst met Events
+

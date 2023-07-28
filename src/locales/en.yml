@@ -8,3 +8,6 @@ header:
   title: '@:common.app @:common.name'
 calendar:
   title: Calendar Overview of Knowledge Events
+router:
+  eventCalendar: Calendar
+  eventList: List of Events
