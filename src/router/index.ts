@@ -17,7 +17,9 @@ const router = createRouter({
       // route level code-splitting
       // this generates a separate chunk (Calendar.[hash].js) for this route
       // which is lazy-loaded when the route is visited.
-      component: () => import('../views/CalendarView.vue')
+      //component: () => import('../views/CalendarView.vue')
+      component: CalendarView
+
     },
     {
       path: '/list',

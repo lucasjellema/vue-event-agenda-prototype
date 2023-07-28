@@ -1,5 +1,5 @@
 {
-  message: {
-    calendar_title : "Calendar Overview of Knowledge Events"
+  "message": {
+    "calendar_title" : "Calendar Overview of Knowledge Events"
   }
 }

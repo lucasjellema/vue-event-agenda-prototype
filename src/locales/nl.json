@@ -1,6 +1,6 @@
 {
-    message: {
-      calendar_title : "Kalender van Kennis Events"
+    "message": {
+      "calendar_title" : "Kalender van Kennis Events"
 
     }
   }
