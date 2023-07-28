@@ -1,7 +1,6 @@
 import './assets/main.css'
 
 import { createApp } from 'vue'
-import { createI18n } from 'vue-i18n'
 import { createPinia } from 'pinia'
 import router from './router'
 import PrimeVue from 'primevue/config'; // https://primevue.org/configuration/
@@ -17,27 +16,12 @@ import Dialog from 'primevue/dialog';
 import Tag from 'primevue/tag';
 
 import App from './App.vue'
-
+import i18n from './plugins/i18n'
 
 import { useCounterStore } from './stores/datastore';
 
 const app = createApp(App);
 app.use(router)
-
-
-import en from './locales/en.json'
-import nl from './locales/nl.json'
-
-const i18n = createI18n({
-    // derive locale from browser locale
-    locale:
-        navigator.language.split('-')[0] || process.env.VUE_APP_I18N_LOCALE || 'nl',
-    fallbackLocale: 'nl',
-    messages: {
-        en,
-        nl
-    }
-})
 
 app.use(i18n)
 
