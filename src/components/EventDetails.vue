@@ -2,7 +2,7 @@
   <div>
     <div class="field">
       <p>
-        <img v-if="event.logo != ''" :src="'src/assets/company-icons/'.concat(event.logo, '.jpg')" height="100" />
+        <img v-if="event.logo != ''" :src="getLogoUrl(event.logo)" height="100" />
       </p>
     </div>
     <div class="field"><i>{{ $t('eventDetails.speakers') }}: {{ event.sprekers }}</i></div>
@@ -17,8 +17,9 @@
         </template>
       </p>
     </div>
-    <div class="field" v-if="event.doelgroep != '' && event.doelgroep.length > 0">{{ $t('eventDetails.targetAudience') }}: {{
-      event.doelgroep }}</div>
+    <div class="field" v-if="event.doelgroep != '' && event.doelgroep.length > 0">{{ $t('eventDetails.targetAudience') }}:
+      {{
+        event.doelgroep }}</div>
     <hr />
     <h3>{{ $t('eventDetails.logistics') }} </h3>
 
@@ -58,6 +59,11 @@ export default {
   name: "EventDetails",
   props: ['event'],
   components: { ConclusionIcon, IconGlobe },
+  methods: {
+    getLogoUrl(company) {
+      return new URL(`../assets/company-icons/${company}.jpg`, import.meta.url).href
+    }
+  }
 
 };
 </script>
