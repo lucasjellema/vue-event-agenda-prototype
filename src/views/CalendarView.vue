@@ -10,8 +10,8 @@
           <div class="vuecal__event-title">
             <p v-html="event.title.concat(' (', event.start.format('H:mm'), ')')" />
 
-            <img v-if="event.originalEvent.logo != ''" class="aloof"
-              :src="getLogoUrl(event.originalEvent.logo)" height="30" />
+            <img v-if="event.originalEvent.logo != ''" class="aloof" :src="getLogoUrl(event.originalEvent.logo)"
+              height="30" />
             <ConclusionIcon v-if="event.originalEvent.scope.indexOf('ecosysteem') > -1" />
             <IconGlobe v-else />
           </div>
@@ -87,8 +87,9 @@ export default {
       // Prevent navigating to narrower view (default vue-cal behavior).
       e.stopPropagation()
     },
-    getLogoUrl(company)  {      
-      return new URL(`../assets/company-icons/${company}.jpg`, import.meta.url).href}
+    getLogoUrl(company) {
+      return new URL(`../assets/company-icons/${company}.jpg`, import.meta.url).href
+    }
   }
 }
 </script>
@@ -102,5 +103,7 @@ export default {
   }
 }
 
-
+.aloof {
+  padding-right: 10px;
+}
 </style>
