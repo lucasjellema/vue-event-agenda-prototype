@@ -32,3 +32,5 @@ eventList:
   futureEventsToggle: Only Future Events?
   collapseAll: Collapse All
   expandAll: Expand All
+  details: Details
+  keywordSearch: Keyword Search  

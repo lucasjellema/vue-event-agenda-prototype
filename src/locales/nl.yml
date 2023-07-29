@@ -24,3 +24,5 @@ eventList:
   futureEventsToggle: Alleen toekomstige events?
   collapseAll: Alles inklappen
   expandAll: Alles uitklappen 
+  details: Details
+  keywordSearch: Zoekterm
