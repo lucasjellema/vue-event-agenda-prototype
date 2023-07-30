@@ -36,7 +36,7 @@ const replaceNewlinesWithBrTags = (text) => {
 }
 
 
-export const useCounterStore = defineStore('data', {
+export const useEventsStore = defineStore('data', {
   state: () => ({
     count: 0,
     eventData: [],

@@ -90,7 +90,7 @@
 </template>
 
 <script>
-import { useCounterStore } from '../stores/datastore';
+import { useEventsStore } from '../stores/datastore';
 import EventSummary from "./EventSummary.vue";
 import EventDetails from "./EventDetails.vue";
 import DataTable from 'primevue/datatable';
@@ -154,10 +154,10 @@ export default {
 
 
   setup() {
-    const store = useCounterStore();
+    const store = useEventsStore();
     store.parseCSVData()
     store.sortEvents('datum', 'desc');
-    const { eventData } = storeToRefs(useCounterStore())
+    const { eventData } = storeToRefs(useEventsStore())
 
     return {
       allEvents: eventData,

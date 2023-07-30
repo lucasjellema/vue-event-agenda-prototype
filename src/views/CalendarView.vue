@@ -32,7 +32,7 @@
 
 import VueCal from 'vue-cal'
 import 'vue-cal/dist/vuecal.css'
-import { useCounterStore } from '../stores/datastore';
+import { useEventsStore } from '../stores/datastore';
 import { storeToRefs } from 'pinia'
 import EventDetails from "../components/EventDetails.vue";
 import ConclusionIcon from "../components/ConclusionIcon.vue";
@@ -72,9 +72,9 @@ export default {
   },
 
   setup() {
-    const store = useCounterStore();
+    const store = useEventsStore();
     store.parseCSVData()
-    const { eventData } = storeToRefs(useCounterStore())
+    const { eventData } = storeToRefs(useEventsStore())
 
     return {
       allEvents: eventData

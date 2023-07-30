@@ -18,7 +18,7 @@ import Tag from 'primevue/tag';
 import App from './App.vue'
 import i18n from './plugins/i18n'
 
-import { useCounterStore } from './stores/datastore';
+import { useEventsStore } from './stores/datastore';
 
 const app = createApp(App);
 app.use(router)
