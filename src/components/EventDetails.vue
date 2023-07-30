@@ -18,8 +18,7 @@
       </p>
     </div>
     <div class="field" v-if="event.doelgroep != '' && event.doelgroep.length > 0">{{ $t('eventDetails.targetAudience') }}:
-      {{
-        event.doelgroep }}</div>
+      {{ event.doelgroep }}</div>
     <hr />
     <h3>{{ $t('eventDetails.logistics') }} </h3>
 
@@ -32,7 +31,10 @@
       </p>
     </div>
     <div class="field" v-if="event.locatie != '' && event.locatie.length > 0">
-      <p><b>{{ $t('eventDetails.location') }}:</b> {{ event.locatie }}</p>
+      <p><b>{{ $t('eventDetails.location') }}:</b> {{ event.locatie }}
+        <Button v-if="event.location.length > 0" label="Show Location Details" icon="pi pi-external-link"
+          @click="locationModalVisible = true" />
+      </p>
     </div>
     <div class="field">
       <p><b>{{ $t('eventDetails.hybrid') }}:</b> {{ event.hybride }}</p>
@@ -46,7 +48,19 @@
     <div class="field" v-if="event.materialen != '' && event.materialen.length > 0">
       <p><b>{{ $t('eventDetails.resources') }}:</b> <span v-html="event.materialen"></span></p>
     </div>
-
+    <Dialog v-if="event.location.length > 0" v-model:visible="locationModalVisible" maximizable modal :header="event.location[0].naam" :style="{ width: '80vw' }">
+      <p>Adres: {{ event.location[0].adres }}</p>
+      <div v-if="event.location[0].mapslink">
+        <a :href="event.location[0].mapslink" target="_new">Location on Google Maps</a>
+      </div>
+      <div v-if="event.location[0].ovlink">
+        <a :href="event.location[0].ovlink" target="_new">Route by Public Transport</a>
+      </div>
+      <div v-if="event.location[0].resource" >
+        <iframe id="f1" ref="frame1"   style="border: 0; width:100%; height: 500px; overflow: auto;"
+        :src="getLocationHTMLUrl(event.location[0].resource)"></iframe>
+      </div>
+    </Dialog>
   </div>
 </template>
 
@@ -57,11 +71,19 @@ import IconGlobe from "./icons/Globe.vue";
 
 export default {
   name: "EventDetails",
+  data() {
+    return {
+      locationModalVisible: false,
+    };
+  },
   props: ['event'],
   components: { ConclusionIcon, IconGlobe },
   methods: {
     getLogoUrl(company) {
       return new URL(`../assets/company-icons/${company}.jpg`, import.meta.url).href
+    },
+    getLocationHTMLUrl(location) {
+      return new URL(`../assets/locations/${location}.html`, import.meta.url).href
     }
   }
 

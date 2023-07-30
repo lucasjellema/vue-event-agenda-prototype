@@ -14,7 +14,7 @@
       <template #header>
         <div class="flex flex-wrap align-items-center justify-content-between gap-2">
           <span class="text-xl text-900 font-bold">Conclusion Knowledge Events</span>
-          <div>{{$t('eventList.futureEventsToggle')}}</div>
+          <div>{{ $t('eventList.futureEventsToggle') }}</div>
           <InputSwitch v-model="futureEventsOnlyChecked" />
           <InputText v-model="filters['global'].value" :placeholder="$t('eventList.keywordSearch')" />
         </div>
@@ -26,23 +26,26 @@
           <InputText type="text" v-model="filterModel.value" @input="filterCallback()" class="p-column-filter" />
         </template>
       </Column>
-      <Column field="eventDate" :header="$t('eventList.date')"  sortable>
+      <Column field="eventDate" :header="$t('eventList.date')" sortable>
         <template #body="slotProps">
           <i>{{ formatDate(slotProps.data.eventDate) }}</i>
         </template>
 
       </Column>
-      <Column field="locatie" :header="$t('eventList.location')"  sortable>
+      <Column field="locatie" :header="$t('eventList.location')" sortable>
+        <template #filter="{ filterModel, filterCallback }">
+          <InputText type="text" v-model="filterModel.value" @input="filterCallback()" class="p-column-filter" />
+        </template>
+        <template #body="slotProps">
+          <p v-html="slotProps.data.locatie"></p>
+        </template>
+      </Column>
+      <Column field="scope" :header="$t('eventList.access')" sortable>
         <template #filter="{ filterModel, filterCallback }">
           <InputText type="text" v-model="filterModel.value" @input="filterCallback()" class="p-column-filter" />
         </template>
       </Column>
-      <Column field="scope" :header="$t('eventList.access')"  sortable>
-        <template #filter="{ filterModel, filterCallback }">
-          <InputText type="text" v-model="filterModel.value" @input="filterCallback()" class="p-column-filter" />
-        </template>
-      </Column>
-      <Column field="bedrijf" :header="$t('eventList.company')"  sortable>
+      <Column field="bedrijf" :header="$t('eventList.company')" sortable>
         <template #body="slotProps">
 
           <img v-if="slotProps.data.logo != ''" :src="'src/assets/company-icons/'.concat(slotProps.data.logo, '.jpg')"
@@ -52,7 +55,7 @@
         </template>
 
       </Column>
-      <Column :header="$t('eventList.tags')" >
+      <Column :header="$t('eventList.tags')">
         <template #body="slotProps">
           <!--       <template v-for="tag in slotProps.data.tagList">
           <Tag :value="tag"></Tag>
@@ -62,7 +65,7 @@
 
         </template>
       </Column>
-      <Column :header="$t('eventList.details')" >
+      <Column :header="$t('eventList.details')">
         <template #body="slotProps">
           <Button label="Details" icon="pi" severity="success" class="mr-2" @click="openDetails(slotProps.data)" />
         </template>
@@ -75,8 +78,8 @@
         </div>
       </template>
     </DataTable>
-    <Button :label="$t('eventList.expandAll')"  icon="pi pi-check" @click="expandAll" />
-    <Button :label="$t('eventList.collapseAll')"   icon="pi pi-check" @click="collapseAll" />
+    <Button :label="$t('eventList.expandAll')" icon="pi pi-check" @click="expandAll" />
+    <Button :label="$t('eventList.collapseAll')" icon="pi pi-check" @click="collapseAll" />
     <Dialog v-model:visible="detailsModalVisible" maximizable modal v-model:header="selectedEvent.titel"
       :style="{ width: '50vw' }">
       <EventDetails :event="selectedEvent"></EventDetails>

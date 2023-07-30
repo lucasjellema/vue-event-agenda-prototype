@@ -3,6 +3,7 @@ import { defineStore } from 'pinia';
 
 // load CSV data from the file in the assets directory; turn the data into a JSON object array; the names of the object properties are derived from the column headers (first row in CSV file) 
 import eventRecords from '@/assets/knowledge-events.csv';
+import locationRecords from '@/assets/locations.csv';
 
 // the contents of the CSV file can also be loaded as a string that could then be parsed using papaparse - in case the action performed by the direct import is not adequate
 // import csvString from '@/assets/data.csv?raw'
@@ -39,11 +40,13 @@ export const useCounterStore = defineStore('data', {
   state: () => ({
     count: 0,
     eventData: [],
+    locationData : [],
     initialized: false,
   }),
   actions: {
     async parseCSVData() {
       if (!this.initialized) {
+        this.locationData = locationRecords
 
         // post process eventRecords
         let i = 0
@@ -64,7 +67,10 @@ export const useCounterStore = defineStore('data', {
           rec.registratie = replaceUrlsWithLinks(rec.registratie)
           // if rec.materialen contains a link (https:// or http://) then replace the link with its HTML counterpart: <a href="link" target="_new">link<</a>
           rec.materialen = replaceNewlinesWithBrTags(replaceUrlsWithLinks(rec.materialen))
-
+          // if rec.locatie contains a link (https:// or http://) then replace the link with its HTML counterpart: <a href="link" target="_new">link<</a>
+          rec.locatie = replaceNewlinesWithBrTags(replaceUrlsWithLinks(rec.locatie))
+          // if the name of a known location appears in locatie then assign that location
+          rec.location = this.locationData.filter( (value) =>  rec.locatie.toLowerCase().indexOf(  value.naam.toLowerCase() )>-1)
         }
         this.eventData = eventRecords
         this.initialized = true
