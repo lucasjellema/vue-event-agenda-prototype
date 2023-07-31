@@ -48,7 +48,7 @@
       <Column field="bedrijf" :header="$t('eventList.company')" sortable>
         <template #body="slotProps">
 
-          <img v-if="slotProps.data.logo != ''" :src="'src/assets/company-icons/'.concat(slotProps.data.logo, '.jpg')"
+          <img v-if="slotProps.data.logo != ''" :src="getLogoUrl(slotProps.data.logo)"
             height="30" />
           <p v-else>{{ slotProps.data.bedrijf }}</p>
 
@@ -146,6 +146,10 @@ function formatDate(theDate) {
   var options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
   return theDate.toLocaleDateString("nl-NL", options);
 }
+
+function getLogoUrl(company) {
+      return new URL(`../assets/company-icons/${company}.jpg`, import.meta.url).href
+    }
 
 const store = useEventsStore();
 store.parseCSVData()
