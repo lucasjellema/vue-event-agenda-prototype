@@ -27,7 +27,7 @@
   </div>
 </template>
 
-<script>
+<script setup>
 // Documentation: https://antoniandre.github.io/vue-cal
 
 import VueCal from 'vue-cal'
@@ -37,6 +37,7 @@ import { storeToRefs } from 'pinia'
 import EventDetails from "../components/EventDetails.vue";
 import ConclusionIcon from "../components/ConclusionIcon.vue";
 import IconGlobe from "../components/icons/Globe.vue";
+import { ref, computed } from 'vue'
 
 
 //const getLogoUrl = (company)=> new URL(`./assets/company-icnos/${company}.jpg`, import.meta.url).href;
@@ -48,50 +49,37 @@ const getMinutesFromTimeString = (timeString) => {
   return uur + mins
 }
 
-export default {
-  components: { VueCal, EventDetails, ConclusionIcon, IconGlobe },
-  data() {
-    return {
-      detailsModalVisible: false,
-      selectedEvent: {},
-    }
-  },
-  computed: {
-    calendarEvents() {
-      return this.allEvents.map((event) => {
-        let calendarEvent = {
-          background: false,
-          title: event.titel,
-          originalEvent: event,
-          start: event.eventDate.addMinutes(getMinutesFromTimeString(event.starttijd)),
-          end: event.eventDate.addMinutes(getMinutesFromTimeString(event.eindtijd))
-        };
-        return calendarEvent;
-      })
-    },
-  },
+const detailsModalVisible = ref(false)
+const selectedEvent = ref({})
 
-  setup() {
-    const store = useEventsStore();
-    store.parseCSVData()
-    const { eventData } = storeToRefs(useEventsStore())
-
-    return {
-      allEvents: eventData
+const calendarEvents = computed(() => {
+  return eventData.value.map((event) => {
+    let calendarEvent = {
+      background: false,
+      title: event.titel,
+      originalEvent: event,
+      start: event.eventDate.addMinutes(getMinutesFromTimeString(event.starttijd)),
+      end: event.eventDate.addMinutes(getMinutesFromTimeString(event.eindtijd))
     };
-  },
-  methods: {
-    onEventClick(event, e) {
-      this.selectedEvent = event.originalEvent
-      this.detailsModalVisible = true
-      // Prevent navigating to narrower view (default vue-cal behavior).
-      e.stopPropagation()
-    },
-    getLogoUrl(company) {
-      return new URL(`../assets/company-icons/${company}.jpg`, import.meta.url).href
-    }
-  }
+    return calendarEvent;
+  })
+})
+
+const store = useEventsStore();
+store.parseCSVData()
+const { eventData } = storeToRefs(useEventsStore())
+
+function onEventClick(event, e) {
+  selectedEvent.value = event.originalEvent
+  detailsModalVisible.value = true
+  // Prevent navigating to narrower view (default vue-cal behavior).
+  e.stopPropagation()
 }
+
+function getLogoUrl(company) {
+  return new URL(`../assets/company-icons/${company}.jpg`, import.meta.url).href
+}
+
 </script>
 
 <style>
