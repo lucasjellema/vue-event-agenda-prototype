@@ -48,7 +48,8 @@
     <div class="field" v-if="event.materialen != '' && event.materialen.length > 0">
       <p><b>{{ $t('eventDetails.resources') }}:</b> <span v-html="event.materialen"></span></p>
     </div>
-    <Dialog v-if="event.location.length > 0" v-model:visible="locationModalVisible" maximizable modal :header="event.location[0].naam" :style="{ width: '80vw' }">
+    <Dialog v-if="event.location.length > 0" v-model:visible="locationModalVisible" maximizable modal
+      :header="event.location[0].naam" :style="{ width: '80vw' }">
       <p>Adres: {{ event.location[0].adres }}</p>
       <div v-if="event.location[0].mapslink">
         <a :href="event.location[0].mapslink" target="_new">Location on Google Maps</a>
@@ -56,38 +57,31 @@
       <div v-if="event.location[0].ovlink">
         <a :href="event.location[0].ovlink" target="_new">Route by Public Transport</a>
       </div>
-      <div v-if="event.location[0].resource" >
-        <iframe id="f1" ref="frame1"   style="border: 0; width:100%; height: 500px; overflow: auto;"
-        :src="getLocationHTMLUrl(event.location[0].resource)"></iframe>
+      <div v-if="event.location[0].resource">
+        <iframe id="f1" ref="frame1" style="border: 0; width:100%; height: 500px; overflow: auto;"
+          :src="getLocationHTMLUrl(event.location[0].resource)"></iframe>
       </div>
     </Dialog>
   </div>
 </template>
 
-<script>
+<script setup>
 import ConclusionIcon from "./ConclusionIcon.vue";
 import IconGlobe from "./icons/Globe.vue";
+import { ref } from 'vue'
 
+const locationModalVisible = ref(false)
 
-export default {
-  name: "EventDetails",
-  data() {
-    return {
-      locationModalVisible: false,
-    };
-  },
-  props: ['event'],
-  components: { ConclusionIcon, IconGlobe },
-  methods: {
-    getLogoUrl(company) {
-      return new URL(`../assets/company-icons/${company}.jpg`, import.meta.url).href
-    },
-    getLocationHTMLUrl(location) {
-      return new URL(`../assets/locations/${location}.html`, import.meta.url).href
-    }
-  }
+defineProps(['event'])
 
-};
+function getLogoUrl(company) {
+  return new URL(`../assets/company-icons/${company}.jpg`, import.meta.url).href
+}
+
+function getLocationHTMLUrl(location) {
+  return new URL(`../assets/locations/${location}.html`, import.meta.url).href
+}
+
 </script>
 
 
