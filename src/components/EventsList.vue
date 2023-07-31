@@ -89,7 +89,8 @@
   </div>
 </template>
 
-<script>
+<script setup>
+
 import { useEventsStore } from '../stores/datastore';
 import EventSummary from "./EventSummary.vue";
 import EventDetails from "./EventDetails.vue";
@@ -98,71 +99,58 @@ import Column from 'primevue/column';
 import InputText from 'primevue/inputtext';
 import { FilterMatchMode, FilterOperator } from "primevue/api";
 
+import { ref, computed } from 'vue'
 import { storeToRefs } from 'pinia'
 
 
 const today = new Date()
+const detailsModalVisible = ref(false)
+const selectedEvent = ref({})
+const expandedRows = ref([])
+const filters = ref({
+  titel: { value: null, matchMode: FilterMatchMode.CONTAINS },
+  global: { value: null, matchMode: FilterMatchMode.CONTAINS },
+  locatie: { value: null, matchMode: FilterMatchMode.CONTAINS },
+  scope: { value: null, matchMode: FilterMatchMode.CONTAINS },
+})
 
-export default {
-  name: "EventsList",
-  components: { EventSummary, EventDetails },
-  data() {
-    return {
-      detailsModalVisible: false,
-      selectedEvent: {},
-      expandedRows: [],
-      filters: {
-        titel: { value: null, matchMode: FilterMatchMode.CONTAINS },
-        global: { value: null, matchMode: FilterMatchMode.CONTAINS },
-        locatie: { value: null, matchMode: FilterMatchMode.CONTAINS },
-        scope: { value: null, matchMode: FilterMatchMode.CONTAINS },
-      },
-      futureEventsOnlyChecked: false,
-    };
-  },
-  computed: {
-    // a computed getter to return the set of events that the datatable can display - given global filters
-    // currently only a filter for future events/all Events
-    // possibly also: a toggle for public events/ecosysteem events 
-    eligibleEvents() {
-      return this.allEvents.filter((event) => this.futureEventsOnlyChecked ? event.eventDate > today : true)
-    }
-  },
-  methods: {
-    onRowExpand() {
-    },
-    onRowCollapse() {
-    },
-    expandAll() {
-      this.expandedRows = this.events.filter(event => event.datum);
-    },
-    collapseAll() {
-      this.expandedRows = [];
-    },
-    onRowSelect(e) {
-      console.log(`select event ${this.selectedEvent}`)
-    },
-    openDetails(event) {
-      this.selectedEvent = { ...event };
-      this.detailsModalVisible = true
-    },
-    formatDate(theDate) {
-      var options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
-      return theDate.toLocaleDateString("nl-NL", options);
-    }
-  },
+const futureEventsOnlyChecked = ref(false)
+
+const eligibleEvents = computed(() => {
+  return eventData.value.filter((event) => futureEventsOnlyChecked.value ? event.eventDate > today : true)
+})
 
 
-  setup() {
-    const store = useEventsStore();
-    store.parseCSVData()
-    store.sortEvents('datum', 'desc');
-    const { eventData } = storeToRefs(useEventsStore())
+function onRowExpand() { }
 
-    return {
-      allEvents: eventData,
-      events: eventData
-    };
-  },
-};
+function onRowCollapse() { }
+
+function expandAll() {
+  expandedRows.value = eventData.value.filter(event => event.datum)
+}
+
+function collapseAll() {
+  expandedRows.value = [];
+}
+
+function onRowSelect(e) {
+  console.log(`select event ${selectedEvent}`)
+}
+
+function openDetails(event) {
+  this.selectedEvent = { ...event };
+  this.detailsModalVisible = true
+}
+
+function formatDate(theDate) {
+  var options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+  return theDate.toLocaleDateString("nl-NL", options);
+}
+
+const store = useEventsStore();
+store.parseCSVData()
+store.sortEvents('datum', 'desc');
+const { eventData } = storeToRefs(useEventsStore())
+
+
 </script>
