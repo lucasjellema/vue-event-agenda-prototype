@@ -47,11 +47,8 @@
       </Column>
       <Column field="bedrijf" :header="$t('eventList.company')" sortable>
         <template #body="slotProps">
-
-          <img v-if="slotProps.data.logo != ''" :src="getLogoUrl(slotProps.data.logo)"
-            height="30" />
+          <img v-if="slotProps.data.logo != ''" :src="getLogoUrl(slotProps.data.logo)" height="30" />
           <p v-else>{{ slotProps.data.bedrijf }}</p>
-
         </template>
 
       </Column>
@@ -92,7 +89,7 @@
 <script setup>
 
 import { useEventsStore } from '../stores/datastore';
-import EventSummary from "./EventSummary.vue";
+//import EventSummary from "./EventSummary.vue";
 import EventDetails from "./EventDetails.vue";
 import DataTable from 'primevue/datatable';
 import Column from 'primevue/column';
@@ -148,8 +145,8 @@ function formatDate(theDate) {
 }
 
 function getLogoUrl(company) {
-      return new URL(`../assets/company-icons/${company}.jpg`, import.meta.url).href
-    }
+  return new URL(`../assets/company-icons/${company}.jpg`, import.meta.url).href
+}
 
 const store = useEventsStore();
 store.parseCSVData()

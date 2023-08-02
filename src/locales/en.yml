@@ -22,6 +22,7 @@ eventDetails:
   speakers: Speakers
   dateTime: Date/Time
   targetAudience: Target Audience
+  preparation: Preparation & Prerequisites
 eventList:
   title: Title
   date: Date

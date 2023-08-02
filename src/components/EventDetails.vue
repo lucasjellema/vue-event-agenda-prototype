@@ -31,7 +31,7 @@
       </p>
     </div>
     <div class="field" v-if="event.locatie != '' && event.locatie.length > 0">
-      <p><b>{{ $t('eventDetails.location') }}:</b> {{ event.locatie }}
+      <p><h5>{{ $t('eventDetails.location') }}:</h5> {{ event.locatie }}
         <Button v-if="event.location.length > 0" label="Show Location Details" icon="pi pi-external-link"
           @click="locationModalVisible = true" />
       </p>
@@ -40,11 +40,11 @@
       <p><b>{{ $t('eventDetails.hybrid') }}:</b> {{ event.hybride }}</p>
     </div>
     <div class="field">
-      <p><b>{{ $t('eventDetails.registration') }}:</b> <span v-html="event.registratie"></span></p>
+      <p><h5>{{ $t('eventDetails.registration') }}:</h5> <span v-html="event.registratie"></span></p>
     </div>
-    <div class="field">{{ $t('eventDetails.contact') }}: {{ event.contactpersoon }}</div>
+    <div class="field"><h5>{{ $t('eventDetails.contact') }}:</h5> {{ event.contactpersoon }}</div>
     <div class="field" v-if="event.voorbereiding != '' && event.voorbereiding.length > 0">
-      {{ $t('eventDetails.preparation') }}: {{ event.voorbereiding }}</div>
+      <p><h5>{{ $t('eventDetails.preparation') }}:</h5></p> {{ event.voorbereiding }}</div>
     <div class="field" v-if="event.materialen != '' && event.materialen.length > 0">
       <p><b>{{ $t('eventDetails.resources') }}:</b> <span v-html="event.materialen"></span></p>
     </div>

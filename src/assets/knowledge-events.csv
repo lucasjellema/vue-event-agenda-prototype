@@ -1,4 +1,25 @@
 titel,datum,tijd,omschrijving,tags,sprekers,scope,contactpersoon,hybride,locatie,digitale link,registratie,bedrijf,sessieserie,doelgroep,voorbereiding,taal,materialen,starttijd,eindtijd,logo
+How to develop rich web applications using Vue 3 - for anyone with no web development experience,22-08-23,17.00-20.30 uur,"Registration: via the event website code-cafe-intro-vue3-web-apps.conclusionevents.nl/
+
+In this session I would like to show you how you can easily and quickly create quite rich web applications with Vue 3 – without having to study complex concepts or understand many technical details. I have only recently learned how to work with Vue 3 myself and now is the best time for me to share my learning experience (and my enthusiasm) with you. I know what I found essential to understand and what most got me excited in these early steps (what was a little bit hard to grasp). I believe that I can present my steps and guide you to experience the same fun and have a similarly gratifying experience. I am not an expert in this subject – I have barely learned how to walk and that is why I can help you with these first steps with Vue. 
+
+I started a few weeks back with Vue 3. I have used it to create this web application that provides an overview of Knowledge Sessions in the Conclusion ecosystem. I know it is not the best application in the world – but remember: I built it in just a few weeks with no more than a few weeks of experiences. I am really quite happy with that. And working with Vue is fun. I want to share that fun.
+
+In this session, I will not explain how Vue works. I do not really know that. I will show you how to work with it and how to create web applications that are functional, appealing, fast and responsive. We will publish web applications in this session (using GitHub Pages) that all your friends and family members can see and try out.
+
+The approach we are taking is straightforward:
+•	I will tell you a little bit about web development, browsers and reactive frameworks
+•	I will show the hello world of Vue applications
+•	You will follow instructions to set up an environment and create and run your own helloworld application
+•	I will explain about components and nesting, events, data binding and reactive behavior and demonstrate these concepts
+•	You will apply these concepts in an application that continuously grows a little more complex
+•	I will introduce Vue UI Component libraries – and with no effort at all we will launch our application to the next level – with rich components to explore, manipulate, visualize data collections
+•	We will publish the web application from our development environment to where the whole world could see it – using GitHub Pages
+•	As bonus topic – we may discuss state management and internationalization (i18n)
+
+At the end of this session you will be able to quickly create a simple yet rich web application with Vue 3. You have a starting point to further evolve your skills with the many online resources and perhaps a follow up Code Café session presented by someone who is well versed in Vue 3. I am convinced that you will enjoy your newfound powers and the simplicity and power of Vue 3. 
+I hope you will join me – preferably on site in Utrecht, including a very pleasant dinner! – and if you cannot make it (because you are for example located in Heerlen or Cape Town to name two locations) then in the Teams Meeting 
+","web,frontend,reactive,vue,handson,workshop,javascript,html",Lucas Jellema,Iedereen (publiek toegankelijk),Lucas Jellema (lucas.jellema@conclusion.nl),Hybride (digitaal en fysiek),Conclusion Utrecht,,via the event website code-cafe-intro-vue3-web-apps.conclusionevents.nl/,Conclusion,Code Café,"anyone who likes to know how to create a rich, attractive web application using a modern development framework","bring your laptop!, have some experience with HTML and JavaScript; in order publish your work - a GitHub account; no experience with Vue2 (if you do, this session is far too simplistic for you)",Engels,,17:00,20:30,conclusion
 Architectuur Gilde Sessie II,25-07-23,17.00-20.30,"Ecosysteemjournaal
 
  – berichten vanuit het Conclusion ecosysteem – pilots, PoCs, nieuwe projecten, vragen/uitdagingen/resultaten, leerpunten – om het ecosysteem beter te leren kennen en de ontwikkelingen te kunnen volgen 
@@ -189,7 +210,7 @@ Onderwerpen die in de workshop behandeld worden:
 Het identificeren en classificeren van alle (in)direct betrokkenen
 Opstellen van een stakeholdermanagementstrategie en communicatieplan
 Betrekken en informeren van stakeholders
-Samenwerking tussen stakeholders","Kijkje in de keuken, projectmanagement, agilemanagement, stakeholdermanagement, projectpolitiek",KWD ervaringsdeskundingen,Iedereen (publiek toegankelijk),Remmelt van der Wal,Fysiek,Conclusion Nieuwegein Edisonbaan 15,https://www.kwdrm.nl/onze-kennis/kijkje-in-de-keuken-van-kwd/,https://www.kwdrm.nl/onze-kennis/kijkje-in-de-keuken-van-kwd/,KWD Resultaatmanagement,Kijkje in de keuken,Projectmanagement professionals ,,Nederlands,,16:00,20:00,kwd
+Samenwerking tussen stakeholders","Kijkje in de keuken, projectmanagement, agilemanagement, stakeholdermanagement, projectpolitiek",KWD ervaringsdeskundingen,Iedereen (publiek toegankelijk),Remmelt van der Wal,Fysiek,Edisonbaan 15,https://www.kwdrm.nl/onze-kennis/kijkje-in-de-keuken-van-kwd/,https://www.kwdrm.nl/onze-kennis/kijkje-in-de-keuken-van-kwd/,KWD Resultaatmanagement,Kijkje in de keuken,Projectmanagement professionals ,,Nederlands,,16:00,20:00,kwd
 Splunk for Devops Engineers: All You Need to Know,25-05-23,17.30-20.30,"Ben jij een DevOps Engineer, Linux Engineer, Platform Engineer of weet je überhaupt niet wat je met al je logging en metrics aan moet? Dan is deze sessie voor jou! Coen Meerbeek, Splunk Nerd en Observability Guru, neemt je mee in de basis Splunk Componenten zoals Heavy Forwarders, Universal Forwarders en HEC. Ook legt hij uit hoe je Data in Splunk onboard en daadwerkelijk gebruikt met Splunk Search. Als kers op de taart, ga je nog aan de slag met een korte lab die je thuis verder af kan maken.
 
 Kortom de sessie is voor iedereen die zoveel mogelijk uit zijn logging en metrics wil halen met behulp van Splunk, maar alleen nog niet weet hoe.
@@ -200,7 +221,7 @@ Benodigheden
 Agenda
 17.30 - 18.00 uur Inloop
 18.00 - 18.30 uur Eten
-18.30 - 20.30 uur Splunk for Devops Engineers","Linux,Cloud Computing,DevOps,Splunk,Observability","Coen Meerbeek, Splunk Nerd en Observability Guru",Iedereen (publiek toegankelijk),Sven Kooiman,Fysiek,Conclusion Nieuwegein Xforce Edisonbaan 15 · Nieuwegein,,via Meetup: https://www.meetup.com/xforce-kennissessies/events/293147491/,Conclusion Xforce,Xforce Kennissessies ,"DevOps Engineer, Linux Engineer, Platform Engineer of weet je überhaupt niet wat je met al je logging en metrics aan moet",laptop meenemen,Nederlands,,17:30,20:30,xforce
+18.30 - 20.30 uur Splunk for Devops Engineers","Linux,Cloud Computing,DevOps,Splunk,Observability","Coen Meerbeek, Splunk Nerd en Observability Guru",Iedereen (publiek toegankelijk),Sven Kooiman,Fysiek,Conclusion Xforce Edisonbaan 15 · Nieuwegein,,via Meetup: https://www.meetup.com/xforce-kennissessies/events/293147491/,Conclusion Xforce,Xforce Kennissessies ,"DevOps Engineer, Linux Engineer, Platform Engineer of weet je überhaupt niet wat je met al je logging en metrics aan moet",laptop meenemen,Nederlands,,17:30,20:30,xforce
 PlatformCom 2023,08-06-23,9:00-17:00,"Online conference for Platform Engineers. Five tracks, 150 sessions. 
 
 details via https://platformcon.com/talks

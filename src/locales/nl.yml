@@ -14,6 +14,7 @@ eventDetails:
   speakers: Sprekers
   dateTime: Datum/Tijd
   targetAudience: Doelgroep
+  preparation: Voorbereiding & Benodigdheden
 eventList:
   title: Titel
   date: Datum
