@@ -36,15 +36,19 @@ const replaceNewlinesWithBrTags = (text) => {
   return replacedText;
 }
 
+const EVENTS_CSV_FILE = 'https://api.github.com/repos/lucasjellema/vue-event-agenda-prototype/contents/src/assets/knowledge-events.csv'
 
 const  fetchData = async () => {
+  console.log(`fetch csv from github`)
   try {
-      const response = await axios.get('https://api.github.com/repos/lucasjellema/vue-event-agenda-prototype/contents/src/assets/knowledge-events.csv', {
+      const response = await axios.get(EVENTS_CSV_FILE, {
     
       headers: {
         Accept: 'application/vnd.github.v3.raw', // Request raw content
       },
     });
+    console.log(`reply from GitHub received: ${response.data} `)
+
      const parsedData = Papa.parse(response.data, {header : true});
      return parsedData
   } catch (error) {
@@ -68,6 +72,7 @@ export const useEventsStore = defineStore('data', {
         const eventsFromGitHub = await fetchData()
         // overwrite locally defined eventData with the events fetched from GitHub
         if (eventsFromGitHub)
+           console.log(`apply events read from GitHub`)
            this.eventData = eventsFromGitHub
 
         this.locationData = locationRecords
