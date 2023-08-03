@@ -15,6 +15,7 @@ import locationRecords from '@/assets/locations.csv';
 
 
 const replaceUrlsWithLinks = (text) => {
+  if (text) {
   // Regular expression to match URLs starting with http:// or https://
   const urlRegex = /(https?:\/\/\S+)/gi;
 
@@ -24,9 +25,11 @@ const replaceUrlsWithLinks = (text) => {
   });
 
   return replacedText;
+  } else return text
 }
 
 const replaceNewlinesWithBrTags = (text) => {
+  if (text){
   // Regular expression to match newline characters (both Unix and Windows style)
   const newlineRegex = /(\r\n|\r|\n)/g;
 
@@ -34,6 +37,8 @@ const replaceNewlinesWithBrTags = (text) => {
   const replacedText = text.replace(newlineRegex, "<br />");
 
   return replacedText;
+  }
+  else return text
 }
 
 const EVENTS_CSV_FILE = 'https://api.github.com/repos/lucasjellema/vue-event-agenda-prototype/contents/src/assets/knowledge-events.csv'
@@ -79,17 +84,19 @@ export const useEventsStore = defineStore('data', {
 
         // post process eventRecords
         let i = 0
-        for (const rec of eventRecords) {
-          rec.id = i++
-          rec.tags = rec.tags.toLowerCase()
-          rec.tagList = rec.tags.split(",")
+        for (const rec of eventsFromGitHub.data) {
+          rec.id = i++          
+          if (rec.tags)  rec.tags = rec.tags.toLowerCase()
+          if (rec.tagList) rec.tagList = rec.tags.split(",")
           // rec.datum has format: dd-mm-yy
+          if (rec.datum) {
           let dateParts = rec.datum.split("-")
           try {
             rec.eventDate = new Date("20" + dateParts[2], dateParts[1] - 1, dateParts[0]);
           } catch (e) {
             rec.eventDate = null
           }
+        } else rec.eventDate = null
           rec.omschrijving = replaceNewlinesWithBrTags(replaceUrlsWithLinks(rec.omschrijving))
 
           // if rec.registratie contains a link (https:// or http://) then replace the link with its HTML counterpart: <a href="link" target="_new">link<</a>
@@ -99,21 +106,13 @@ export const useEventsStore = defineStore('data', {
           // if rec.locatie contains a link (https:// or http://) then replace the link with its HTML counterpart: <a href="link" target="_new">link<</a>
           rec.locatie = replaceNewlinesWithBrTags(replaceUrlsWithLinks(rec.locatie))
           // if the name of a known location appears in locatie then assign that location
+          if (rec.locatie) { 
           rec.location = this.locationData.filter( (value) =>  rec.locatie.toLowerCase().indexOf(  value.naam.toLowerCase() )>-1)
+          }
         }
-        this.eventData = eventRecords
+        // filter events that have no omschrijving - this can happen with empty rows/closing newline characters in the CSV document
+        this.eventData = eventsFromGitHub.data.filter ((event) => event.omschrijving)
         this.initialized = true
-      }
-      try {
-        // Papa.parse(CSV_DATA, {
-        //   complete: (results) => {
-        //     this.csvData = results.data;
-        //     this.loading = false;
-        //   },
-        //   header: true, // Set to true if your CSV file has headers
-        // });
-      } finally {
-        this.loading = false;
       }
     },
     sortEvents(sortKey, sortOrder) {
