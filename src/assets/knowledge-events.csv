@@ -1,5 +1,6 @@
 titel,datum,tijd,omschrijving,tags,sprekers,scope,contactpersoon,hybride,locatie,digitale link,registratie,bedrijf,sessieserie,doelgroep,voorbereiding,taal,materialen,starttijd,eindtijd,logo
-How to develop rich web applications using Vue 3 - for anyone without web development experience,22-08-23,17.00-20.30 uur,"via the event website https://code-cafe-intro-vue3-web-apps.conclusionevents.nl/
+KUBECON + CLOUDNATIVECON Europe 2024,19-03-24,08:30,KubeCon & CloudNativeCon 2024,"cncf,kubernetes,container,observability,ebpf",many,public,https://events.linuxfoundation.org/kubecon-cloudnativecon-europe-2024/,FALSE,EXPO PORTE DE VERSAILLES,,https://events.linuxfoundation.org/kubecon-cloudnativecon-europe-2024/,CNCF,KubeCon,"developers,platform engineers",,Engels,,08:30,21:00,
+How to develop rich web applications using Vue 3 - for anyone with no web development experience,22-08-23,17.00-20.30 uur,"Registration: via the event website code-cafe-intro-vue3-web-apps.conclusionevents.nl/
 
 In this session I would like to show you how you can easily and quickly create quite rich web applications with Vue 3 – without having to study complex concepts or understand many technical details. I have only recently learned how to work with Vue 3 myself and now is the best time for me to share my learning experience (and my enthusiasm) with you. I know what I found essential to understand and what most got me excited in these early steps (what was a little bit hard to grasp). I believe that I can present my steps and guide you to experience the same fun and have a similarly gratifying experience. I am not an expert in this subject – I have barely learned how to walk and that is why I can help you with these first steps with Vue. 
 
@@ -195,7 +196,7 @@ Hier staat ook een readme in hoe je de modellen kan draaien op de eigen computer
 
 Slides Home Automation: https://conclusionfutureit.sharepoint.com/:p:/r/sites/CS-Conclusion-Conclusion-Code-Caf/Gedeelde%20documenten/General/20230530-HomeAutomation-CO2uitstoot-thuiswerkplek-Roel_Gloudemans.pptx?d=w9c9563d1593848d78ba909863065e477&csf=1&web=1&e=5JADuf 
  ",17:00,20:30,conclusion
-Microsoft Inspire Conference 2023,18-07-23,17.30-23.00,"185 sessions 
+Microsoft Inspire 2023,18-07-23,17.30-23.00,"185 sessions 
 
 Unlock all the event has to offer, including keynotes and discussions led by Microsoft senior leaders on generative AI and other trending topics, dedicated time to connect with experts and your community, and solutions to help you take your business to the next level.
 
