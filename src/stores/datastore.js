@@ -1,5 +1,6 @@
 import { defineStore } from 'pinia';
-//import Papa from 'papaparse';
+import axios from 'axios';
+import Papa from 'papaparse';
 
 // load CSV data from the file in the assets directory; turn the data into a JSON object array; the names of the object properties are derived from the column headers (first row in CSV file) 
 import eventRecords from '@/assets/knowledge-events.csv';
@@ -36,6 +37,23 @@ const replaceNewlinesWithBrTags = (text) => {
 }
 
 
+const  fetchData = async () => {
+  try {
+      const response = await axios.get('https://api.github.com/repos/lucasjellema/vue-event-agenda-prototype/contents/src/assets/knowledge-events.csv', {
+    
+      headers: {
+        Accept: 'application/vnd.github.v3.raw', // Request raw content
+      },
+    });
+     const parsedData = Papa.parse(response.data, {header : true});
+     return parsedData
+  } catch (error) {
+    console.error('Error fetching CSV data:', error);
+    return null
+  }
+}
+
+
 export const useEventsStore = defineStore('data', {
   state: () => ({
     count: 0,
@@ -46,6 +64,12 @@ export const useEventsStore = defineStore('data', {
   actions: {
     async parseCSVData() {
       if (!this.initialized) {
+        
+        const eventsFromGitHub = await fetchData()
+        // overwrite locally defined eventData with the events fetched from GitHub
+        if (eventsFromGitHub)
+           this.eventData = eventsFromGitHub
+
         this.locationData = locationRecords
 
         // post process eventRecords
