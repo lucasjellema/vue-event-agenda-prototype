@@ -1,0 +1,6 @@
+tls:
+  stores:
+    default:
+      defaultCertificate:
+        certFile: /certificates/_wildcard.vue-event-calendar.localhost.pem
+        keyFile: /certificates/_wildcard.vue-event-calendar.localhost-key.pem
