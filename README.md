@@ -1,10 +1,12 @@
 # Event Calendar App
 
+
 ## Getting Started
 
-#### Prerequisites
 
+### Prerequisites
 - [Docker](https://docs.docker.com/install/)
+- [Mkcert](https://github.com/FiloSottile/mkcert)
 
 ### Clone the repository
 
@@ -12,7 +14,18 @@
 $ git clone git@github.com:lucasjellema/vue-event-agenda-prototype.git
 ```
 
-### Running the application locally
+### Generate development certificates
+Generate a certificate for `*.vue-event-calendar.localhost` using mkcert and
+place the certificate and key in the `docker/traefik/rootFS/certificates` folder.
+
+```bash
+$ mkcert "*.vue-event-calendar.localhost"
+```
+
+**Important:** Make sure to install the mkcert root certificate on your system. 
+
+### Starting the docker services
+
 
 #### On Ubuntu
 
@@ -20,10 +33,7 @@ $ git clone git@github.com:lucasjellema/vue-event-agenda-prototype.git
 $ docker compose up -d
 ```
 
-#### On Windows
 
-```bash
-```
 
 ## About the repository
 
