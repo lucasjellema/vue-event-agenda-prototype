@@ -38,3 +38,4 @@ app.component('Tag', Tag);
 const pinia = createPinia();
 app.use(pinia).mount('#app');
 
+console.log(123);

@@ -1,0 +1,40 @@
+version: "4.0"
+
+networks:
+  vue_event_agenda_network:
+
+services:
+
+  # Traefik Edge Router
+  # ----------------------------------------
+  #
+  traefik:
+    container_name: "vue_event_agenda_traefik"
+    image: "traefik:v2.10"
+    ports:
+      - "80:80"
+      - "443:443"
+      - "8080:8080"
+    networks:
+      - vue_event_agenda_network
+    volumes:
+      - "/var/run/docker.sock:/var/run/docker.sock:ro"
+      - "./docker/traefik/rootFS/etc/traefik/traefik.yaml:/etc/traefik/traefik.yaml:ro"
+      - "./docker/traefik/rootFS/traefik:/traefik:ro"
+      - "./docker/traefik/rootFS/certificates:/certificates:ro"
+
+  # Vue development server
+  # ----------------------------------------
+  #
+  vue:
+    container_name: "vue_event_agenda_vue"
+    build:
+      context: .
+      dockerfile: ./services/frontend/Dockerfile
+      target: dev-stage
+    expose:
+      - "5173"
+    networks:
+      - vue_event_agenda_network
+    volumes:
+      - "./services/frontend:/app"
