@@ -1,0 +1,11 @@
+http:
+  routers:
+    Router-1:
+      rule: "Host(`www.vue-event-calendar.localhost`) || Host(`vue-event-calendar.localhost`)"
+      service: service-id
+      tls: {}
+  services:
+    service-id:
+      loadBalancer:
+        servers:
+          - url: "http://vue_event_agenda_vue:5173"

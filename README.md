@@ -1,52 +1,69 @@
-# event-calendar
+# Event Calendar App
 
-This template should help get you started developing with Vue 3 in Vite.
 
-## Recommended IDE Setup
+## Getting Started
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
 
-## Type Support for `.vue` Imports in TS
+### Prerequisites
 
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin) to make the TypeScript language service aware of `.vue` types.
+#### Using NPM
+- [NodeJS](https://nodejs.org/en/download/)
+- [NPM](https://www.npmjs.com/get-npm)
 
-If the standalone TypeScript plugin doesn't feel fast enough to you, Volar has also implemented a [Take Over Mode](https://github.com/johnsoncodehk/volar/discussions/471#discussioncomment-1361669) that is more performant. You can enable it by the following steps:
+#### Using docker
+- [Docker](https://docs.docker.com/install/)
+- [Mkcert](https://github.com/FiloSottile/mkcert) (Optional; for generating development certificates)
 
-1. Disable the built-in TypeScript Extension
-    1) Run `Extensions: Show Built-in Extensions` from VSCode's command palette
-    2) Find `TypeScript and JavaScript Language Features`, right click and select `Disable (Workspace)`
-2. Reload the VSCode window by running `Developer: Reload Window` from the command palette.
+### Clone the repository
 
-## Customize configuration
-
-See [Vite Configuration Reference](https://vitejs.dev/config/).
-
-## Project Setup
-
-```sh
-npm install
+```bash
+$ git clone git@github.com:lucasjellema/vue-event-agenda-prototype.git
 ```
 
-### Compile and Hot-Reload for Development
+### Starting with NPM
+To start the application with NPM you need to 
+navigate to the `services/frontend` folder and run the following commands:
 
-```sh
-npm run dev
+```bash
+$ npm install
+$ npm run dev
 ```
 
-### Type-Check, Compile and Minify for Production
 
-```sh
-npm run build
+### Starting with Docker Compose (Ubuntu)
+
+#### Generate development certificates
+Generate a certificate for `*.vue-event-calendar.localhost` using mkcert and
+place the certificate and key in the `docker/traefik/rootFS/certificates` folder.
+
+```bash
+$ mkcert "*.vue-event-calendar.localhost"
 ```
 
-### Run Unit Tests with [Vitest](https://vitest.dev/)
+**Important:** Make sure to install the mkcert root certificate on your system.
 
-```sh
-npm run test:unit
+
+#### Starting the application
+
+```bash
+$ docker compose up -d
 ```
 
-### Lint with [ESLint](https://eslint.org/)
+#### Stopping the application
 
-```sh
-npm run lint
+```bash
+$ docker compose down
 ```
+
+
+## About the repository
+
+### Directory Structure
+
+| Directory  | Description                                                                             |
+|------------|-----------------------------------------------------------------------------------------|
+| `docker`   | The docker folder contains files relating to docker services.                           |
+| `services` | The services folder contains folders representing a certain service of the application. |
+| `shared`   | The shared folder contains files that is shared across multiple services.               |
+
+
