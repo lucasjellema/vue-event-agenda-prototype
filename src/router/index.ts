@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 import CalendarView from '../views/CalendarView.vue'
 import EventListView from '../views/EventListView.vue'
+import EditEventDetails from '../components/EditEventDetails.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -26,7 +27,11 @@ const router = createRouter({
       name: 'list',
       component: EventListView
     },
-  ]
+    {
+      path: '/editEvent',
+      name: 'editEvent',
+      component: EditEventDetails
+    },]
 })
 
 export default router

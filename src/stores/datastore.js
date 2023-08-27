@@ -1,6 +1,7 @@
 import { defineStore } from 'pinia';
 import axios from 'axios';
 import Papa from 'papaparse';
+import { ref } from 'vue'
 
 // load CSV data from the file in the assets directory; turn the data into a JSON object array; the names of the object properties are derived from the column headers (first row in CSV file) 
 import eventRecords from '@/assets/knowledge-events.csv';
@@ -69,6 +70,7 @@ export const useEventsStore = defineStore('data', {
     eventData: [],
     locationData : [],
     initialized: false,
+    eventBeingEdited : ref({})
   }),
   actions: {
     async parseCSVData() {
@@ -123,6 +125,20 @@ export const useEventsStore = defineStore('data', {
           return b[sortKey] > a[sortKey] ? -1 : 1;
         }
       });
+    },
+    setupEventForEditing(eventIdToEdit) {
+      // find event
+      const event = this.eventData.find((event) => event.id == eventIdToEdit )
+      // TODO check for event not found
+      // clone event and set clone as the event being edited
+      this.eventBeingEdited =   ref({ ...event });
+    },
+    saveChangesInCurrentlyEditedEvent() {
+      const event = this.eventData.find((event) => event.id == this.eventBeingEdited.id )
+      // update event with properties from eventBeingEdited
+      Object.assign(event, this.eventBeingEdited);
+      // at this point, the collection this.eventData is updated with the new event details and these are shown in Calendar and List
     }
+
   },
 });

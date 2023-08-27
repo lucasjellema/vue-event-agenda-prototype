@@ -1,6 +1,8 @@
 <template>
   <div>
-    <button @click="goEdit">Edit Event Details</button>
+    <h2>Edit Event</h2>
+    <Button  label="Submit" @click="submitChanges()" />
+    <InputText type="text" v-model="event.titel" size="large"  />
     <div class="field">
       <p>
         <img v-if="event.logo != ''" :src="getLogoUrl(event.logo)" height="100" />
@@ -76,17 +78,19 @@
 <script setup>
 import ConclusionIcon from "./ConclusionIcon.vue";
 import IconGlobe from "./icons/Globe.vue";
+import InputText from 'primevue/inputtext';
 import { ref } from 'vue'
-import { useRouter } from 'vue-router';
+import { defineProps } from 'vue';
 import { useEventsStore } from '../stores/datastore';
+import Button from 'primevue/button';
 
-const router = useRouter();
+const store = useEventsStore();
+
+const event = store.eventBeingEdited
 
 const locationModalVisible = ref(false)
 
-const props = defineProps(['event'])
-
-const store = useEventsStore();
+// event is current event from state store ??
 
 function getLogoUrl(company) {
   return new URL(`../assets/company-icons/${company}.jpg`, import.meta.url).href
@@ -96,12 +100,11 @@ function getLocationHTMLUrl(location) {
   return new URL(`../assets/locations/${location}.html`, import.meta.url).href
 }
 
-function goEdit() {
-  // invoke on store
-  const event = props.event
-  store.setupEventForEditing(event.id)
-  router.push({ name: 'editEvent' });
+function submitChanges() {
+  // call store action to update the event
+  store.saveChangesInCurrentlyEditedEvent()      
 }
+
 
 </script>
 
