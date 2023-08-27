@@ -1,13 +1,20 @@
 <template>
   <div>
+    <Button label="Submit" @click="submitChanges()" />
     <h2>Edit Event</h2>
-    <Button  label="Submit" @click="submitChanges()" />
-    <InputText type="text" v-model="event.titel" size="large"  />
+
+    <div class="flex flex-column gap-2">
+      <label for="titel">{{ $t('eventDetails.titel') }}</label>
+      <InputText id="titel" type="text" v-model="event.titel" class="wider-input" aria-describedby="titel-help" />
+      <small id="titel-help">{{ $t('eventDetails.titel-help') }}</small>
+    </div>
     <div class="field">
       <p>
         <img v-if="event.logo != ''" :src="getLogoUrl(event.logo)" height="100" />
       </p>
     </div>
+    <InputText type="text" v-model="event.logo" class="wider-input" />
+    <!-- todo show list of Conclusion companies ; allow external image to be used as logo? -->
     <div class="field"><i>{{ $t('eventDetails.speakers') }}: {{ event.sprekers }}</i></div>
     <div class="field"><i>{{ $t('eventDetails.dateTime') }}: {{ event.starttijd }} - {{ event.eindtijd }} uur</i></div>
     <div class="field">
@@ -102,10 +109,21 @@ function getLocationHTMLUrl(location) {
 
 function submitChanges() {
   // call store action to update the event
-  store.saveChangesInCurrentlyEditedEvent()      
+  store.saveChangesInCurrentlyEditedEvent()
 }
 
 
 </script>
+<style>
+:root {
+  --input-width: 800px;
+}
+
+.wider-input {
+  width: var(--input-width);
+}
+</style>
+
+<input type="text" class="wider-input">
 
 
