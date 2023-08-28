@@ -19,6 +19,7 @@
     <div class="field"><i>{{ $t('eventDetails.dateTime') }}: {{ event.starttijd }} - {{ event.eindtijd }} uur</i></div>
     <div class="field">
       <p><span v-html="event.omschrijving"></span></p>
+      <QuillEditor theme="snow" contentType="html" v-model:content="event.omschrijving" toolbar="full" />
     </div>
     <div class="field">
       <p>
@@ -43,7 +44,7 @@
     <div class="field" v-if="event.locatie != '' && event.locatie.length > 0">
       <p>
       <h5>{{ $t('eventDetails.location') }}:</h5> {{ event.locatie }}
-      <Button v-if="event.location.length > 0" label="Show Location Details" icon="pi pi-external-link"
+      <Button v-if="event.locatie != '' && event.location.length > 0" label="Show Location Details" icon="pi pi-external-link"
         @click="locationModalVisible = true" />
       </p>
     </div>
@@ -123,7 +124,4 @@ function submitChanges() {
   width: var(--input-width);
 }
 </style>
-
-<input type="text" class="wider-input">
-
 

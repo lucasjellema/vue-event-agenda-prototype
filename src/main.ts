@@ -14,7 +14,9 @@ import InputSwitch from 'primevue/inputswitch';
 import InputText from 'primevue/inputtext';
 import Dialog from 'primevue/dialog';
 import Tag from 'primevue/tag';
-
+import Panel from 'primevue/panel';
+import { QuillEditor } from '@vueup/vue-quill';
+import '@vueup/vue-quill/dist/vue-quill.snow.css';
 import App from './App.vue'
 import i18n from './plugins/i18n'
 
@@ -33,6 +35,7 @@ app.component('InputSwitch', InputSwitch);
 app.component('InputText', InputText);
 app.component('Dialog', Dialog);
 app.component('Tag', Tag);
+app.component('QuillEditor', QuillEditor);
 
 
 const pinia = createPinia();
