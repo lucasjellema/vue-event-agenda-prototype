@@ -12,6 +12,7 @@ import DataTable from 'primevue/datatable';
 import Column from 'primevue/column';
 import InputSwitch from 'primevue/inputswitch';
 import InputText from 'primevue/inputtext';
+import Panel from 'primevue/panel';
 import Dialog from 'primevue/dialog';
 import Tag from 'primevue/tag';
 import { QuillEditor } from '@vueup/vue-quill';
@@ -34,6 +35,7 @@ app.component('InputSwitch', InputSwitch);
 app.component('InputText', InputText);
 app.component('Dialog', Dialog);
 app.component('Tag', Tag);
+app.component('Panel', Panel);
 app.component('QuillEditor', QuillEditor);
 
 const pinia = createPinia();
