@@ -41,7 +41,7 @@
   
         </p>
       </div>
-      <div class="field" v-if="event.locatie != '' && event.locatie.length > 0">
+      <div class="field" v-if="!(typeof event.locatie === 'undefined') && event.locatie != '' && event.locatie.length > 0">
         <p>
         <h5>{{ $t('eventDetails.location') }}:</h5> {{ event.locatie }}
         <Button v-if="event.locatie != '' && event.location.length > 0" label="Show Location Details"

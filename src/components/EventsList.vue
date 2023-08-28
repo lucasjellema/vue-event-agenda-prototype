@@ -17,6 +17,7 @@
           <div>{{ $t('eventList.futureEventsToggle') }}</div>
           <InputSwitch v-model="futureEventsOnlyChecked" />
           <InputText v-model="filters['global'].value" :placeholder="$t('eventList.keywordSearch')" />
+          <!-- <button @click="goAddAndEdit">Add Event</button> -->
         </div>
       </template>
       <Column :expander="true" headerStyle="width: 3rem" />
@@ -98,6 +99,10 @@ import { FilterMatchMode, FilterOperator } from "primevue/api";
 
 import { ref, computed } from 'vue'
 import { storeToRefs } from 'pinia'
+import { useRouter } from 'vue-router';
+
+const router = useRouter();
+
 
 
 const today = new Date()
@@ -140,8 +145,9 @@ function openDetails(event) {
 }
 
 function formatDate(theDate) {
+  if (typeof theDate === "undefined") return ''
   var options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
-  return theDate.toLocaleDateString("nl-NL", options);
+  return theDate!=''?theDate.toLocaleDateString("nl-NL", options):'';
 }
 
 function getLogoUrl(company) {
@@ -153,5 +159,8 @@ store.parseCSVData()
 store.sortEvents('datum', 'desc');
 const { eventData } = storeToRefs(useEventsStore())
 
-
+function goAddAndEdit() {
+  store.addEVent()
+  router.push({ name: 'editEvent' });
+}
 </script>

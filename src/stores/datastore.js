@@ -2,6 +2,7 @@ import { defineStore } from 'pinia';
 import axios from 'axios';
 import Papa from 'papaparse';
 import { ref } from 'vue';
+import { v4 as uuidv4 } from 'uuid';
 
 // load CSV data from the file in the assets directory; turn the data into a JSON object array; the names of the object properties are derived from the column headers (first row in CSV file) 
 import eventRecords from '@/assets/knowledge-events.csv';
@@ -17,46 +18,46 @@ import locationRecords from '@/assets/locations.csv';
 
 const replaceUrlsWithLinks = (text) => {
   if (text) {
-  // Regular expression to match URLs starting with http:// or https://
-  const urlRegex = /(https?:\/\/\S+)/gi;
+    // Regular expression to match URLs starting with http:// or https://
+    const urlRegex = /(https?:\/\/\S+)/gi;
 
-  // Replace URLs with anchor tags
-  const replacedText = text.replace(urlRegex, (url) => {
-    return `<a href="${url}" target="_blank">link</a>`;
-  });
+    // Replace URLs with anchor tags
+    const replacedText = text.replace(urlRegex, (url) => {
+      return `<a href="${url}" target="_blank">link</a>`;
+    });
 
-  return replacedText;
+    return replacedText;
   } else return text
 }
 
 const replaceNewlinesWithBrTags = (text) => {
-  if (text){
-  // Regular expression to match newline characters (both Unix and Windows style)
-  const newlineRegex = /(\r\n|\r|\n)/g;
+  if (text) {
+    // Regular expression to match newline characters (both Unix and Windows style)
+    const newlineRegex = /(\r\n|\r|\n)/g;
 
-  // Replace newlines with <br /> tags
-  const replacedText = text.replace(newlineRegex, "<br />");
+    // Replace newlines with <br /> tags
+    const replacedText = text.replace(newlineRegex, "<br />");
 
-  return replacedText;
+    return replacedText;
   }
   else return text
 }
 
 const EVENTS_CSV_FILE = 'https://api.github.com/repos/lucasjellema/vue-event-agenda-prototype/contents/src/assets/knowledge-events.csv'
 
-const  fetchData = async () => {
+const fetchData = async () => {
   console.log(`fetch csv from github`)
   try {
-      const response = await axios.get(EVENTS_CSV_FILE, {
-    
+    const response = await axios.get(EVENTS_CSV_FILE, {
+
       headers: {
         Accept: 'application/vnd.github.v3.raw', // Request raw content
       },
     });
     console.log(`reply from GitHub received: ${response.data} `)
 
-     const parsedData = Papa.parse(response.data, {header : true});
-     return parsedData
+    const parsedData = Papa.parse(response.data, { header: true });
+    return parsedData
   } catch (error) {
     console.error('Error fetching CSV data:', error);
     return null
@@ -68,37 +69,38 @@ export const useEventsStore = defineStore('data', {
   state: () => ({
     count: 0,
     eventData: [],
-    locationData : [],
+    locationData: [],
     initialized: false,
-    eventBeingEdited : ref({})
+    eventBeingEdited: ref({})
   }),
   actions: {
     async parseCSVData() {
       if (!this.initialized) {
-        
+
         const eventsFromGitHub = await fetchData()
         // overwrite locally defined eventData with the events fetched from GitHub
         if (eventsFromGitHub)
-           console.log(`apply events read from GitHub`)
-           this.eventData = eventsFromGitHub
+          console.log(`apply events read from GitHub`)
+        this.eventData = eventsFromGitHub
 
         this.locationData = locationRecords
 
         // post process eventRecords
         let i = 0
         for (const rec of eventsFromGitHub.data) {
-          rec.id = i++          
-          if (rec.tags)  rec.tags = rec.tags.toLowerCase()
+          //rec.id = i++
+          rec.id = uuidv4()
+          if (rec.tags) rec.tags = rec.tags.toLowerCase()
           if (rec.tagList) rec.tagList = rec.tags.split(",")
           // rec.datum has format: dd-mm-yy
           if (rec.datum) {
-          let dateParts = rec.datum.split("-")
-          try {
-            rec.eventDate = new Date("20" + dateParts[2], dateParts[1] - 1, dateParts[0]);
-          } catch (e) {
-            rec.eventDate = null
-          }
-        } else rec.eventDate = null
+            let dateParts = rec.datum.split("-")
+            try {
+              rec.eventDate = new Date("20" + dateParts[2], dateParts[1] - 1, dateParts[0]);
+            } catch (e) {
+              rec.eventDate = null
+            }
+          } else rec.eventDate = null
           rec.omschrijving = replaceNewlinesWithBrTags(replaceUrlsWithLinks(rec.omschrijving))
 
           // if rec.registratie contains a link (https:// or http://) then replace the link with its HTML counterpart: <a href="link" target="_new">link<</a>
@@ -108,12 +110,12 @@ export const useEventsStore = defineStore('data', {
           // if rec.locatie contains a link (https:// or http://) then replace the link with its HTML counterpart: <a href="link" target="_new">link<</a>
           rec.locatie = replaceNewlinesWithBrTags(replaceUrlsWithLinks(rec.locatie))
           // if the name of a known location appears in locatie then assign that location
-          if (rec.locatie) { 
-          rec.location = this.locationData.filter( (value) =>  rec.locatie.toLowerCase().indexOf(  value.naam.toLowerCase() )>-1)
+          if (rec.locatie) {
+            rec.location = this.locationData.filter((value) => rec.locatie.toLowerCase().indexOf(value.naam.toLowerCase()) > -1)
           }
         }
         // filter events that have no omschrijving - this can happen with empty rows/closing newline characters in the CSV document
-        this.eventData = eventsFromGitHub.data.filter ((event) => event.omschrijving)
+        this.eventData = eventsFromGitHub.data.filter((event) => event.omschrijving)
         this.initialized = true
       }
     },
@@ -128,16 +130,21 @@ export const useEventsStore = defineStore('data', {
     },
     setupEventForEditing(eventIdToEdit) {
       // find event
-      const event = this.eventData.find((event) => event.id == eventIdToEdit )
+      const event = this.eventData.find((event) => event.id == eventIdToEdit)
       // TODO check for event not found
       // clone event and set clone as the event being edited
-      this.eventBeingEdited =   ref({ ...event });
+      this.eventBeingEdited = ref({ ...event });
     },
     saveChangesInCurrentlyEditedEvent() {
-      const event = this.eventData.find((event) => event.id == this.eventBeingEdited.id )
+      const event = this.eventData.find((event) => event.id == this.eventBeingEdited.id)
       // update event with properties from eventBeingEdited
       Object.assign(event, this.eventBeingEdited);
       // at this point, the collection this.eventData is updated with the new event details and these are shown in Calendar and List
+    },
+    addEVent() {
+      const newEvent = { id: uuidv4(), titel: "New Event" ,eventDate : new Date(), doelgroep:"", locatie:"",scope:"", voorbereiding:"", materialen:"", location:"", starttijd:"17:00", eindtijd:"18:00"}
+      this.eventData.push(newEvent)
+      this.setupEventForEditing(newEvent.id)
     }
   },
 });

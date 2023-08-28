@@ -189,3 +189,32 @@ in <template>:
   <QuillEditor theme="snow" contentType="html" v-model:content="content" toolbar="full"/>
   <p>Text literal: {{content}}</p>
   <p v-html="content"></p>
+
+## assign GUID to  events (new and all existing events)
+
+npm install uuid
+
+import { v4 as uuidv4 } from 'uuid';
+let id =uuidv4();
+
+
+## create new event
+
+in datastore.js
+
+    addEVent() {
+      const newEvent = { id: uuidv4(), titel: "New Event" ,eventDate : new Date(), doelgroep:"", locatie:"",scope:"", voorbereiding:"", materialen:"", location:"", starttijd:"17:00", eindtijd:"18:00"}
+      this.eventData.push(newEvent)
+      this.setupEventForEditing(newEvent.id)
+    }
+
+invoked from EventsList.vue
+
+function goAddAndEdit() {
+  store.addEVent()
+  router.push({ name: 'editEvent' });
+}
+
+and
+
+ <button @click="goAddAndEdit">Add Event</button>
