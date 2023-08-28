@@ -35,6 +35,7 @@ app.component('InputSwitch', InputSwitch);
 app.component('InputText', InputText);
 app.component('Dialog', Dialog);
 app.component('Tag', Tag);
+app.component('Panel', Panel);
 app.component('QuillEditor', QuillEditor);
 
 

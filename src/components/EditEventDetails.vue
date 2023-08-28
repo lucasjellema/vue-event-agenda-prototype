@@ -19,7 +19,10 @@
     <div class="field"><i>{{ $t('eventDetails.dateTime') }}: {{ event.starttijd }} - {{ event.eindtijd }} uur</i></div>
     <div class="field">
       <p><span v-html="event.omschrijving"></span></p>
-      <QuillEditor theme="snow" contentType="html" v-model:content="event.omschrijving" toolbar="full" />
+      <Panel :header="$t('eventDetails.editOmschrijving')" toggleable collapsed="true">
+        <QuillEditor theme="snow" contentType="html" v-model:content="event.omschrijving" toolbar="full" />
+</Panel>
+      
     </div>
     <div class="field">
       <p>
