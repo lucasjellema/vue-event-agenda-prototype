@@ -1,5 +1,6 @@
 <template>
   <div>
+<!-- <button @click="goEdit">Edit Event Details</button>-->
     <div class="field">
       <p>
         <img v-if="event.logo != ''" :src="getLogoUrl(event.logo)" height="100" />
@@ -69,10 +70,14 @@
 import ConclusionIcon from "./ConclusionIcon.vue";
 import IconGlobe from "./icons/Globe.vue";
 import { ref } from 'vue'
+import { useRouter } from 'vue-router';
+import { useEventsStore } from '../stores/datastore';
 
+const router = useRouter();
+const store = useEventsStore();
 const locationModalVisible = ref(false)
 
-defineProps(['event'])
+const props = defineProps(['event'])
 
 function getLogoUrl(company) {
   return new URL(`../assets/company-icons/${company}.jpg`, import.meta.url).href
@@ -80,6 +85,13 @@ function getLogoUrl(company) {
 
 function getLocationHTMLUrl(location) {
   return new URL(`../assets/locations/${location}.html`, import.meta.url).href
+}
+
+function goEdit() {
+  // invoke on store
+  const event = props.event
+  store.setupEventForEditing(event.id)
+  router.push({ name: 'editEvent' });
 }
 
 </script>
