@@ -23,15 +23,19 @@ eventDetails:
   dateTime: Date/Time
   targetAudience: Target Audience
   preparation: Preparation & Prerequisites
+  titel: Title
+  titel-help: Please enter the title for the event - as shown in the list and on the calendar
+  sprekers: Sprekers
+  sprekers-help: Please enter the names of the speakers for this session (separated by commas)
 eventList:
   title: Title
   date: Date
   location: Location
-  access:  Access
+  access: Access
   company: Company
-  tags: Tags 
+  tags: Tags
   futureEventsToggle: Only Future Events?
   collapseAll: Collapse All
   expandAll: Expand All
   details: Details
-  keywordSearch: Keyword Search  
+  keywordSearch: Keyword Search

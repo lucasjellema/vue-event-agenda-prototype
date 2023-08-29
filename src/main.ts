@@ -15,6 +15,7 @@ import InputText from 'primevue/inputtext';
 import Panel from 'primevue/panel';
 import Dialog from 'primevue/dialog';
 import Tag from 'primevue/tag';
+import Dropdown from 'primevue/dropdown';
 import { QuillEditor } from '@vueup/vue-quill';
 import '@vueup/vue-quill/dist/vue-quill.snow.css';
 import App from './App.vue'
@@ -36,6 +37,8 @@ app.component('InputText', InputText);
 app.component('Dialog', Dialog);
 app.component('Tag', Tag);
 app.component('Panel', Panel);
+app.component('Dropdown', Dropdown);
+
 app.component('QuillEditor', QuillEditor);
 
 const pinia = createPinia();

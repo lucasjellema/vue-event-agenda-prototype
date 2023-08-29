@@ -77,6 +77,9 @@ function onEventClick(event, e) {
 }
 
 function getLogoUrl(company) {
+  if (!(typeof company === "undefined") && (company != '') && (company.indexOf('http') == 0)) {
+    return company
+  }
   return new URL(`../assets/company-icons/${company}.jpg`, import.meta.url).href
 }
 

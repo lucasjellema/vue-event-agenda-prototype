@@ -4,20 +4,35 @@
     <h2>Edit Event</h2>
 
     <div class="flex flex-column gap-2">
-      <Panel :header="$t('eventDetails.titel')+' : '+ event.titel" toggleable collapsed="true">
+      <Panel :header="$t('eventDetails.titel') + ' : ' + event.titel" toggleable collapsed="true">
         <InputText id="titel" type="text" v-model="event.titel" class="wider-input" aria-describedby="titel-help" />
         <small id="titel-help">{{ $t('eventDetails.titel-help') }}</small>
       </Panel>
+    </div>
+    <div class="flex flex-column gap-2">
+      <Panel toggleable collapsed="true">
+        <Dropdown v-model="event.logo" editable :options="logos" optionValue="code" optionLabel="name"
+          placeholder="Select a Company logo" class="w-full md:w-14rem" />
+        <small id="logo-help">{{ $t('eventDetails.logo-help') }}</small>
+        <!-- todo show list of Conclusion companies ; allow external image to be used as logo? -->
+        <template #header>
+          {{ $t('eventDetails.logo') }}
+          <img v-if="event.logo != ''" :src="getLogoUrl(event.logo)" height="100" />
+        </template>
+      </Panel>
+    </div>
 
+
+
+    <div class="flex flex-column gap-2">
+      <Panel :header="$t('eventDetails.speakers') + ' : ' + event.sprekers" toggleable collapsed="true">
+        <InputText id="sprekers" type="text" v-model="event.sprekers" class="wider-input"
+          aria-describedby="sprekers-help" />
+        <small id="sprekers-help">{{ $t('eventDetails.sprekers-help') }}</small>
+      </Panel>
     </div>
-    <div class="field">
-      <p>
-        <img v-if="event.logo != ''" :src="getLogoUrl(event.logo)" height="100" />
-      </p>
-    </div>
-    <InputText type="text" v-model="event.logo" class="wider-input" />
-    <!-- todo show list of Conclusion companies ; allow external image to be used as logo? -->
-    <div class="field"><i>{{ $t('eventDetails.speakers') }}: {{ event.sprekers }}</i></div>
+
+
     <div class="field"><i>{{ $t('eventDetails.dateTime') }}: {{ event.starttijd }} - {{ event.eindtijd }} uur</i></div>
     <div class="field">
       <p><span v-html="event.omschrijving"></span></p>
@@ -100,9 +115,25 @@ const event = store.eventBeingEdited
 
 const locationModalVisible = ref(false)
 
+const logos = [
+  { name: 'AMIS', code: 'amis' },
+  { name: 'Xforce', code: 'xforce' },
+  { name: 'Conclusion', code: 'conclusion' },
+  { name: '4NG', code: '4ng' },
+  { name: 'Enablement', code: 'enablement' },
+  { name: 'myBrand', code: 'mybrand' },
+  { name: 'Mediaan', code: 'mediaan' },
+  { name: 'First8', code: 'first8' },
+  { name: 'KWD', code: 'kwd' },
+  { name: 'Furore', code: 'furore' }
+];
+
 // event is current event from state store ??
 
 function getLogoUrl(company) {
+  if (!(typeof company === "undefined") && (company != '') && (company.indexOf('http') == 0)) {
+    return company
+  }
   return new URL(`../assets/company-icons/${company}.jpg`, import.meta.url).href
 }
 

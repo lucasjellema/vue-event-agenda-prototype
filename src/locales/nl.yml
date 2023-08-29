@@ -15,6 +15,7 @@ eventDetails:
   dateTime: Datum/Tijd
   targetAudience: Doelgroep
   preparation: Voorbereiding & Benodigdheden
+  titel: Titel
 eventList:
   title: Titel
   date: Datum
