@@ -17,7 +17,8 @@
           <div>{{ $t('eventList.futureEventsToggle') }}</div>
           <InputSwitch v-model="futureEventsOnlyChecked" />
           <InputText v-model="filters['global'].value" :placeholder="$t('eventList.keywordSearch')" />
-          <!-- <button @click="goAddAndEdit">Add Event</button> -->
+          <!-- <button @click="goAddAndEdit">Add Event</button>
+          <button @click="downloadJSONFile()">Download JSON</button> -->
         </div>
       </template>
       <Column :expander="true" headerStyle="width: 3rem" />
@@ -162,5 +163,19 @@ const { eventData } = storeToRefs(useEventsStore())
 function goAddAndEdit() {
   store.addEVent()
   router.push({ name: 'editEvent' });
+}
+
+function downloadJSONFile() {
+  const jsonContent = JSON.stringify(eventData.value, null, 2);
+  const blob = new Blob([jsonContent], { type: 'application/json' });
+
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = 'ConclusionEventsAgenda.json'; // Set the desired file name
+  a.click();
+
+  // Clean up the URL object after the download
+  URL.revokeObjectURL(url);
 }
 </script>

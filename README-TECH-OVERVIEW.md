@@ -218,3 +218,40 @@ function goAddAndEdit() {
 and
 
  <button @click="goAddAndEdit">Add Event</button>
+
+
+ ## Load from and Save to JSON
+
+save as json
+
+in eventslist.vue
+
+          <button @click="downloadJSONFile()">Download JSON</button>
+
+
+ function downloadJSONFile() {
+  const jsonContent = JSON.stringify(eventData.value, null, 2);
+  const blob = new Blob([jsonContent], { type: 'application/json' });
+
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = 'ConclusionEventsAgenda.json'; // Set the desired file name
+  a.click();
+
+  // Clean up the URL object after the download
+  URL.revokeObjectURL(url);
+}
+
+
+
+in datastore.js:
+
+// load JSON data from the file in the assets directory; this turns the data into a JSON object array
+import eventsJSON from '@/assets/conclusionEvents.json';
+
+
+ // post process eventsJSON: property eventDate should be turned from String to Date
+        for (let i = 0; i < eventsJSON.length; i++) {
+          eventsJSON[i].eventDate = new Date(eventsJSON[i].eventDate);
+        }

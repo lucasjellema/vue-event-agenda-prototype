@@ -7,6 +7,8 @@ import { v4 as uuidv4 } from 'uuid';
 // load CSV data from the file in the assets directory; turn the data into a JSON object array; the names of the object properties are derived from the column headers (first row in CSV file) 
 import eventRecords from '@/assets/knowledge-events.csv';
 import locationRecords from '@/assets/locations.csv';
+// load JSON data from the file in the assets directory; this turns the data into a JSON object array
+import eventsJSON from '@/assets/conclusionEvents.json';
 
 // the contents of the CSV file can also be loaded as a string that could then be parsed using papaparse - in case the action performed by the direct import is not adequate
 // import csvString from '@/assets/data.csv?raw'
@@ -76,7 +78,12 @@ export const useEventsStore = defineStore('data', {
   actions: {
     async parseCSVData() {
       if (!this.initialized) {
-
+        // post process eventsJSON: property eventDate should be turned from String to Date
+        for (let i = 0; i < eventsJSON.length; i++) {
+          eventsJSON[i].eventDate = new Date(eventsJSON[i].eventDate);
+        }
+        
+        console.log(eventsJSON)
         const eventsFromGitHub = await fetchData()
         // overwrite locally defined eventData with the events fetched from GitHub
         if (eventsFromGitHub)
@@ -115,7 +122,8 @@ export const useEventsStore = defineStore('data', {
           }
         }
         // filter events that have no omschrijving - this can happen with empty rows/closing newline characters in the CSV document
-        this.eventData = eventsFromGitHub.data.filter((event) => event.omschrijving)
+        this.eventData = eventsFromGitHub.data.filter((event) => event.omschrijving).concat(eventsJSON)
+        
         this.initialized = true
       }
     },
@@ -142,7 +150,7 @@ export const useEventsStore = defineStore('data', {
       // at this point, the collection this.eventData is updated with the new event details and these are shown in Calendar and List
     },
     addEVent() {
-      const newEvent = { id: uuidv4(), titel: "New Event" ,eventDate : new Date(), doelgroep:"", locatie:"",scope:"", voorbereiding:"", materialen:"", location:"", starttijd:"17:00", eindtijd:"18:00"}
+      const newEvent = { id: uuidv4(), titel: "New Event", eventDate: new Date(), doelgroep: "", locatie: "", scope: "", voorbereiding: "", materialen: "", location: "", starttijd: "17:00", eindtijd: "18:00" }
       this.eventData.push(newEvent)
       this.setupEventForEditing(newEvent.id)
     }
