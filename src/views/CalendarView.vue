@@ -66,7 +66,7 @@ const calendarEvents = computed(() => {
 })
 
 const store = useEventsStore();
-store.parseCSVData()
+store.initializeEventsData()
 const { eventData } = storeToRefs(useEventsStore())
 
 function onEventClick(event, e) {

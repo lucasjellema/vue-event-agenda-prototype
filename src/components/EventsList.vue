@@ -156,7 +156,7 @@ function getLogoUrl(company) {
 }
 
 const store = useEventsStore();
-store.parseCSVData()
+store.initializeEventsData()
 store.sortEvents('datum', 'desc');
 const { eventData } = storeToRefs(useEventsStore())
 

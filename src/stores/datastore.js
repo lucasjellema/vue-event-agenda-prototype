@@ -46,23 +46,27 @@ const replaceNewlinesWithBrTags = (text) => {
 }
 
 const EVENTS_CSV_FILE = 'https://api.github.com/repos/lucasjellema/vue-event-agenda-prototype/contents/src/assets/knowledge-events.csv'
+const EVENTS_JSON_FILE = 'https://api.github.com/repos/lucasjellema/vue-event-agenda-prototype/contents/src/assets/conclusionEvents.json'
 
-const fetchData = async () => {
-  console.log(`fetch csv from github`)
-  try {
-    const response = await axios.get(EVENTS_CSV_FILE, {
-
+const fetchData = async (githubURL) => {
+    const response = await axios.get(githubURL, {
       headers: {
         Accept: 'application/vnd.github.v3.raw', // Request raw content
       },
     });
-    console.log(`reply from GitHub received: ${response.data} `)
+return response
+}
 
+
+const fetchCSVData = async () => {
+  try {
+
+    const response = await fetchData(EVENTS_CSV_FILE)
     const parsedData = Papa.parse(response.data, { header: true });
     return parsedData
   } catch (error) {
-    console.error('Error fetching CSV data:', error);
-    return null
+      console.error('Error fetching CSV data:', error);
+      return null
   }
 }
 
@@ -76,15 +80,18 @@ export const useEventsStore = defineStore('data', {
     eventBeingEdited: ref({})
   }),
   actions: {
-    async parseCSVData() {
+    async initializeEventsData() {
+
       if (!this.initialized) {
+        const eventsFromGitHubJSONResponse = await  fetchData(EVENTS_JSON_FILE)
+        const eventsJSON = eventsFromGitHubJSONResponse.data
         // post process eventsJSON: property eventDate should be turned from String to Date
         for (let i = 0; i < eventsJSON.length; i++) {
           eventsJSON[i].eventDate = new Date(eventsJSON[i].eventDate);
         }
-        
+
         console.log(eventsJSON)
-        const eventsFromGitHub = await fetchData()
+        const eventsFromGitHub = await fetchCSVData()
         // overwrite locally defined eventData with the events fetched from GitHub
         if (eventsFromGitHub)
           console.log(`apply events read from GitHub`)
@@ -123,7 +130,7 @@ export const useEventsStore = defineStore('data', {
         }
         // filter events that have no omschrijving - this can happen with empty rows/closing newline characters in the CSV document
         this.eventData = eventsFromGitHub.data.filter((event) => event.omschrijving).concat(eventsJSON)
-        
+
         this.initialized = true
       }
     },

@@ -255,3 +255,8 @@ import eventsJSON from '@/assets/conclusionEvents.json';
         for (let i = 0; i < eventsJSON.length; i++) {
           eventsJSON[i].eventDate = new Date(eventsJSON[i].eventDate);
         }
+
+## Fetch JSON document from GitHub
+without having to redeploy the application to GitHub Pages, it can load the latest event definitions from the JSON file in GitHub (similar to reading the latest CSV file).
+
+see datastore.js for the implementation (very straightforward)
