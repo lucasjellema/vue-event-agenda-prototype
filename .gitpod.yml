@@ -12,6 +12,7 @@ tasks:
 ports:
   - port: 5173
     visibility: public
+    onOpen: open-browser
 
 vscode:
   extensions:

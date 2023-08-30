@@ -27,6 +27,9 @@ eventDetails:
   titel-help: Please enter the title for the event - as shown in the list and on the calendar
   sprekers: Sprekers
   sprekers-help: Please enter the names of the speakers for this session (separated by commas)
+  logo: Logo
+  logo-help: Select the organizing organisation or type the full URL for an image
+  datumTijd: Date/Time
 eventList:
   title: Title
   date: Date

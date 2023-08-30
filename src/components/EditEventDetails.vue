@@ -10,6 +10,27 @@
       </Panel>
     </div>
     <div class="flex flex-column gap-2">
+      <Panel :header="$t('eventDetails.datumTijd') + ' : ' + formatTheDate(event.eventDate) + ' '
+        + event.starttijd + ' - ' + event.eindtijd + ' uur'" toggleable collapsed="true">
+        <Calendar v-model="event.eventDate" showButtonBar showIcon dateFormat="dd-mm-yyyy"
+          aria-describedby="datum-help" />
+        <!-- <small id="datum-help">{{ $t('eventDetails.datum-help') }}</small> -->
+        <!-- <Calendar id="calendar-timeonly" showTime hourFormat="24" v-model="event.starttijd" timeOnly step-minute="15" /> -->
+        <span class="p-float-label">
+          <InputMask id="starttijd" v-model="event.starttijd" mask="99:99" placeholder="99:99"
+            aria-describedby="starttijd-help" />
+          <!-- <label for="starttijd">Starttijd</label> -->
+        </span>
+        <span class="p-float-label">
+          <InputMask id="eindtijd" v-model="event.eindtijd" mask="99:99" placeholder="99:99"
+            aria-describedby="eindtijd-help" />
+          <!-- <label for="starttijd">Eindtijd</label> -->
+        </span>
+        <!-- <small id="eindtijd-help">{{ $t('eventDetails.eindtijd-help') }}</small> -->
+
+      </Panel>
+    </div>
+    <div class="flex flex-column gap-2">
       <Panel toggleable collapsed="true">
         <Dropdown v-model="event.logo" editable :options="logos" optionValue="code" optionLabel="name"
           placeholder="Select a Company logo" class="w-full md:w-14rem" />
@@ -144,6 +165,12 @@ function getLocationHTMLUrl(location) {
 function submitChanges() {
   // call store action to update the event
   store.saveChangesInCurrentlyEditedEvent()
+}
+
+function formatTheDate(theDate) {
+  if (typeof theDate === "undefined") return ''
+  var options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+  return theDate != '' ? theDate.toLocaleDateString("nl-NL", options) : '';
 }
 
 
