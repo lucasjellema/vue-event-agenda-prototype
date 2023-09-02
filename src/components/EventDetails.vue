@@ -7,7 +7,8 @@
       </p>
     </div>
     <div class="field"><i>{{ $t('eventDetails.speakers') }}: {{ event.sprekers }}</i></div>
-    <div class="field"><i>{{ $t('eventDetails.dateTime') }}: {{ event.starttijd }} - {{ event.eindtijd }} uur</i></div>
+    <div class="field"><i>{{ $t('eventDetails.dateTime') }}: {{ formatDate(event.eventDate) }} {{ event.starttijd }} - {{
+      event.eindtijd }} uur</i></div>
     <div class="field">
       <p><span v-html="event.omschrijving"></span></p>
     </div>
@@ -79,6 +80,7 @@ import IconGlobe from "./icons/Globe.vue";
 import { ref } from 'vue'
 import { useRouter } from 'vue-router';
 import { useEventsStore } from '../stores/datastore';
+import { getLogoUrl, formatDate,getLocationHTMLUrl } from '../composables/AppLib'
 
 const router = useRouter();
 const store = useEventsStore();
@@ -86,13 +88,13 @@ const locationModalVisible = ref(false)
 
 const props = defineProps(['event'])
 
-function getLogoUrl(company) {
-  return new URL(`../assets/company-icons/${company}.jpg`, import.meta.url).href
-}
+// function getLogoUrl(company) {
+//   return new URL(`../assets/company-icons/${company}.jpg`, import.meta.url).href
+// }
 
-function getLocationHTMLUrl(location) {
-  return new URL(`../assets/locations/${location}.html`, import.meta.url).href
-}
+// function getLocationHTMLUrl(location) {
+//   return new URL(`../assets/locations/${location}.html`, import.meta.url).href
+// }
 
 function goEdit() {
   const event = props.event

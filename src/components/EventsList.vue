@@ -101,6 +101,7 @@ import { FilterMatchMode, FilterOperator } from "primevue/api";
 import { ref, computed } from 'vue'
 import { storeToRefs } from 'pinia'
 import { useRouter } from 'vue-router';
+import { getLogoUrl, getMinutesFromTimeString, formatDate } from '../composables/AppLib'
 
 const router = useRouter();
 
@@ -145,15 +146,10 @@ function openDetails(event) {
   this.detailsModalVisible = true
 }
 
-function formatDate(theDate) {
-  if (typeof theDate === "undefined") return ''
-  var options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
-  return theDate!=''?theDate.toLocaleDateString("nl-NL", options):'';
-}
 
-function getLogoUrl(company) {
-  return new URL(`../assets/company-icons/${company}.jpg`, import.meta.url).href
-}
+// function getLogoUrl(company) {
+//   return new URL(`../assets/company-icons/${company}.jpg`, import.meta.url).href
+// }
 
 const store = useEventsStore();
 store.initializeEventsData()

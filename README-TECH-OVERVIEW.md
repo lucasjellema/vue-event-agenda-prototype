@@ -260,3 +260,15 @@ import eventsJSON from '@/assets/conclusionEvents.json';
 without having to redeploy the application to GitHub Pages, it can load the latest event definitions from the JSON file in GitHub (similar to reading the latest CSV file).
 
 see datastore.js for the implementation (very straightforward)
+
+
+## Read value of query parameter
+
+import { useRouter } from 'vue-router';
+const router = useRouter()
+import { onMounted } from 'vue'
+
+onMounted(() => {
+ // read value of query parameter called myParameter
+  let valueFromParam = router.currentRoute.value.query.myParameter;
+})

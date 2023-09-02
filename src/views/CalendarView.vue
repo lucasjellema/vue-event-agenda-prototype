@@ -1,6 +1,7 @@
 <template>
   <div>
     <h1>{{ $t('calendar.title') }}</h1>
+    {{ queryParam }}
     <div class="about">
 
       <vue-cal class="vuecal--blue-theme" style="height: 850px; width:1500px" :time-from="7 * 60" hide-weekends
@@ -20,7 +21,7 @@
     </div>
 
     <Dialog v-model:visible="detailsModalVisible" maximizable modal v-model:header="selectedEvent.titel"
-      :style="{ width: '50vw' }">
+      :style="{ width: '50vw' }" @after-hide="handleDialogHidden()">
       <EventDetails :event="selectedEvent"></EventDetails>
     </Dialog>
 
@@ -38,19 +39,34 @@ import EventDetails from "../components/EventDetails.vue";
 import ConclusionIcon from "../components/ConclusionIcon.vue";
 import IconGlobe from "../components/icons/Globe.vue";
 import { ref, computed } from 'vue'
+import { useRouter } from 'vue-router';
+const router = useRouter()
+import { onMounted } from 'vue'
+import { getLogoUrl, getMinutesFromTimeString } from '../composables/AppLib'
+
+onMounted(() => {
+
+  console.log(`the component is now mounted.`)
+
+  let id = router.currentRoute.value.query.param;
+  console.log(`id = ${id}`)
+})
+
+
 
 
 //const getLogoUrl = (company)=> new URL(`./assets/company-icnos/${company}.jpg`, import.meta.url).href;
 
-const getMinutesFromTimeString = (timeString) => {
-  let uur = 60 * parseInt(timeString.slice(0, 2));
-  let min = timeString.slice(3)
-  let mins = min == "00" ? 0 : parseInt(min)
-  return uur + mins
-}
+// const getMinutesFromTimeString = (timeString) => {
+//   let uur = 60 * parseInt(timeString.slice(0, 2));
+//   let min = timeString.slice(3)
+//   let mins = min == "00" ? 0 : parseInt(min)
+//   return uur + mins
+// }
 
 const detailsModalVisible = ref(false)
 const selectedEvent = ref({})
+const queryParam = ref("")
 
 const calendarEvents = computed(() => {
   return eventData.value.map((event) => {
@@ -68,20 +84,36 @@ const calendarEvents = computed(() => {
 const store = useEventsStore();
 store.initializeEventsData()
 const { eventData } = storeToRefs(useEventsStore())
-
+const pathname = window.location.pathname;
 function onEventClick(event, e) {
   selectedEvent.value = event.originalEvent
   detailsModalVisible.value = true
+
+
+  // Using a route object with parameters
+  // this triggers the router to actually perform the navigation
+  //router.push({ path: '/event-details', query: { event: '20230905-title-of-event' } });
+
+  // Update the URL without triggering a route change
+  // the user will see the changed URL - but Vue does not know about it
+  window.history.pushState({}, '', `${pathname}/event-details?event=20230905-title-of-event`);
+
   // Prevent navigating to narrower view (default vue-cal behavior).
   e.stopPropagation()
 }
 
-function getLogoUrl(company) {
-  if (!(typeof company === "undefined") && (company != '') && (company.indexOf('http') == 0)) {
-    return company
-  }
-  return new URL(`../assets/company-icons/${company}.jpg`, import.meta.url).href
+function handleDialogHidden() {
+  window.history.pushState({}, '', `${pathname}`);
+
 }
+
+// function getLogoUrl(company) {
+//   return new URL(`../assets/company-icons/${company}.jpg`, import.meta.url).href
+// }
+
+// function getLogoUrl(company) {
+//   return new URL(`../assets/company-icons/${company}.jpg`, import.meta.url).href
+// }
 
 </script>
 
