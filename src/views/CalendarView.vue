@@ -21,7 +21,7 @@
 
     <Dialog v-model:visible="detailsModalVisible" maximizable modal v-model:header="selectedEvent.titel"
       :style="{ width: '50vw' }" @after-hide="handleDialogHidden()">
-      <EventDetails :event="selectedEvent"></EventDetails>
+      <EventDetails :event="selectedEvent" ></EventDetails>
     </Dialog>
 
   </div>
@@ -87,14 +87,6 @@ function handleDialogHidden() {
   window.history.pushState({}, '', `${pathname}`);
 
 }
-
-// function getLogoUrl(company) {
-//   return new URL(`../assets/company-icons/${company}.jpg`, import.meta.url).href
-// }
-
-// function getLogoUrl(company) {
-//   return new URL(`../assets/company-icons/${company}.jpg`, import.meta.url).href
-// }
 
 </script>
 

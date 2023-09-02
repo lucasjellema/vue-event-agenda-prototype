@@ -17,8 +17,8 @@
           <div>{{ $t('eventList.futureEventsToggle') }}</div>
           <InputSwitch v-model="futureEventsOnlyChecked" />
           <InputText v-model="filters['global'].value" :placeholder="$t('eventList.keywordSearch')" />
-          <!-- <button @click="goAddAndEdit">Add Event</button>
-          <button @click="downloadJSONFile()">Download JSON</button> -->
+          <button @click="goAddAndEdit"  v-if="editEnabled">Add Event</button>
+          <button @click="downloadJSONFile()"  v-if="editEnabled">Download JSON</button>
         </div>
       </template>
       <Column :expander="true" headerStyle="width: 3rem" />
@@ -102,6 +102,8 @@ import { ref, computed } from 'vue'
 import { storeToRefs } from 'pinia'
 import { useRouter } from 'vue-router';
 import { getLogoUrl, getMinutesFromTimeString, formatDate } from '../composables/AppLib'
+
+const { editEnabled } = storeToRefs(useEventsStore())
 
 const router = useRouter();
 

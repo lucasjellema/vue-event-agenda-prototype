@@ -49,12 +49,12 @@ const EVENTS_CSV_FILE = 'https://api.github.com/repos/lucasjellema/vue-event-age
 const EVENTS_JSON_FILE = 'https://api.github.com/repos/lucasjellema/vue-event-agenda-prototype/contents/src/assets/conclusionEvents.json'
 
 const fetchData = async (githubURL) => {
-    const response = await axios.get(githubURL, {
-      headers: {
-        Accept: 'application/vnd.github.v3.raw', // Request raw content
-      },
-    });
-return response
+  const response = await axios.get(githubURL, {
+    headers: {
+      Accept: 'application/vnd.github.v3.raw', // Request raw content
+    },
+  });
+  return response
 }
 
 
@@ -65,8 +65,8 @@ const fetchCSVData = async () => {
     const parsedData = Papa.parse(response.data, { header: true });
     return parsedData
   } catch (error) {
-      console.error('Error fetching CSV data:', error);
-      return null
+    console.error('Error fetching CSV data:', error);
+    return null
   }
 }
 
@@ -77,13 +77,14 @@ export const useEventsStore = defineStore('data', {
     eventData: [],
     locationData: [],
     initialized: false,
-    eventBeingEdited: ref({})
+    eventBeingEdited: ref({}),
+    editEnabled: ref(false)
   }),
   actions: {
     async initializeEventsData() {
 
       if (!this.initialized) {
-        const eventsFromGitHubJSONResponse = await  fetchData(EVENTS_JSON_FILE)
+        const eventsFromGitHubJSONResponse = await fetchData(EVENTS_JSON_FILE)
         const eventsJSON = eventsFromGitHubJSONResponse.data
         // post process eventsJSON: property eventDate should be turned from String to Date
         for (let i = 0; i < eventsJSON.length; i++) {
@@ -160,6 +161,10 @@ export const useEventsStore = defineStore('data', {
       const newEvent = { id: uuidv4(), titel: "New Event", eventDate: new Date(), doelgroep: "", locatie: "", scope: "", voorbereiding: "", materialen: "", location: "", starttijd: "17:00", eindtijd: "18:00" }
       this.eventData.push(newEvent)
       this.setupEventForEditing(newEvent.id)
+    },
+    toggleEditMode() {
+      this.editEnabled= !this.editEnabled
     }
+
   },
 });

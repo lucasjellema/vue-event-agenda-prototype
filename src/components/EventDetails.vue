@@ -1,12 +1,12 @@
 <template>
-  <div>
-    <!-- <button @click="goEdit">Edit Event Details</button> -->
+  <div >
+    <button @click="goEdit" v-if="editEnabled">Edit Event Details</button>
     <div class="field">
       <p>
         <img v-if="event.logo != ''" :src="getLogoUrl(event.logo)" height="100" />
       </p>
     </div>
-    <div class="field"><i>{{ $t('eventDetails.speakers') }}: {{ event.sprekers }}</i></div>
+    <div class="field" @dblclick="handleDoubleClick"><i>{{ $t('eventDetails.speakers') }}: {{ event.sprekers }}</i></div>
     <div class="field"><i>{{ $t('eventDetails.dateTime') }}: {{ formatDate(event.eventDate) }} {{ event.starttijd }} - {{
       event.eindtijd }} uur</i></div>
     <div class="field">
@@ -80,26 +80,26 @@ import IconGlobe from "./icons/Globe.vue";
 import { ref } from 'vue'
 import { useRouter } from 'vue-router';
 import { useEventsStore } from '../stores/datastore';
-import { getLogoUrl, formatDate,getLocationHTMLUrl } from '../composables/AppLib'
+import { getLogoUrl, formatDate, getLocationHTMLUrl } from '../composables/AppLib'
 
 const router = useRouter();
 const store = useEventsStore();
+import { storeToRefs } from 'pinia'
 const locationModalVisible = ref(false)
 
 const props = defineProps(['event'])
 
-// function getLogoUrl(company) {
-//   return new URL(`../assets/company-icons/${company}.jpg`, import.meta.url).href
-// }
+const { editEnabled } = storeToRefs(useEventsStore())
 
-// function getLocationHTMLUrl(location) {
-//   return new URL(`../assets/locations/${location}.html`, import.meta.url).href
-// }
 
 function goEdit() {
   const event = props.event
   store.setupEventForEditing(event.id)
   router.push({ name: 'editEvent' });
+}
+
+function handleDoubleClick(event) {
+  store.toggleEditMode()
 }
 
 </script>
