@@ -32,7 +32,7 @@
     </div>
     <div class="flex flex-column gap-2">
       <Panel toggleable collapsed="true">
-        <Dropdown v-model="event.logo" editable :options="logos" optionValue="code" optionLabel="name"
+        <Dropdown v-model="event.logo" editable :options="logos" optionValue="code" optionLabel="name" filter
           placeholder="Select a Company logo" class="w-full md:w-14rem" />
         <small id="logo-help">{{ $t('eventDetails.logo-help') }}</small>
         <!-- todo show list of Conclusion companies ; allow external image to be used as logo? -->
@@ -146,8 +146,27 @@ const logos = [
   { name: 'Mediaan', code: 'mediaan' },
   { name: 'First8', code: 'first8' },
   { name: 'KWD', code: 'kwd' },
-  { name: 'Furore', code: 'furore' }
+  { name: 'Furore', code: 'furore' },
+  { name: 'Low Code Company', code: 'lowcodecompany' },
+  { name: 'MBS', code: 'mbs' },
+  { name: 'Consulting', code: 'consulting' },
+  { name: 'Morgens', code: 'morgens' },
+  { name: 'Conclusion AFAS Solutions', code: 'cas' },
+  { name: 'Yellowtail', code: 'yellowtail' }
 ];
+
+logos.sort((a, b) => {
+  const nameA = a.name.toUpperCase(); // Convert names to uppercase for case-insensitive sorting
+  const nameB = b.name.toUpperCase();
+
+  if (nameA < nameB) {
+    return -1;
+  }
+  if (nameA > nameB) {
+    return 1;
+  }
+  return 0; // Names are equal
+});
 
 // event is current event from state store ??
 
