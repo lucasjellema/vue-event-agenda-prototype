@@ -4,14 +4,14 @@
     <h2>Edit Event</h2>
 
     <div class="flex flex-column gap-2">
-      <Panel :header="$t('eventDetails.titel') + ' : ' + event.titel" toggleable collapsed="true">
+      <Panel :header="$t('eventDetails.titel') + ' : ' + event.titel" toggleable :collapsed="true">
         <InputText id="titel" type="text" v-model="event.titel" class="wider-input" aria-describedby="titel-help" />
         <small id="titel-help">{{ $t('eventDetails.titel-help') }}</small>
       </Panel>
     </div>
     <div class="flex flex-column gap-2">
       <Panel :header="$t('eventDetails.datumTijd') + ' : ' + formatTheDate(event.eventDate) + ' '
-        + event.starttijd + ' - ' + event.eindtijd + ' uur'" toggleable collapsed="true">
+        + event.starttijd + ' - ' + event.eindtijd + ' uur'" toggleable :collapsed="true">
         <div class="p-inputgroup md:w-45rem">
           <div class="p-inputgroup md:w-15rem">
             <span class="p-inputgroup-addon">
@@ -48,7 +48,7 @@
       </Panel>
     </div>
     <div class="flex flex-column gap-2">
-      <Panel toggleable collapsed="true">
+      <Panel toggleable :collapsed="true">
         <Dropdown v-model="event.logo" editable :options="logos" optionValue="code" optionLabel="name" filter
           placeholder="Select a Company logo" class="w-full md:w-14rem" />
         <small id="logo-help">{{ $t('eventDetails.logo-help') }}</small>
@@ -63,15 +63,13 @@
 
 
     <div class="flex flex-column gap-2">
-      <Panel :header="$t('eventDetails.speakers') + ' : ' + event.sprekers" toggleable collapsed="true">
+      <Panel :header="$t('eventDetails.speakers') + ' : ' + event.sprekers" toggleable :collapsed="true">
         <InputText id="sprekers" type="text" v-model="event.sprekers" class="wider-input"
           aria-describedby="sprekers-help" />
         <small id="sprekers-help">{{ $t('eventDetails.sprekers-help') }}</small>
       </Panel>
     </div>
 
-
-    <div class="field"><i>{{ $t('eventDetails.dateTime') }}: {{ event.starttijd }} - {{ event.eindtijd }} uur</i></div>
     <div class="field">
       <p><span v-html="event.omschrijving"></span></p>
       <QuillEditor theme="snow" contentType="html" v-model:content="event.omschrijving" toolbar="full" />
