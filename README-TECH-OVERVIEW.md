@@ -272,3 +272,20 @@ onMounted(() => {
  // read value of query parameter called myParameter
   let valueFromParam = router.currentRoute.value.query.myParameter;
 })
+
+# to handle references on GH Pages outside root URL
+
+- define custom 404.html (copy of index.html)
+- edit vite.config.ts
+
+  build: {
+    rollupOptions: {
+      input: {
+        main: resolve(__dirname, "index.html"),
+        fallback: resolve(__dirname, "404.html")
+      },
+    },
+  },
+
+  to ensure 404.html is included in build
+  (and is pushed to gh-pages branch)
