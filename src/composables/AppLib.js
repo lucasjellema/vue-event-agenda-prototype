@@ -33,3 +33,7 @@ export function createSlugForEvent(event) {
   const encodedTitle = encodeURIComponent(event.titel.replace(/ /g, '-'));
   return encodedDate + '-' + encodedTitle.substring(0,25).replace(/%/g, '-')
 }
+
+export function getTagList(tags) {
+  return tags.toLowerCase().split(",")
+}

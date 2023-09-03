@@ -78,16 +78,31 @@
     </div>
 
 
-    <div class="field">
-      <p>
-        <template v-for="tag in event.tagList">
+    <Panel header toggleable :collapsed="true">
+      <InputText id="tags" type="text" v-model="event.tags" class="wider-input" 
+          aria-describedby="tags-help" />
+        <small id="tags-help">{{ $t('eventDetails.tags-help') }}</small>
+        <template #header>
+          Tags: 
+          <template v-for="tag in getTagList(event.tags)">
           <Tag :value="tag" rounded></Tag>
         </template>
-      </p>
+        </template>
+      </Panel>
+
+
+      <div class="flex flex-column gap-2">
+      <Panel :header="$t('eventDetails.doelgroep') + ' : ' + event.doelgroep" toggleable :collapsed="true">
+        <InputText id="doelgroep" type="text" v-model="event.doelgroep" class="wider-input"
+          aria-describedby="doelgroep-help" />
+        <small id="doelgroep-help">{{ $t('eventDetails.doelgroep-help') }}</small>
+      </Panel>
     </div>
-    <div class="field" v-if="event.doelgroep != '' && event.doelgroep.length > 0">{{ $t('eventDetails.targetAudience') }}:
-      {{ event.doelgroep }}</div>
-    <hr />
+    
+      <hr />
+
+
+
     <h3>{{ $t('eventDetails.logistics') }} </h3>
     {{ $t('eventDetails.accessibleTo') }}:
     <ConclusionIcon v-if="event.scope.indexOf('ecosysteem') > -1" />
@@ -156,6 +171,7 @@ import { ref, computed } from 'vue'
 import { defineProps } from 'vue';
 import { useEventsStore } from '../stores/datastore';
 import Button from 'primevue/button';
+import { getLogoUrl, formatDate, getLocationHTMLUrl, getTagList } from '../composables/AppLib'
 
 const store = useEventsStore();
 
@@ -210,16 +226,7 @@ logos.sort((a, b) => {
 
 // event is current event from state store ??
 
-function getLogoUrl(company) {
-  if (!(typeof company === "undefined") && (company != '') && (company.indexOf('http') == 0)) {
-    return company
-  }
-  return new URL(`../assets/company-icons/${company}.jpg`, import.meta.url).href
-}
 
-function getLocationHTMLUrl(location) {
-  return new URL(`../assets/locations/${location}.html`, import.meta.url).href
-}
 
 function submitChanges() {
   // call store action to update the event

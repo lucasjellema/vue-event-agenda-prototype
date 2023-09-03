@@ -14,7 +14,7 @@
     </div>
     <div class="field">
       <p>
-        <template v-for="tag in event.tagList">
+        <template v-for="tag in getTagList(event.tags)">
           <Tag :value="tag" rounded></Tag>
         </template>
       </p>
@@ -80,7 +80,7 @@ import IconGlobe from "./icons/Globe.vue";
 import { ref } from 'vue'
 import { useRouter } from 'vue-router';
 import { useEventsStore } from '../stores/datastore';
-import { getLogoUrl, formatDate, getLocationHTMLUrl } from '../composables/AppLib'
+import { getLogoUrl, formatDate, getLocationHTMLUrl , getTagList} from '../composables/AppLib'
 
 const router = useRouter();
 const store = useEventsStore();

@@ -30,6 +30,9 @@ eventDetails:
   logo: Logo
   logo-help: Select the organizing organisation or type the full URL for an image
   datumTijd: Date/Time
+  doelgroep: Target Audience
+  doelgroep-help: Describe the intended audience for this event
+  omschrijving: Description 
 eventList:
   title: Title
   date: Date
