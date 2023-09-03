@@ -32,10 +32,10 @@
 
       </p>
     </div>
-    <div class="field" v-if="event.isFysiek && event.locatie != '' && event.locatie.length > 0">
+    <div class="field" v-if="true || (event.isFysiek && (event.locatie || event.location)) ">
       <p>
-      <h5>{{ $t('eventDetails.location') }}:</h5> <span v-html="event.locatie"></span>
-      <Button v-if="event.location.length > 0" label="Show Location Details" icon="pi pi-external-link"
+      <h5>{{ $t('eventDetails.location') }}:</h5><span v-if="event.locationCode">{{ location.naam }}</span>  <span v-html="event.locatie"></span>
+      <Button v-if="event.locationCode" label="Show Location Details" icon="pi pi-external-link"
         @click="locationModalVisible = true" />
       </p>
     </div>
