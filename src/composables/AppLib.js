@@ -35,5 +35,9 @@ export function createSlugForEvent(event) {
 }
 
 export function getTagList(tags) {
-  return tags.toLowerCase().split(",")
+  let tagList =[]
+  if (tags) {
+  tagList = tags.toLowerCase().split(",")
+  }
+  return tagList
 }
