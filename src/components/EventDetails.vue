@@ -32,15 +32,17 @@
 
       </p>
     </div>
-    <div class="field" v-if="event.locatie != '' && event.locatie.length > 0">
+    <div class="field" v-if="event.isFysiek && event.locatie != '' && event.locatie.length > 0">
       <p>
-      <h5>{{ $t('eventDetails.location') }}:</h5> {{ event.locatie }}
+      <h5>{{ $t('eventDetails.location') }}:</h5> <span v-html="event.locatie"></span>
       <Button v-if="event.location.length > 0" label="Show Location Details" icon="pi pi-external-link"
         @click="locationModalVisible = true" />
       </p>
     </div>
-    <div class="field">
-      <p><b>{{ $t('eventDetails.hybrid') }}:</b> {{ event.hybride }}</p>
+    <div class="field" v-if="event.isOnline && event.digitaleLink && event.digitaleLink.length > 0">
+      <p>
+      <h5>{{ $t('eventDetails.digitaleLink') }}:</h5> <span v-html="event.digitaleLink"></span>
+      </p>
     </div>
     <div class="field">
       <p>
