@@ -89,10 +89,6 @@ export const useEventsStore = defineStore('data', {
         // post process eventsJSON: property eventDate should be turned from String to Date
         for (let i = 0; i < eventsJSON.length; i++) {
           eventsJSON[i].eventDate = new Date(eventsJSON[i].eventDate);
-          //TODO volgende 3 regels tijdelijk, totdat de JSON file is bijgewerkt
-          eventsJSON[i].isFysiek = eventsJSON[i].hybride.toLowerCase().indexOf("online") == -1
-          eventsJSON[i].isOnline = eventsJSON[i].hybride.toLowerCase().indexOf("online") > -1
-          eventsJSON[i].locationCode = ""
           
         }
 
