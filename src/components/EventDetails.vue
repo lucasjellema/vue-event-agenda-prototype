@@ -52,23 +52,23 @@
     <div class="field" v-if="event.voorbereiding != '' && event.voorbereiding.length > 0">
       <p>
       <h5>{{ $t('eventDetails.preparation') }}:</h5>
-      </p> {{ event.voorbereiding }}
+      </p> <span v-html="event.voorbereiding"></span>
     </div>
     <div class="field" v-if="event.materialen != '' && event.materialen.length > 0">
       <p><b>{{ $t('eventDetails.resources') }}:</b> <span v-html="event.materialen"></span></p>
     </div>
-    <Dialog v-if="event.location.length > 0" v-model:visible="locationModalVisible" maximizable modal
-      :header="event.location[0].naam" :style="{ width: '80vw' }">
-      <p>Adres: {{ event.location[0].adres }}</p>
-      <div v-if="event.location[0].mapslink">
-        <a :href="event.location[0].mapslink" target="_new">Location on Google Maps</a>
+    <Dialog v-if="event.locationCode" v-model:visible="locationModalVisible" maximizable modal
+      :header="location.naam" :style="{ width: '80vw' }">
+      <p>Adres: {{ location.adres }}</p>
+      <div v-if="location.mapslink">
+        <a :href="location.mapslink" target="_new">Location on Google Maps</a>
       </div>
-      <div v-if="event.location[0].ovlink">
-        <a :href="event.location[0].ovlink" target="_new">Route by Public Transport</a>
+      <div v-if="location.ovlink">
+        <a :href="location.ovlink" target="_new">Route by Public Transport</a>
       </div>
-      <div v-if="event.location[0].resource">
+      <div v-if="location.resource">
         <iframe id="f1" ref="frame1" style="border: 0; width:100%; height: 500px; overflow: auto;"
-          :src="getLocationHTMLUrl(event.location[0].resource)"></iframe>
+          :src="getLocationHTMLUrl(location.resource)"></iframe>
       </div>
     </Dialog>
   </div>
@@ -77,7 +77,7 @@
 <script setup>
 import ConclusionIcon from "./ConclusionIcon.vue";
 import IconGlobe from "./icons/Globe.vue";
-import { ref } from 'vue'
+import { ref , computed} from 'vue'
 import { useRouter } from 'vue-router';
 import { useEventsStore } from '../stores/datastore';
 import { getLogoUrl, formatDate, getLocationHTMLUrl , getTagList} from '../composables/AppLib'
@@ -91,6 +91,11 @@ const props = defineProps(['event'])
 
 const { editEnabled } = storeToRefs(useEventsStore())
 
+const location = computed(() => {
+  const loc = store.getLocationRecord( props.event.locationCode)
+  console.log(`loc = ${JSON.stringify(loc)}`)
+  return loc
+})
 
 function goEdit() {
   const event = props.event

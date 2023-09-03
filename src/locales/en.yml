@@ -16,7 +16,7 @@ eventDetails:
   accessibleTo: Open to
   location: Location
   hybrid: Hybrid (On Site & Digital)
-  registration: Registration
+  registration: Registration - instructions for signing up
   contact: Contact
   resources: Resources
   speakers: Speakers
@@ -32,7 +32,8 @@ eventDetails:
   datumTijd: Date/Time
   doelgroep: Target Audience
   doelgroep-help: Describe the intended audience for this event
-  omschrijving: Description 
+  omschrijving: Description
+  digitaleLink: Link to or instructions for attending the event online 
 eventList:
   title: Title
   date: Date

@@ -117,21 +117,50 @@
 
     </div>
 
-    <div class="field" v-if="!(typeof event.locatie === 'undefined') && event.locatie != '' && event.locatie.length > 0">
-      <p>
-      <h5>{{ $t('eventDetails.location') }}:</h5> {{ event.locatie }}
-      <Button v-if="event.locatie != '' && event.location.length > 0" label="Show Location Details"
-        icon="pi pi-external-link" @click="locationModalVisible = true" />
-      </p>
+    <div class="p-inputgroup md:w-12rem">
+      <span class="p-float-label">
+        Niet fysiek bij te wonen
+      </span>
+      <span>
+        <InputSwitch v-model="event.isFysiek" />
+      </span>
+      <span class="p-float-label">
+        Fysiek </span>
     </div>
-    <div class="field">
-      <p><b>{{ $t('eventDetails.hybrid') }}:</b> {{ event.hybride }}</p>
+    <div class="field" v-if="event.isFysiek ">
+            <h3>{{ $t('eventDetails.location') }}:</h3><span v-html="event.locatie"></span>
+      
+      <span v-if="event.locationCode">{{ location.naam }}</span> 
+      <Button v-if="event.locationCode" label="Show Location Details"
+        icon="pi pi-external-link" @click="locationModalVisible = true" />
+      <Panel :header="$t('eventDetails.location') +': '+ (event.locationCode?location.naam:'') " toggleable :collapsed="true">
+        <!-- todo add selection of location from list of predefined-->
+        <Dropdown v-model="event.locationCode" :options="locations()" optionValue="code" optionLabel="name" filter showClear 
+          placeholder="Select a Location" class="w-full md:w-14rem" />
+        <QuillEditor theme="snow" contentType="html" v-model:content="event.locatie" toolbar="full" />
+      </Panel>
     </div>
 
+    <div class="p-inputgroup md:w-12rem">
+      <span class="p-float-label">
+        Niet online bij te wonen
+      </span>
+      <span>
+        <InputSwitch v-model="event.isOnline" />
+      </span>
+      <span class="p-float-label">
+        Online aangeboden </span>
+    </div>
+    <div v-if="event.isOnline" class="flex flex-column gap-2">
+      <Panel :header="$t('eventDetails.digitaleLink')" toggleable :collapsed="true">
+        <p v-if="event.isOnline && event.digitaleLink">{{ $t('eventDetails.digitaleLink') }}<span v-html="event.digitaleLink"></span></p>
+        <QuillEditor theme="snow" contentType="html" v-model:content="event.digitaleLink" toolbar="snow" />
+      </Panel>
+    </div>
 
     <div class="flex flex-column gap-2">
-      <p>{{$t('eventDetails.registration')}}<span v-html="event.registratie"></span></p>
       <Panel :header="$t('eventDetails.registration')" toggleable :collapsed="true">
+        <p v-if="event.registratie">{{ $t('eventDetails.registration') }}<span v-html="event.registratie"></span></p>
         <QuillEditor theme="snow" contentType="html" v-model:content="event.registratie" toolbar="full" />
       </Panel>
     </div>
@@ -145,7 +174,7 @@
     </div>
 
     <div class="flex flex-column gap-2">
-      <p>{{$t('eventDetails.preparation')}}<span v-html="event.voorbereiding"></span></p>
+      <p v-if="event.voorbereiding">{{ $t('eventDetails.preparation') }}<span v-html="event.voorbereiding"></span></p>
       <Panel :header="$t('eventDetails.preparation')" toggleable :collapsed="true">
         <QuillEditor theme="snow" contentType="html" v-model:content="event.voorbereiding" toolbar="full" />
       </Panel>
@@ -153,25 +182,25 @@
 
 
     <div class="flex flex-column gap-2">
-      <p>{{$t('eventDetails.resources')}}<span v-html="event.materialen"></span></p>
+      <p v-if="event.materialen">{{ $t('eventDetails.resources') }}<span v-html="event.materialen"></span></p>
       <Panel :header="$t('eventDetails.resources')" toggleable :collapsed="true">
         <QuillEditor theme="snow" contentType="html" v-model:content="event.materialen" toolbar="full" />
       </Panel>
     </div>
 
 
-    <Dialog v-if="event.location.length > 0" v-model:visible="locationModalVisible" maximizable modal
-      :header="event.location[0].naam" :style="{ width: '80vw' }">
-      <p>Adres: {{ event.location[0].adres }}</p>
-      <div v-if="event.location[0].mapslink">
-        <a :href="event.location[0].mapslink" target="_new">Location on Google Maps</a>
+    <Dialog v-if="event.locationCode" v-model:visible="locationModalVisible" maximizable modal
+      :header="location.naam" :style="{ width: '80vw' }">
+      <p>Adres: {{ location.adres }}</p>
+      <div v-if="location.mapslink">
+        <a :href="location.mapslink" target="_new">Location on Google Maps</a>
       </div>
-      <div v-if="event.location[0].ovlink">
-        <a :href="event.location[0].ovlink" target="_new">Route by Public Transport</a>
+      <div v-if="location.ovlink">
+        <a :href="location.ovlink" target="_new">Route by Public Transport</a>
       </div>
-      <div v-if="event.location[0].resource">
+      <div v-if="location.resource">
         <iframe id="f1" ref="frame1" style="border: 0; width:100%; height: 500px; overflow: auto;"
-          :src="getLocationHTMLUrl(event.location[0].resource)"></iframe>
+          :src="getLocationHTMLUrl(location.resource)"></iframe>
       </div>
     </Dialog>
   </div>
@@ -192,14 +221,23 @@ const store = useEventsStore();
 const event = store.eventBeingEdited
 
 const locationModalVisible = ref(false)
-const scope = ref(false)
-const checked = ref(false);
-
-
 
 const eventScope = computed(() => {
   return (event.scope == 'public')
 })
+
+const location = computed(() => {
+  const loc = store.getLocationRecord( event.locationCode)
+  return loc
+})
+
+function locations() {
+  const locations=[]
+  for (const loc of store.locationData) {
+    locations.push({name: loc.naam , code:loc.code})
+  }
+  return locations
+} 
 
 function handleScopeChange() {
   // Toggle the boolean value
