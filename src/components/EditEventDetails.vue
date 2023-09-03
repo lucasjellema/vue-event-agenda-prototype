@@ -79,31 +79,27 @@
 
 
     <Panel header toggleable :collapsed="true">
-      <InputText id="tags" type="text" v-model="event.tags" class="wider-input" 
-          aria-describedby="tags-help" />
-        <small id="tags-help">{{ $t('eventDetails.tags-help') }}</small>
-        <template #header>
-          Tags: 
-          <template v-for="tag in getTagList(event.tags)">
+      <InputText id="tags" type="text" v-model="event.tags" class="wider-input" aria-describedby="tags-help" />
+      <small id="tags-help">{{ $t('eventDetails.tags-help') }}</small>
+      <template #header>
+        Tags:
+        <template v-for="tag in getTagList(event.tags)">
           <Tag :value="tag" rounded></Tag>
         </template>
-        </template>
-      </Panel>
+      </template>
+    </Panel>
 
-
-      <div class="flex flex-column gap-2">
+    <div class="flex flex-column gap-2">
       <Panel :header="$t('eventDetails.doelgroep') + ' : ' + event.doelgroep" toggleable :collapsed="true">
         <InputText id="doelgroep" type="text" v-model="event.doelgroep" class="wider-input"
           aria-describedby="doelgroep-help" />
         <small id="doelgroep-help">{{ $t('eventDetails.doelgroep-help') }}</small>
       </Panel>
     </div>
-    
-      <hr />
 
-
-
+    <hr />
     <h3>{{ $t('eventDetails.logistics') }} </h3>
+
     {{ $t('eventDetails.accessibleTo') }}:
     <ConclusionIcon v-if="event.scope.indexOf('ecosysteem') > -1" />
     <IconGlobe v-else />
@@ -131,21 +127,39 @@
     <div class="field">
       <p><b>{{ $t('eventDetails.hybrid') }}:</b> {{ event.hybride }}</p>
     </div>
-    <div class="field">
-      <p>
-      <h5>{{ $t('eventDetails.registration') }}:</h5> <span v-html="event.registratie"></span></p>
+
+
+    <div class="flex flex-column gap-2">
+      <p>{{$t('eventDetails.registration')}}<span v-html="event.registratie"></span></p>
+      <Panel :header="$t('eventDetails.registration')" toggleable :collapsed="true">
+        <QuillEditor theme="snow" contentType="html" v-model:content="event.registratie" toolbar="full" />
+      </Panel>
     </div>
-    <div class="field">
-      <h5>{{ $t('eventDetails.contact') }}:</h5> {{ event.contactpersoon }}
+
+    <div class="flex flex-column gap-2">
+      <Panel :header="$t('eventDetails.contact') + ' : ' + event.contactpersoon" toggleable :collapsed="true">
+        <InputText id="doelgroep" type="text" v-model="event.contactpersoon" class="wider-input"
+          aria-describedby="contact-help" />
+        <small id="contact-help">{{ $t('eventDetails.contact-help') }}</small>
+      </Panel>
     </div>
-    <div class="field" v-if="event.voorbereiding != '' && event.voorbereiding.length > 0">
-      <p>
-      <h5>{{ $t('eventDetails.preparation') }}:</h5>
-      </p> {{ event.voorbereiding }}
+
+    <div class="flex flex-column gap-2">
+      <p>{{$t('eventDetails.preparation')}}<span v-html="event.voorbereiding"></span></p>
+      <Panel :header="$t('eventDetails.preparation')" toggleable :collapsed="true">
+        <QuillEditor theme="snow" contentType="html" v-model:content="event.voorbereiding" toolbar="full" />
+      </Panel>
     </div>
-    <div class="field" v-if="event.materialen != '' && event.materialen.length > 0">
-      <p><b>{{ $t('eventDetails.resources') }}:</b> <span v-html="event.materialen"></span></p>
+
+
+    <div class="flex flex-column gap-2">
+      <p>{{$t('eventDetails.resources')}}<span v-html="event.materialen"></span></p>
+      <Panel :header="$t('eventDetails.resources')" toggleable :collapsed="true">
+        <QuillEditor theme="snow" contentType="html" v-model:content="event.materialen" toolbar="full" />
+      </Panel>
     </div>
+
+
     <Dialog v-if="event.location.length > 0" v-model:visible="locationModalVisible" maximizable modal
       :header="event.location[0].naam" :style="{ width: '80vw' }">
       <p>Adres: {{ event.location[0].adres }}</p>
