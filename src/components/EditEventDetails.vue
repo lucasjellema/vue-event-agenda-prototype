@@ -48,11 +48,11 @@
       </Panel>
     </div>
     <div class="flex flex-column gap-2">
-      <Panel toggleable :collapsed="true">
+      <Panel header toggleable :collapsed="true">
         <Dropdown v-model="event.logo" editable :options="logos" optionValue="code" optionLabel="name" filter
-          placeholder="Select a Company logo" class="w-full md:w-14rem" />
+          placeholder="Select a Company logo or enter an image URL" class="w-full md:w-14rem" />
         <small id="logo-help">{{ $t('eventDetails.logo-help') }}</small>
-        <!-- todo show list of Conclusion companies ; allow external image to be used as logo? -->
+
         <template #header>
           {{ $t('eventDetails.logo') }}
           <img v-if="event.logo != ''" :src="getLogoUrl(event.logo)" height="100" />
@@ -70,10 +70,14 @@
       </Panel>
     </div>
 
-    <div class="field">
+    <div class="flex flex-column gap-2">
       <p><span v-html="event.omschrijving"></span></p>
-      <QuillEditor theme="snow" contentType="html" v-model:content="event.omschrijving" toolbar="full" />
+      <Panel :header="$t('eventDetails.omschrijving')" toggleable :collapsed="true">
+        <QuillEditor theme="snow" contentType="html" v-model:content="event.omschrijving" toolbar="full" />
+      </Panel>
     </div>
+
+
     <div class="field">
       <p>
         <template v-for="tag in event.tagList">
@@ -85,15 +89,23 @@
       {{ event.doelgroep }}</div>
     <hr />
     <h3>{{ $t('eventDetails.logistics') }} </h3>
+    {{ $t('eventDetails.accessibleTo') }}:
+    <ConclusionIcon v-if="event.scope.indexOf('ecosysteem') > -1" />
+    <IconGlobe v-else />
+    <div class="card flex justify-content-center">
+      <div class="p-inputgroup md:w-12rem">
+        <span class="p-float-label">
+          Conclusion Ecosysteem
+        </span>
+        <span>
+          <InputSwitch v-model="eventScope" @change="handleScopeChange" />
+        </span>
+        <span class="p-float-label">
+          Public </span>
+      </div>
 
-    <div class="field">
-      <p>
-        {{ $t('eventDetails.accessibleTo') }}: {{ event.scope }}
-        <ConclusionIcon v-if="event.scope.indexOf('ecosysteem') > -1" />
-        <IconGlobe v-else />
-
-      </p>
     </div>
+
     <div class="field" v-if="!(typeof event.locatie === 'undefined') && event.locatie != '' && event.locatie.length > 0">
       <p>
       <h5>{{ $t('eventDetails.location') }}:</h5> {{ event.locatie }}
@@ -140,7 +152,7 @@
 import ConclusionIcon from "./ConclusionIcon.vue";
 import IconGlobe from "./icons/Globe.vue";
 import InputText from 'primevue/inputtext';
-import { ref } from 'vue'
+import { ref, computed } from 'vue'
 import { defineProps } from 'vue';
 import { useEventsStore } from '../stores/datastore';
 import Button from 'primevue/button';
@@ -150,6 +162,19 @@ const store = useEventsStore();
 const event = store.eventBeingEdited
 
 const locationModalVisible = ref(false)
+const scope = ref(false)
+const checked = ref(false);
+
+
+
+const eventScope = computed(() => {
+  return (event.scope == 'public')
+})
+
+function handleScopeChange() {
+  // Toggle the boolean value
+  event.scope = (event.scope == 'public' ? "ecosysteem" : "public")
+};
 
 const logos = [
   { name: 'AMIS', code: 'amis' },
