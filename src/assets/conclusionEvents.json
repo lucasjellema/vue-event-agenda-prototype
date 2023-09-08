@@ -909,26 +909,5 @@
     "isFysiek": true,
     "registratie": "<p>Meld je dan met een mailtje aan bij Yvan Hopmans. </p>",
     "contactpersoon": "Yvan Hopmans, Egbert Venema en David Zeevaarder"
-  },
-  {
-    "id": "e1f69c80-fd35-4d82-9544-4e31a98fa25a",
-    "titel": "Kennissessie front-end Next.js",
-    "eventDate": "2023-09-13T22:00:00.000Z",
-    "doelgroep": "web/front end developers",
-    "locatie": "<p>Deze sessie zal plaatsvinden op het kantoor Herculesplein 80, de exacte ruimte volgt nog.</p>",
-    "scope": "ecosysteem",
-    "voorbereiding": "",
-    "materialen": "",
-    "location": "",
-    "starttijd": "18:15",
-    "eindtijd": "21:00",
-    "logo": "amis",
-    "sprekers": "Matthijs van der Jagt",
-    "omschrijving": "<p>Op deze avond zal Matthijs van der Jagt een sessie verzorgen over Next.js. Next.js is een full-stack web applicatie framework gebasseerd op React.&nbsp;</p>",
-    "tags": "web,next.js,full stack,frontend,react",
-    "isFysiek": true,
-    "locationCode": "cutr",
-    "registratie": "<p>mail naar Emmy Hermans (AMIS)</p>",
-    "contactpersoon": "Emmy Hermans"
   }
 ]
