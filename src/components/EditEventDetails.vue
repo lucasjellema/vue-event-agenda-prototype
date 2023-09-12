@@ -127,16 +127,17 @@
       <span class="p-float-label">
         Fysiek </span>
     </div>
-    <div class="field" v-if="event.isFysiek ">
-            <h3>{{ $t('eventDetails.location') }}:</h3><span v-html="event.locatie"></span>
-      
-      <span v-if="event.locationCode">{{ location.naam }}</span> 
-      <Button v-if="event.locationCode" label="Show Location Details"
-        icon="pi pi-external-link" @click="locationModalVisible = true" />
-      <Panel :header="$t('eventDetails.location') +': '+ (event.locationCode?location.naam:'') " toggleable :collapsed="true">
+    <div class="field" v-if="event.isFysiek">
+      <h3>{{ $t('eventDetails.location') }}:</h3><span v-html="event.locatie"></span>
+
+      <span v-if="event.locationCode">{{ location.naam }}</span>
+      <Button v-if="event.locationCode" label="Show Location Details" icon="pi pi-external-link"
+        @click="locationModalVisible = true" />
+      <Panel :header="$t('eventDetails.location') + ': ' + (event.locationCode ? location.naam : '')" toggleable
+        :collapsed="true">
         <!-- todo add selection of location from list of predefined-->
-        <Dropdown v-model="event.locationCode" :options="locations()" optionValue="code" optionLabel="name" filter showClear 
-          placeholder="Select a Location" class="w-full md:w-14rem" />
+        <Dropdown v-model="event.locationCode" :options="locations()" optionValue="code" optionLabel="name" filter
+          showClear placeholder="Select a Location" class="w-full md:w-14rem" />
         <QuillEditor theme="snow" contentType="html" v-model:content="event.locatie" toolbar="full" />
       </Panel>
     </div>
@@ -153,7 +154,8 @@
     </div>
     <div v-if="event.isOnline" class="flex flex-column gap-2">
       <Panel :header="$t('eventDetails.digitaleLink')" toggleable :collapsed="true">
-        <p v-if="event.isOnline && event.digitaleLink">{{ $t('eventDetails.digitaleLink') }}<span v-html="event.digitaleLink"></span></p>
+        <p v-if="event.isOnline && event.digitaleLink">{{ $t('eventDetails.digitaleLink') }}<span
+            v-html="event.digitaleLink"></span></p>
         <QuillEditor theme="snow" contentType="html" v-model:content="event.digitaleLink" toolbar="snow" />
       </Panel>
     </div>
@@ -189,8 +191,8 @@
     </div>
 
 
-    <Dialog v-if="event.locationCode" v-model:visible="locationModalVisible" maximizable modal
-      :header="location.naam" :style="{ width: '80vw' }">
+    <Dialog v-if="event.locationCode" v-model:visible="locationModalVisible" maximizable modal :header="location.naam"
+      :style="{ width: '80vw' }">
       <p>Adres: {{ location.adres }}</p>
       <div v-if="location.mapslink">
         <a :href="location.mapslink" target="_new">Location on Google Maps</a>
@@ -227,17 +229,17 @@ const eventScope = computed(() => {
 })
 
 const location = computed(() => {
-  const loc = store.getLocationRecord( event.locationCode)
+  const loc = store.getLocationRecord(event.locationCode)
   return loc
 })
 
 function locations() {
-  const locations=[]
+  const locations = []
   for (const loc of store.locationData) {
-    locations.push({name: loc.naam , code:loc.code})
+    locations.push({ name: loc.naam, code: loc.code })
   }
   return locations
-} 
+}
 
 function handleScopeChange() {
   // Toggle the boolean value
@@ -260,7 +262,8 @@ const logos = [
   { name: 'Consulting', code: 'consulting' },
   { name: 'Morgens', code: 'morgens' },
   { name: 'Conclusion AFAS Solutions', code: 'cas' },
-  { name: 'Yellowtail', code: 'yellowtail' }
+  { name: 'Yellowtail', code: 'yellowtail' },
+  { name: 'Hot ITem', code: 'hotitem' }
 ];
 
 logos.sort((a, b) => {
