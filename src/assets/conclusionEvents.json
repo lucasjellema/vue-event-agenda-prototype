@@ -993,5 +993,26 @@
     "logo": "hotitem",
     "locationCode": "chot",
     "tags": "data,data gedreven,fact based,fact based improvement,praktijk,duurzaamheid,rapportage,databricks,digital twin"
+  },
+  {
+    "id": "a7bc9c46-416d-46c1-a7c4-4435d48625c7",
+    "titel": "Hands-on workshop: Keycloak – \"choose your own adventure\"",
+    "eventDate": "2023-10-11T22:00:00.000Z",
+    "doelgroep": "Java Developers met Keycloak interesse",
+    "locatie": "",
+    "scope": "public",
+    "voorbereiding": "<p>Wordt vantevoren gedeeld. Wel eigen laptop mee.</p>",
+    "materialen": "",
+    "location": "",
+    "starttijd": "13:00",
+    "eindtijd": "17:00",
+    "logo": "first8",
+    "sprekers": "Arjan Lamers, Annemieke Staal",
+    "omschrijving": "<p>De workshop bestaat uit 3 tracks, opgesteld vanuit verschillende kennisniveaus en interesses. Stippel je eigen route uit en vind je weg.</p><p><br></p><p>Na een korte introductie gaan de deelnemers zelf aan de slag met een aantal opdrachten in de tracks. Het kennisniveau van de deelnemers kan verschillen, hier houden we rekening mee. Ieder kan op zijn / haar eigen niveau aan de slag.</p><p><br></p><p>georganiseerd door First8 Conclusion en Red Hat</p>",
+    "tags": "keycloak,workshop,handson,red hat,iam",
+    "isFysiek": true,
+    "locationCode": "cnij",
+    "registratie": "<p>Aanmelden via <a href=\"https://keycloak.conclusionevents.nl/\" rel=\"noopener noreferrer\" target=\"_blank\">https://keycloak.conclusionevents.nl/</a></p>",
+    "contactpersoon": "Linda Elbersen"
   }
 ]
