@@ -1014,5 +1014,25 @@
     "locationCode": "cnij",
     "registratie": "<p>Aanmelden via <a href=\"https://keycloak.conclusionevents.nl/\" rel=\"noopener noreferrer\" target=\"_blank\">https://keycloak.conclusionevents.nl/</a></p>",
     "contactpersoon": "Linda Elbersen"
+  },
+  {
+    "id": "082bbf1c-858a-4ca1-8298-a89895d20240",
+    "titel": "Masters of Java 2023",
+    "eventDate": "2023-11-07T23:00:00.000Z",
+    "doelgroep": " iedere Java ontwikkelaar, van junior tot senior",
+    "locatie": "<p><span style=\"color: rgb(51, 51, 51);\">Van der Valk Hotel, Veenendaal</span></p><p><a href=\"https://www.google.nl/maps/place/Van+der+Valk+Hotel+Veenendaal/@52.0421255,5.5651779,17z/data=!3m1!4b1!4m9!3m8!1s0x47c65216dfb76dbf:0xb7729ee15b1a77c6!5m2!4m1!1i2!8m2!3d52.0421222!4d5.5677528!16s%2Fg%2F1q64qk6gt?entry=ttu\" rel=\"noopener noreferrer\" target=\"_blank\" style=\"color: rgb(51, 51, 51);\">Google Maps Link</a><span style=\"color: rgb(51, 51, 51);\"><span class=\"ql-cursor\">﻿</span></span></p>",
+    "scope": "public",
+    "voorbereiding": "",
+    "materialen": "",
+    "location": "",
+    "starttijd": "13:00",
+    "eindtijd": "17:30",
+    "logo": "https://nljug.org/wp-content/uploads/2023/04/Masters-of-Java-2.png",
+    "sprekers": "Collega's van First8",
+    "omschrijving": "<p>De Masters of Java, welke zichzelf respecterende Nederlandse Javaan kent deze code challenge niet? Al enkele jaren strijden NLJUG’ers om deze prestigieuze titel. Zoals je van ons gewend bent, zijn de opdrachten leuk en innovatief én kunnen er veel teams meedoen.</p><p><br></p><p>De Masters of Java is een roemruchte “funprogging contest” (gebaseerd op Java SE), die toegankelijk is voor iedere Java ontwikkelaar, van junior tot senior. In deze wedstrijd wordt niet de API-kennis, maar de echte programmeervaardigheid getest. In voorgaande edities heeft Masters of Java al heel wat verhitte strijd opgeleverd. Het is onvermijdelijk dat deze nieuwe online opzet ook weer voor vuurwerk gaat zorgen.</p><p><br></p><p>In de verschillende rondes die de wedstrijd telt, wordt iedere keer een grappige of interessante programmeeropdracht uitgedeeld, die vervolgens binnen een half uur opgelost moet worden. Voor iedere seconde die je overhoudt, scoor je een punt. De afgelopen jaren is de beslissing steeds gevallen tijdens de laatste opdracht. Het beloofd dus een zinderende wedstrijd te worden!</p><p>Teams bestaan maximaal uit 2 ontwikkelaars en het team dat aan het einde van de dag de meeste punten heeft, mag zich “Master of Java 2023” noemen. Er zal naast eeuwige roem natuurlijk gestreden worden voor mooie en spectaculaire prijzen!</p><p>De opdrachten zijn volledig uniek en ook niet Googlebaar.</p><p><br></p><p>Iedereen die meedoet en aanwezig is bij de Masters of Java ontvangt automatisch toegang tot de J-Fall conferentie.</p><p><br></p><p><strong style=\"color: rgb(51, 51, 51);\">Kosten</strong><span style=\"color: rgb(51, 51, 51);\">: Gratis</span></p><p><strong style=\"color: rgb(51, 51, 51);\">Organisatie:</strong><span style=\"color: rgb(51, 51, 51);\">&nbsp;NLJUG</span></p><p><strong style=\"color: rgb(51, 51, 51);\">Hoofdsponsor:</strong><span style=\"color: rgb(51, 51, 51);\">&nbsp;First8 Conclusion</span></p><p><br></p><p>Website: <a href=\"https://nljug.org/masters-of-java-2023/\" rel=\"noopener noreferrer\" target=\"_blank\">https://nljug.org/masters-of-java-2023/</a></p>",
+    "tags": "java,programmeervaardigheid,challenge,funprogging",
+    "isFysiek": true,
+    "registratie": "<p>Schrijf je in via <a href=\"Noortje.van.Berlo@nljug.org\" rel=\"noopener noreferrer\" target=\"_blank\">deze link</a></p>",
+    "contactpersoon": "Wil je meer weten? Stuur een mail naar Noortje van Berlo (Noortje.van.Berlo@nljug.org)."
   }
 ]
