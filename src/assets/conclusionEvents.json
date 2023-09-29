@@ -940,7 +940,7 @@
     "doelgroep": "Alle collega's van alle bedrijven in het Conclusion ecosysteem",
     "locatie": "<p>Cloud 22, Conclusion Club en Boardoorm 21, Restaurant</p>",
     "scope": "ecosysteem",
-    "voorbereiding": "",
+    "voorbereiding": "<p>Aanmelden van een sessie die je wilt presenteren: <a href=\"https://onstagelight.conclusionevents.nl/page/1275552\" rel=\"noopener noreferrer\" target=\"_blank\">deze pagina</a></p>",
     "materialen": "",
     "location": "",
     "starttijd": "17:00",
@@ -950,9 +950,9 @@
     "tags": "conclusion on stage,ecosysteem,conferentie,podium",
     "isFysiek": true,
     "locationCode": "cutr",
-    "registratie": "<p>details volgen</p>",
-    "contactpersoon": "Heidi Molijn en Lucas Jellema",
-    "omschrijving": "<p>Een extra Conclusion on Stage - de ecosysteem conferentie met presentaties van collega's over uiteenlopende onderwerpen. Deze Conclusion on Stage is een light editie - met wat minder podia en wat minder toeters en bellen dan anders. Om dit jaar toch nog een \"On Stage\" te kunnen hebben tussen alle andere activiteiten en verplichtingen door, hebben we een paar concessies gedaan om het iets simpeler te houden.</p><p><br></p><p>We gaan nu op zoek naar sessies &amp; sprekers. Je hoort zo snel mogelijk wat er op het programma staat. En je kunt zelf ook op het programma staan! Meld je aan met je eigen sessie - met een onderwerp dat je na aan het hart ligt en/of anderen op het hart wil drukken. Gerelateerd aan je dagelijkse werk - of juist aan je leven buiten werk. Tips, ervaringen, waarschuwingen, uitdagingen - wat je maar wilt delen. </p>"
+    "registratie": "<p>Ga naar <a href=\"https://onstagelight.conclusionevents.nl/\" rel=\"noopener noreferrer\" target=\"_blank\">https://onstagelight.conclusionevents.nl/</a> voor details en voor aanmelden als spreker en als deelnemer</p>",
+    "contactpersoon": "marcom@conclusion.nl - Heidi Molijn, Lucas Jellema",
+    "omschrijving": "<p>Een extra Conclusion on Stage - de ecosysteem conferentie met presentaties van collega's over uiteenlopende onderwerpen. Deze Conclusion on Stage is een light editie - met wat minder podia en wat minder toeters en bellen dan anders. Om dit jaar toch nog een \"On Stage\" te kunnen hebben tussen alle andere activiteiten en verplichtingen door, hebben we een paar concessies gedaan om het iets simpeler te houden.</p><p><br></p><p>We gaan nu op zoek naar sessies &amp; sprekers. Je hoort zo snel mogelijk wat er op het programma staat. En je kunt zelf ook op het programma staan! Meld je aan met je eigen sessie - met een onderwerp dat je na aan het hart ligt en/of anderen op het hart wil drukken. Gerelateerd aan je dagelijkse werk - of juist aan je leven buiten werk. Tips, ervaringen, waarschuwingen, uitdagingen - wat je maar wilt delen. </p><p><br></p><p>De event site kan je <a href=\"https://onstagelight.conclusionevents.nl/\" rel=\"noopener noreferrer\" target=\"_blank\">hier</a> vinden.</p><p><br></p>"
   },
   {
     "id": "24039be0-a933-49c4-89c3-46aec0b9da6e",
@@ -1055,5 +1055,18 @@
     "locationCode": "cutr",
     "registratie": "<p>Stuur een email naar lucas.jellema@conclusion.nl</p>",
     "contactpersoon": "Lucas Jellema (lucas.jellema@conclusion.nl)"
+  },
+  {
+    "id": "783b02e6-ab3a-45fc-a446-95ed2da3d5d5",
+    "titel": "New Event",
+    "eventDate": "2023-09-29T08:07:28.685Z",
+    "doelgroep": "",
+    "locatie": "",
+    "scope": "",
+    "voorbereiding": "",
+    "materialen": "",
+    "location": "",
+    "starttijd": "17:00",
+    "eindtijd": "18:00"
   }
 ]
